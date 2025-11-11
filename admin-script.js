@@ -349,23 +349,325 @@ function clearActivityLog() {
 
 // Statistics
 function loadStatistics() {
-    const categories = {};
-    libraryData.responses.forEach(r => {
-        categories[r.category] = (categories[r.category] || 0) + 1;
+    // Get all data
+    const reports = getDefaultReports();
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+
+    // Update summary cards
+    document.getElementById('totalReports').textContent = reports.length;
+    document.getElementById('totalRefunds').textContent = refunds.length;
+    document.getElementById('totalConversations').textContent = conversations.length;
+    document.getElementById('totalSales').textContent = sales.length;
+
+    // Create charts
+    createReportsChart(reports);
+    createSalesChart(sales);
+    createRefundsChart(refunds);
+    createConversationsChart(conversations);
+
+    // Create employee performance table
+    createEmployeePerformance(reports, refunds, conversations, sales);
+
+    // Show top employees
+    showTopEmployees(reports, sales);
+}
+
+function refreshAnalytics() {
+    loadStatistics();
+    alert('✅ تم تحديث البيانات!');
+}
+
+// Destroy existing chart if it exists
+function destroyChart(chartId) {
+    const existingChart = Chart.getChart(chartId);
+    if (existingChart) {
+        existingChart.destroy();
+    }
+}
+
+function createReportsChart(reports) {
+    const ctx = document.getElementById('reportsChart');
+    if (!ctx) return;
+
+    destroyChart('reportsChart');
+
+    // Count reports by employee
+    const employeeReports = {};
+    reports.forEach(r => {
+        const emp = r.employeeName || 'غير محدد';
+        employeeReports[emp] = (employeeReports[emp] || 0) + 1;
     });
 
-    const html = Object.keys(categories).map(cat => `
-        <div style="margin-bottom: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
-            <strong>${cat}</strong>: ${categories[cat]} ردود
-        </div>
-    `).join('');
-    document.getElementById('categoryStats').innerHTML = html;
+    const sortedEmployees = Object.entries(employeeReports)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
 
-    document.getElementById('usageStats').innerHTML = `
-        <p><strong>إجمالي الردود:</strong> ${libraryData.responses.length}</p>
-        <p><strong>إجمالي الإجراءات:</strong> ${libraryData.procedures.length}</p>
-        <p><strong>أعضاء الفريق:</strong> ${libraryData.teamRoles.length}</p>
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: sortedEmployees.map(e => e[0]),
+            datasets: [{
+                label: 'عدد البلاغات',
+                data: sortedEmployees.map(e => e[1]),
+                backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                borderColor: 'rgba(255, 0, 0, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+function createSalesChart(sales) {
+    const ctx = document.getElementById('salesChart');
+    if (!ctx) return;
+
+    destroyChart('salesChart');
+
+    // Count sales by action
+    const actions = {};
+    sales.forEach(s => {
+        const action = s.action || 'غير محدد';
+        actions[action] = (actions[action] || 0) + 1;
+    });
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(actions),
+            datasets: [{
+                data: Object.values(actions),
+                backgroundColor: [
+                    'rgba(40, 167, 69, 0.8)',
+                    'rgba(255, 193, 7, 0.8)',
+                    'rgba(220, 53, 69, 0.8)',
+                    'rgba(0, 123, 255, 0.8)',
+                    'rgba(108, 117, 125, 0.8)',
+                    'rgba(255, 99, 132, 0.8)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
+    });
+}
+
+function createRefundsChart(refunds) {
+    const ctx = document.getElementById('refundsChart');
+    if (!ctx) return;
+
+    destroyChart('refundsChart');
+
+    // Count refunds by status
+    const statuses = {
+        'pending': 0,
+        'approved': 0,
+        'completed': 0,
+        'rejected': 0
+    };
+
+    refunds.forEach(r => {
+        const status = r.status || 'pending';
+        if (statuses.hasOwnProperty(status)) {
+            statuses[status]++;
+        }
+    });
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['قيد الانتظار', 'تمت الموافقة', 'مكتمل', 'مرفوض'],
+            datasets: [{
+                data: [statuses.pending, statuses.approved, statuses.completed, statuses.rejected],
+                backgroundColor: [
+                    'rgba(255, 193, 7, 0.8)',
+                    'rgba(0, 123, 255, 0.8)',
+                    'rgba(40, 167, 69, 0.8)',
+                    'rgba(220, 53, 69, 0.8)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
+function createConversationsChart(conversations) {
+    const ctx = document.getElementById('conversationsChart');
+    if (!ctx) return;
+
+    destroyChart('conversationsChart');
+
+    // Count conversations by type
+    const types = {};
+    conversations.forEach(c => {
+        const type = c.type || 'غير محدد';
+        types[type] = (types[type] || 0) + 1;
+    });
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(types),
+            datasets: [{
+                label: 'عدد المحادثات',
+                data: Object.values(types),
+                backgroundColor: 'rgba(75, 58, 140, 0.7)',
+                borderColor: 'rgba(75, 58, 140, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function createEmployeePerformance(reports, refunds, conversations, sales) {
+    const container = document.getElementById('employeePerformance');
+    if (!container) return;
+
+    // Collect all unique employees
+    const employees = new Set();
+    reports.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+    refunds.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+    conversations.forEach(c => employees.add(c.employeeName || 'غير محدد'));
+    sales.forEach(s => employees.add(s.employeeName || 'غير محدد'));
+
+    const performance = Array.from(employees).map(emp => {
+        return {
+            name: emp,
+            reports: reports.filter(r => r.employeeName === emp).length,
+            refunds: refunds.filter(r => r.employeeName === emp).length,
+            conversations: conversations.filter(c => c.employeeName === emp).length,
+            sales: sales.filter(s => s.employeeName === emp).length,
+            total: reports.filter(r => r.employeeName === emp).length +
+                   refunds.filter(r => r.employeeName === emp).length +
+                   conversations.filter(c => c.employeeName === emp).length +
+                   sales.filter(s => s.employeeName === emp).length
+        };
+    }).sort((a, b) => b.total - a.total);
+
+    let html = `
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>الموظف</th>
+                    <th>🚨 البلاغات</th>
+                    <th>💰 الاستردادات</th>
+                    <th>💬 المحادثات</th>
+                    <th>📈 المبيعات</th>
+                    <th>📊 الإجمالي</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
+
+    performance.forEach((emp, index) => {
+        const rowStyle = index < 3 ? 'background: #fff3cd;' : '';
+        html += `
+            <tr style="${rowStyle}">
+                <td><strong>${index < 3 ? '🏆 ' : ''}${emp.name}</strong></td>
+                <td>${emp.reports}</td>
+                <td>${emp.refunds}</td>
+                <td>${emp.conversations}</td>
+                <td>${emp.sales}</td>
+                <td style="font-weight: 700; color: var(--primary-pink);">${emp.total}</td>
+            </tr>
+        `;
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    container.innerHTML = html;
+}
+
+function showTopEmployees(reports, sales) {
+    const container = document.getElementById('topEmployees');
+    if (!container) return;
+
+    // Get top 3 by total activity
+    const employees = new Set();
+    reports.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+    sales.forEach(s => employees.add(s.employeeName || 'غير محدد'));
+
+    const top = Array.from(employees).map(emp => ({
+        name: emp,
+        count: reports.filter(r => r.employeeName === emp).length +
+               sales.filter(s => s.employeeName === emp).length
+    })).sort((a, b) => b.count - a.count).slice(0, 3);
+
+    let html = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">';
+
+    const medals = ['🥇', '🥈', '🥉'];
+    const colors = [
+        'linear-gradient(135deg, #FFD700, #FFA500)',
+        'linear-gradient(135deg, #C0C0C0, #808080)',
+        'linear-gradient(135deg, #CD7F32, #8B4513)'
+    ];
+
+    top.forEach((emp, index) => {
+        html += `
+            <div style="background: ${colors[index]}; color: white; padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <div style="font-size: 3rem;">${medals[index]}</div>
+                <div style="font-size: 1.2rem; font-weight: 700; margin: 0.5rem 0;">${emp.name}</div>
+                <div style="font-size: 2rem; font-weight: 700;">${emp.count}</div>
+                <div style="font-size: 0.9rem; opacity: 0.9;">عملية</div>
+            </div>
+        `;
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
 }
 
 // Export/Import

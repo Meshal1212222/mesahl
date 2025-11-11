@@ -517,6 +517,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Sidebar -->
@@ -766,13 +767,10 @@
         <!-- Sales Management Section -->
         <section id="sales" class="content-section">
             <div class="header">
-                <h1 class="page-title">📈 نظام المبيعات</h1>
+                <h1 class="page-title">📈 نظام المبيعات وإدارة العملاء (CRM)</h1>
                 <div class="header-actions">
-                    <button class="btn btn-primary" onclick="showAddSaleModal()">
-                        ➕ إضافة عملية جديدة
-                    </button>
                     <button class="btn btn-success" onclick="exportSales()">
-                        📥 تصدير
+                        📥 تصدير البيانات
                     </button>
                 </div>
             </div>
@@ -806,17 +804,67 @@
         <!-- Statistics Section -->
         <section id="stats" class="content-section">
             <div class="header">
-                <h1 class="page-title">التقارير والإحصائيات</h1>
+                <h1 class="page-title">📊 التحليلات والإحصائيات الشاملة</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="refreshAnalytics()">
+                        🔄 تحديث البيانات
+                    </button>
+                </div>
             </div>
 
-            <div class="card">
-                <h2 class="card-title">إحصائيات الاستخدام</h2>
-                <div id="usageStats"></div>
+            <!-- إحصائيات عامة -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <div style="font-size: 2.5rem; font-weight: 700;" id="totalReports">0</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">🚨 إجمالي البلاغات</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #FFA500, #FF8C00); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <div style="font-size: 2.5rem; font-weight: 700;" id="totalRefunds">0</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">💰 إجمالي الاستردادات</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #4B3A8C, #6B4FB5); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <div style="font-size: 2.5rem; font-weight: 700;" id="totalConversations">0</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">💬 إجمالي المحادثات</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #28A745, #20C997); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <div style="font-size: 2.5rem; font-weight: 700;" id="totalSales">0</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">📈 إجمالي المبيعات</div>
+                </div>
             </div>
 
+            <!-- رسوم بيانية -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div class="card">
+                    <h2 class="card-title">📊 أداء الموظفين - البلاغات</h2>
+                    <canvas id="reportsChart" style="max-height: 300px;"></canvas>
+                </div>
+                <div class="card">
+                    <h2 class="card-title">📈 عمليات المبيعات</h2>
+                    <canvas id="salesChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div class="card">
+                    <h2 class="card-title">💰 حالات الاستردادات</h2>
+                    <canvas id="refundsChart" style="max-height: 300px;"></canvas>
+                </div>
+                <div class="card">
+                    <h2 class="card-title">💬 أنواع المحادثات</h2>
+                    <canvas id="conversationsChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+
+            <!-- تحليل تفصيلي للموظفين -->
             <div class="card">
-                <h2 class="card-title">الردود حسب التصنيف</h2>
-                <div id="categoryStats"></div>
+                <h2 class="card-title">👥 تحليل أداء الموظفين الشامل</h2>
+                <div id="employeePerformance"></div>
+            </div>
+
+            <!-- أفضل الموظفين -->
+            <div class="card">
+                <h2 class="card-title">🏆 أفضل الموظفين</h2>
+                <div id="topEmployees"></div>
             </div>
         </section>
 
