@@ -803,31 +803,36 @@
         <!-- Quick Actions -->
         <div class="quick-actions" id="quickActions"></div>
 
-        <!-- Main Content Grid -->
-        <div class="main-grid">
-            <!-- Responses Section -->
-            <div class="section-card">
-                <div class="section-header">
-                    <div class="section-title">
-                        <span>📝</span>
-                        <span>الردود المعتمدة - يجب استخدامها حرفياً</span>
-                    </div>
-                </div>
-                <div class="section-content">
-                    <div class="filter-tabs" id="filterTabs"></div>
-                    <div id="responsesList"></div>
+        <!-- Navigation Button -->
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="procedures.html" style="
+                display: inline-block;
+                padding: 1rem 3rem;
+                background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                box-shadow: 0 5px 20px rgba(233, 30, 140, 0.4);
+                transition: all 0.3s;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(233, 30, 140, 0.6)'"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(233, 30, 140, 0.4)'">
+                ⚙️ عرض الإجراءات والسياسات والسكربتات
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>📝</span>
+                    <span>الردود المعتمدة - يجب استخدامها حرفياً</span>
                 </div>
             </div>
-
-            <!-- Procedures Section -->
-            <div class="section-card">
-                <div class="section-header">
-                    <div class="section-title">
-                        <span>⚙️</span>
-                        <span>الإجراءات والسياسات والسكربتات</span>
-                    </div>
-                </div>
-                <div class="section-content" id="proceduresList"></div>
+            <div class="section-content">
+                <div class="filter-tabs" id="filterTabs"></div>
+                <div id="responsesList"></div>
             </div>
         </div>
     </div>
@@ -1399,7 +1404,6 @@
         function init() {
             renderFilterTabs();
             renderResponses();
-            renderProcedures();
             renderQuickActions();
             updateCurrentTime();
             setInterval(updateCurrentTime, 1000);
