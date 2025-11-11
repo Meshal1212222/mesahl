@@ -2030,6 +2030,63 @@
             closeConversationModal();
         }
 
+        // ==================== SALES SYSTEM ====================
+
+        function showSalesModal() {
+            const modal = document.getElementById('salesModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeSalesModal() {
+            const modal = document.getElementById('salesModal');
+            modal.style.display = 'none';
+            document.getElementById('salesForm').reset();
+        }
+
+        function submitSales(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('salesEmployeeName').value.trim();
+            const customerNumber = document.getElementById('customerNumber').value.trim();
+            const bookingNumber = document.getElementById('salesBookingNumber').value.trim();
+            const action = document.getElementById('salesAction').value;
+            const status = document.getElementById('salesStatus').value;
+            const bookingStatus = document.getElementById('bookingStatus').value;
+            const callConfirmed = document.getElementById('callConfirmed').value;
+            const whatsappSent = document.getElementById('whatsappSent').value;
+            const notes = document.getElementById('salesNotes').value.trim();
+
+            if (!employeeName || !customerNumber || !action) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const sale = {
+                id: 'sale_' + Date.now(),
+                date: new Date().toLocaleDateString('ar-SA'),
+                employeeName: employeeName,
+                customerNumber: customerNumber,
+                bookingNumber: bookingNumber,
+                action: action,
+                status: status,
+                bookingStatus: bookingStatus,
+                callConfirmed: callConfirmed,
+                whatsappSent: whatsappSent,
+                notes: notes,
+                recordTime: new Date().toLocaleString('ar-SA')
+            };
+
+            // Save to localStorage
+            const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+            sales.unshift(sale);
+            localStorage.setItem('customerSales', JSON.stringify(sales));
+
+            // Show success message
+            showNotification('✅ تم تسجيل عملية المبيعات بنجاح!');
+
+            closeSalesModal();
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', init);
     </script>
@@ -2091,6 +2148,25 @@
         transition: all 0.3s;
     " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="متابعة محادثة">
         💬
+    </button>
+
+    <button onclick="showSalesModal()" style="
+        position: fixed;
+        bottom: 240px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #28A745, #20C997);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(40,167,69,0.4);
+        z-index: 1000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="تسجيل عملية مبيعات">
+        📈
     </button>
 
     <!-- Report Modal -->
@@ -2554,6 +2630,229 @@
                         📤 حفظ المحادثة
                     </button>
                     <button type="button" onclick="closeConversationModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sales Modal -->
+    <div id="salesModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #28A745; font-size: 1.5rem;">📈 تسجيل عملية مبيعات</h2>
+                <button onclick="closeSalesModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="salesForm" onsubmit="submitSales(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسم موظف المبيعات <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="salesEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="customerNumber" required placeholder="مثال: 0501234567" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم الحجز (اختياري)
+                    </label>
+                    <input type="text" id="salesBookingNumber" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الإجراء المتخذ <span style="color: red;">*</span>
+                    </label>
+                    <select id="salesAction" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر الإجراء</option>
+                        <option value="تم الاتصال">تم الاتصال</option>
+                        <option value="لم يرد">لم يرد</option>
+                        <option value="رقم خاطئ">رقم خاطئ</option>
+                        <option value="تم الحجز">تم الحجز</option>
+                        <option value="قيد المتابعة">قيد المتابعة</option>
+                        <option value="غير مهتم">غير مهتم</option>
+                        <option value="سيتواصل لاحقاً">سيتواصل لاحقاً</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الحالة
+                    </label>
+                    <select id="salesStatus" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">لا يوجد</option>
+                        <option value="جديد">جديد</option>
+                        <option value="قيد المعالجة">قيد المعالجة</option>
+                        <option value="مكتمل">مكتمل</option>
+                        <option value="ملغي">ملغي</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        حالة الحجز
+                    </label>
+                    <select id="bookingStatus" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">لا يوجد</option>
+                        <option value="مؤكد">مؤكد</option>
+                        <option value="قيد الانتظار">قيد الانتظار</option>
+                        <option value="ملغي">ملغي</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تأكيد الاتصال
+                    </label>
+                    <select id="callConfirmed" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="نعم">نعم</option>
+                        <option value="لا">لا</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تأكيد إرسال رسالة الواتساب
+                    </label>
+                    <select id="whatsappSent" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="نعم">نعم</option>
+                        <option value="لا">لا</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        ملاحظات إضافية
+                    </label>
+                    <textarea id="salesNotes" rows="3" placeholder="أي ملاحظات أخرى..." style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #28A745, #20C997);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📤 حفظ العملية
+                    </button>
+                    <button type="button" onclick="closeSalesModal()" style="
                         flex: 1;
                         padding: 1rem;
                         background: #6c757d;

@@ -118,6 +118,7 @@ function showSection(sectionId) {
     if (sectionId === 'reports') loadReports();
     if (sectionId === 'refunds') loadRefunds();
     if (sectionId === 'conversations') loadConversations();
+    if (sectionId === 'sales') loadSales();
     if (sectionId === 'team') loadTeamManagement();
     if (sectionId === 'activity') loadActivityLog();
     if (sectionId === 'stats') loadStatistics();
@@ -1156,6 +1157,182 @@ function exportConversations() {
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
     link.setAttribute('download', `conversations_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// ==================== SALES MANAGEMENT ====================
+
+function loadSales(filter = 'all') {
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    const container = document.getElementById('salesManagement');
+
+    if (!container) return;
+
+    let filteredSales = sales;
+    if (filter !== 'all') {
+        filteredSales = sales.filter(s => s.action === filter || s.status === filter);
+    }
+
+    if (filteredSales.length === 0) {
+        container.innerHTML = '<div class="no-data">📭 لا توجد عمليات مبيعات مسجلة</div>';
+        return;
+    }
+
+    let html = `
+        <div style="margin-bottom: 1rem;">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <div style="background: linear-gradient(135deg, #28A745, #20C997); color: white; padding: 1rem; border-radius: 10px; flex: 1; min-width: 200px;">
+                    <div style="font-size: 2rem; font-weight: 700;">${sales.length}</div>
+                    <div style="font-size: 0.9rem;">إجمالي العمليات</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #007BFF, #0056B3); color: white; padding: 1rem; border-radius: 10px; flex: 1; min-width: 200px;">
+                    <div style="font-size: 2rem; font-weight: 700;">${sales.filter(s => s.action === 'تم الحجز').length}</div>
+                    <div style="font-size: 0.9rem;">حجوزات مكتملة</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #FFC107, #FF9800); color: white; padding: 1rem; border-radius: 10px; flex: 1; min-width: 200px;">
+                    <div style="font-size: 2rem; font-weight: 700;">${sales.filter(s => s.action === 'قيد المتابعة').length}</div>
+                    <div style="font-size: 0.9rem;">قيد المتابعة</div>
+                </div>
+            </div>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>الموظف</th>
+                        <th>رقم العميل</th>
+                        <th>رقم الحجز</th>
+                        <th>الإجراء</th>
+                        <th>الحالة</th>
+                        <th>حالة الحجز</th>
+                        <th>اتصال</th>
+                        <th>واتساب</th>
+                        <th>ملاحظات</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    filteredSales.forEach(sale => {
+        const actionColor = sale.action === 'تم الحجز' ? 'color: #28A745; font-weight: 700;' :
+                          sale.action === 'قيد المتابعة' ? 'color: #FFC107; font-weight: 600;' :
+                          sale.action === 'لم يرد' ? 'color: #DC3545;' :
+                          '';
+
+        html += `
+            <tr>
+                <td style="font-size: 0.85rem;">${sale.date}</td>
+                <td>${sale.employeeName}</td>
+                <td style="direction: ltr;">${sale.customerNumber}</td>
+                <td>${sale.bookingNumber || '-'}</td>
+                <td style="${actionColor}">${sale.action}</td>
+                <td>${sale.status || '-'}</td>
+                <td>${sale.bookingStatus || '-'}</td>
+                <td>${sale.callConfirmed === 'نعم' ? '✅' : '❌'}</td>
+                <td>${sale.whatsappSent === 'نعم' ? '✅' : '❌'}</td>
+                <td style="max-width: 200px; font-size: 0.85rem;">${sale.notes ? sale.notes.substring(0, 50) + (sale.notes.length > 50 ? '...' : '') : '-'}</td>
+                <td>
+                    <button class="btn-action btn-view" onclick="viewSaleDetails('${sale.id}')" title="عرض">👁️</button>
+                    <button class="btn-action btn-primary" onclick="editSale('${sale.id}')" title="تعديل">✏️</button>
+                    <button class="btn-action btn-danger" onclick="deleteSale('${sale.id}')" title="حذف">🗑️</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function filterSales(filter) {
+    // Update active tab
+    const tabs = document.querySelectorAll('#sales .tab-btn');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+
+    loadSales(filter);
+}
+
+function viewSaleDetails(saleId) {
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    const sale = sales.find(s => s.id === saleId);
+
+    if (!sale) return;
+
+    const details = `
+📈 تفاصيل عملية المبيعات
+━━━━━━━━━━━━━━━━━━━━━━
+التاريخ: ${sale.date}
+الموظف: ${sale.employeeName}
+رقم العميل: ${sale.customerNumber}
+${sale.bookingNumber ? 'رقم الحجز: ' + sale.bookingNumber : ''}
+
+الإجراء: ${sale.action}
+${sale.status ? 'الحالة: ' + sale.status : ''}
+${sale.bookingStatus ? 'حالة الحجز: ' + sale.bookingStatus : ''}
+
+تأكيد الاتصال: ${sale.callConfirmed}
+تأكيد الواتساب: ${sale.whatsappSent}
+
+${sale.notes ? 'ملاحظات:\n' + sale.notes : ''}
+
+وقت التسجيل: ${sale.recordTime}
+    `;
+
+    alert(details);
+}
+
+function editSale(saleId) {
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    const sale = sales.find(s => s.id === saleId);
+
+    if (!sale) return;
+
+    const newAction = prompt('الإجراء الجديد:', sale.action);
+    if (newAction !== null) {
+        sale.action = newAction;
+        localStorage.setItem('customerSales', JSON.stringify(sales));
+        loadSales();
+    }
+}
+
+function deleteSale(saleId) {
+    if (!confirm('هل أنت متأكد من حذف هذه العملية؟')) return;
+
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    const filteredSales = sales.filter(s => s.id !== saleId);
+
+    localStorage.setItem('customerSales', JSON.stringify(filteredSales));
+    alert('✅ تم حذف العملية');
+    loadSales();
+}
+
+function exportSales() {
+    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    if (sales.length === 0) {
+        alert('لا توجد بيانات للتصدير');
+        return;
+    }
+
+    const csvContent = 'data:text/csv;charset=utf-8,'
+        + 'التاريخ,الموظف,رقم العميل,رقم الحجز,الإجراء,الحالة,حالة الحجز,الاتصال,الواتساب,ملاحظات\n'
+        + sales.map(s =>
+            `${s.date},${s.employeeName},${s.customerNumber},${s.bookingNumber || ''},${s.action},${s.status || ''},${s.bookingStatus || ''},${s.callConfirmed},${s.whatsappSent},"${s.notes || ''}"`
+        ).join('\n');
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `sales_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
