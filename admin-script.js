@@ -465,24 +465,13 @@ function logout() {
 
 // Default Data
 function getDefaultResponses() {
-    return [
-        {id: 1, category: 'identity', title: 'عدم تطابق اسم المستخدم مع الهوية', problem: 'اسم المستخدم لا يطابق اسم العميل الموجود بالهوية', response: 'عزيزي العميل، نعتذر منك. لا يمكن قبول التوثيق لعدم تطابق الاسم. يرجى إعادة رفع الطلب بالبيانات الصحيحة المطابقة للهوية الوطنية.', tags: ['توثيق', 'هوية', 'رفض'], priority: 'high'},
-        {id: 2, category: 'financial', title: 'حوالة متأخرة للمضيف', problem: 'المضيف يسأل عن حوالة متأخرة', response: 'شريكنا الغالي، نشكرك على صبرك. سنتحقق من حالة الحوالة فوراً وسيتم التواصل معك خلال 24 ساعة.', tags: ['حوالات', 'مضيفين'], priority: 'high'},
-        {id: 3, category: 'support', title: 'ترحيب بالعميل الجديد', problem: 'عميل جديد يتواصل للمرة الأولى', response: 'أهلاً وسهلاً بك في المضيف الذهبي 💜 نسعد بخدمتك. كيف يمكنني مساعدتك اليوم؟', tags: ['ترحيب', 'جديد'], priority: 'low'}
-    ];
+    // Return all 38 responses from admin-data.js
+    return ALL_RESPONSES;
 }
 
 function getDefaultProcedures() {
-    return [
-        {
-            title: '🔴 إجراءات تسجيل الأداء - 3 مرات يومياً',
-            steps: [
-                'التسجيل الأول: 10:00 AM - تقرير الأداء الصباحي',
-                'التسجيل الثاني: 5:00 PM - تقرير الأداء المسائي',
-                'التسجيل الثالث: 12:00 AM - تقرير منتصف الليل'
-            ]
-        }
-    ];
+    // Return all 12 procedures from admin-data.js
+    return ALL_PROCEDURES;
 }
 
 // Initialize
