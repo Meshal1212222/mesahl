@@ -181,14 +181,43 @@
             font-size: 1.5rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0;
+            padding: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        .roles-title:hover {
+            transform: scale(1.02);
+        }
+
+        .roles-title .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .roles-title.collapsed .toggle-icon {
+            transform: rotate(180deg);
         }
 
         .roles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
+            margin-top: 1.5rem;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-top 0.5s ease;
+        }
+
+        .roles-grid.hidden {
+            max-height: 0;
+            margin-top: 0;
         }
 
         .role-card {
@@ -643,10 +672,136 @@
             border-radius: 5px;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9998;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: block;
+        }
+
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 1200px;
+            max-height: 85vh;
+            background: white;
+            border-radius: 20px;
+            z-index: 9999;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-container.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-pink);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-pink);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            max-height: calc(85vh - 100px);
+            overflow-y: auto;
+        }
+
+        .expand-all-btn {
+            display: block;
+            margin: 0 auto 2rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(233, 30, 140, 0.4);
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .expand-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(233, 30, 140, 0.6);
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .main-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .modal-container {
+                width: 95%;
+                max-height: 90vh;
             }
         }
 
@@ -713,8 +868,11 @@
 
             <!-- Team Roles Section -->
             <div class="team-roles">
-                <div class="roles-title">⚠️ تعريف الأدوار والصلاحيات - يجب الالتزام بها بشكل صارم ⚠️</div>
-                <div class="roles-grid">
+                <div class="roles-title collapsed" onclick="toggleRoles()">
+                    ⚠️ تعريف الأدوار والصلاحيات - يجب الالتزام بها بشكل صارم ⚠️
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="roles-grid hidden" id="rolesGrid">
                     <div class="role-card">
                         <div class="role-name">يزيد (Yazeed)</div>
                         <div class="role-desc">
@@ -805,21 +963,23 @@
 
         <!-- Navigation Button -->
         <div style="text-align: center; margin: 2rem 0;">
-            <a href="procedures.html" style="
+            <button onclick="openModal()" style="
                 display: inline-block;
                 padding: 1rem 3rem;
                 background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
                 color: white;
-                text-decoration: none;
+                border: none;
                 border-radius: 25px;
                 font-size: 1.2rem;
                 font-weight: 700;
                 box-shadow: 0 5px 20px rgba(233, 30, 140, 0.4);
                 transition: all 0.3s;
+                cursor: pointer;
+                font-family: 'Cairo', sans-serif;
             " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(233, 30, 140, 0.6)'"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(233, 30, 140, 0.4)'">
                 ⚙️ عرض الإجراءات والسياسات والسكربتات
-            </a>
+            </button>
         </div>
 
         <!-- Main Content -->
@@ -1399,6 +1559,15 @@
                 { icon: '🎯', label: 'هدف التحويل', value: '63%' }
             ]
         };
+
+        // Toggle team roles visibility
+        function toggleRoles() {
+            const rolesGrid = document.getElementById('rolesGrid');
+            const rolesTitle = document.querySelector('.roles-title');
+
+            rolesGrid.classList.toggle('hidden');
+            rolesTitle.classList.toggle('collapsed');
+        }
 
         // Initialize
         function init() {
