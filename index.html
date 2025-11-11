@@ -1902,8 +1902,12 @@
                 message: message,
                 customerInfo: customerInfo,
                 status: 'pending',
-                date: new Date().toLocaleString('ar-SA'),
-                response: null
+                submitTime: new Date().toLocaleString('ar-SA'),
+                receivedTime: null,
+                resolvedTime: null,
+                receivedBy: null,
+                resolutionSummary: null,
+                review: null
             };
 
             // Save to localStorage

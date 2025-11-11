@@ -553,6 +553,21 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" onclick="showSection('refunds')">
+                    💰 الاستردادات
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('conversations')">
+                    💬 متابعة المحادثات
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('sales')">
+                    📈 نظام المبيعات
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" onclick="showSection('team')">
                     👥 إدارة الفريق
                 </a>
@@ -703,6 +718,78 @@
                     <button class="tab-btn" onclick="filterReportsByStatus('resolved')">تم الحل</button>
                 </div>
                 <div id="reportsManagement"></div>
+            </div>
+        </section>
+
+        <!-- Refunds Management Section -->
+        <section id="refunds" class="content-section">
+            <div class="header">
+                <h1 class="page-title">💰 إدارة الاستردادات</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddRefundModal()">
+                        ➕ إضافة استرداد جديد
+                    </button>
+                    <button class="btn btn-success" onclick="exportRefunds()">
+                        📥 تصدير
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="filterRefunds('all')">الكل</button>
+                    <button class="tab-btn" onclick="filterRefunds('completed')">مكتمل</button>
+                    <button class="tab-btn" onclick="filterRefunds('pending')">قيد الانتظار</button>
+                </div>
+                <div id="refundsManagement"></div>
+            </div>
+        </section>
+
+        <!-- Conversations Tracking Section -->
+        <section id="conversations" class="content-section">
+            <div class="header">
+                <h1 class="page-title">💬 متابعة محادثات العملاء</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddConversationModal()">
+                        ➕ إضافة متابعة جديدة
+                    </button>
+                    <button class="btn btn-success" onclick="exportConversations()">
+                        📥 تصدير
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="filterConversations('all')">الكل</button>
+                    <button class="tab-btn" onclick="filterConversations('warning')">إنذارات</button>
+                    <button class="tab-btn" onclick="filterConversations('resolved')">تم الحل</button>
+                </div>
+                <div id="conversationsManagement"></div>
+            </div>
+        </section>
+
+        <!-- Sales Management Section -->
+        <section id="sales" class="content-section">
+            <div class="header">
+                <h1 class="page-title">📈 نظام المبيعات</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddSaleModal()">
+                        ➕ إضافة عملية جديدة
+                    </button>
+                    <button class="btn btn-success" onclick="exportSales()">
+                        📥 تصدير
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="filterSales('all')">الكل</button>
+                    <button class="tab-btn" onclick="filterSales('confirmed')">تم التأكيد</button>
+                    <button class="tab-btn" onclick="filterSales('pending')">قيد الانتظار</button>
+                </div>
+                <div id="salesManagement"></div>
             </div>
         </section>
 

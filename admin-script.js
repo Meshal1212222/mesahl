@@ -501,56 +501,214 @@ function loadReports(filter = 'all') {
         return;
     }
 
-    container.innerHTML = filteredReports.map(report => `
-        <div class="report-card">
-            <div class="report-header">
-                <div>
-                    <span class="status-badge status-${report.status}">
-                        ${report.status === 'pending' ? 'جديد' :
-                          report.status === 'in_progress' ? 'قيد المعالجة' : 'تم الحل'}
-                    </span>
-                </div>
-                <div class="report-meta">
-                    <strong>${report.employeeName || 'موظف'}</strong> • ${report.date}
-                </div>
-            </div>
+    // Professional table view
+    container.innerHTML = `
+        <div style="overflow-x: auto;">
+            <table class="data-table" style="font-size: 0.9rem;">
+                <thead>
+                    <tr>
+                        <th style="min-width: 100px;">رقم البلاغ</th>
+                        <th style="min-width: 120px;">الموظف</th>
+                        <th style="min-width: 120px;">نوع البلاغ</th>
+                        <th style="min-width: 200px;">تفاصيل البلاغ</th>
+                        <th style="min-width: 150px;">وقت رفع البلاغ</th>
+                        <th style="min-width: 150px;">وقت استقبال البلاغ</th>
+                        <th style="min-width: 150px;">وقت حل البلاغ</th>
+                        <th style="min-width: 120px;">مستلم البلاغ</th>
+                        <th style="min-width: 200px;">ملخص حل البلاغ</th>
+                        <th style="min-width: 100px;">الحالة</th>
+                        <th style="min-width: 120px;">المراجعة</th>
+                        <th style="min-width: 180px;">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${filteredReports.map(report => {
+                        const reportNum = report.id.replace('report_', '').substring(0, 8);
+                        const timeSpent = calculateTimeSpent(report);
 
-            <div class="report-content">
-                <h4 style="color: var(--primary-purple); margin-bottom:0.5rem;">📋 ${report.category || 'بلاغ عام'}</h4>
-                <p style="margin-bottom:0.5rem;"><strong>الموضوع:</strong> ${report.subject}</p>
-                <p style="line-height:1.8;">${report.message}</p>
-                ${report.customerInfo ? `
-                    <div style="margin-top:1rem; padding:0.8rem; background:#f0f0f0; border-radius:5px;">
-                        <strong>معلومات العميل:</strong><br>
-                        ${report.customerInfo}
-                    </div>
-                ` : ''}
-            </div>
+                        return `
+                        <tr>
+                            <td><strong>#${reportNum}</strong></td>
+                            <td>${report.employeeName || '-'}</td>
+                            <td><span style="font-size:0.85rem;">📋 ${report.category || '-'}</span></td>
+                            <td>
+                                <div style="max-width: 300px;">
+                                    <strong style="color: var(--primary-purple);">${report.subject}</strong><br>
+                                    <span style="font-size:0.85rem; color:#666;">${report.message.substring(0, 80)}${report.message.length > 80 ? '...' : ''}</span>
+                                    ${report.customerInfo ? `<br><span style="font-size:0.8rem; color:#888;">👤 ${report.customerInfo.substring(0, 50)}</span>` : ''}
+                                    <br><button onclick="viewReportDetails('${report.id}')" style="font-size:0.75rem; margin-top:0.3rem; padding:0.2rem 0.5rem; border:1px solid #ddd; background:white; cursor:pointer; border-radius:4px;">عرض التفاصيل الكاملة</button>
+                                </div>
+                            </td>
+                            <td>${report.submitTime || report.date}</td>
+                            <td>${report.receivedTime || '-'}</td>
+                            <td>${report.resolvedTime || '-'}</td>
+                            <td>${report.receivedBy || '-'}</td>
+                            <td>
+                                ${report.resolutionSummary ?
+                                    `<div style="max-width:250px; font-size:0.85rem;">${report.resolutionSummary.substring(0, 100)}${report.resolutionSummary.length > 100 ? '...' : ''}</div>`
+                                    : '-'}
+                            </td>
+                            <td>
+                                <span class="status-badge status-${report.status}">
+                                    ${report.status === 'pending' ? 'جديد' :
+                                      report.status === 'in_progress' ? 'قيد المعالجة' : 'تم الحل'}
+                                </span>
+                                ${timeSpent ? `<br><small style="color:#666;">${timeSpent}</small>` : ''}
+                            </td>
+                            <td>
+                                ${report.review ? `
+                                    <div style="font-size:0.9rem;">
+                                        <div style="color:#FFD700;">${'⭐'.repeat(report.review.rating)}</div>
+                                        <small style="color:#666;">${report.review.comment || ''}</small>
+                                    </div>
+                                ` : '-'}
+                            </td>
+                            <td>
+                                <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                                    ${report.status === 'pending' ? `
+                                        <button class="btn btn-primary" style="padding:0.4rem 0.6rem; font-size:0.8rem;"
+                                                onclick="acceptReport('${report.id}')">
+                                            ✅ استلام
+                                        </button>
+                                    ` : ''}
+                                    ${report.status === 'in_progress' ? `
+                                        <button class="btn btn-success" style="padding:0.4rem 0.6rem; font-size:0.8rem;"
+                                                onclick="showResolveModal('${report.id}')">
+                                            ✓ حل البلاغ
+                                        </button>
+                                    ` : ''}
+                                    <button class="btn btn-warning" style="padding:0.4rem 0.6rem; font-size:0.8rem;"
+                                            onclick="deleteReport('${report.id}')">
+                                        🗑️ حذف
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `}).join('')}
+                </tbody>
+            </table>
+        </div>
 
-            ${report.response ? `
-                <div class="report-response">
-                    <strong>✅ رد المشرف:</strong><br>
-                    ${report.response}
+        <!-- Report Statistics -->
+        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fa; border-radius:10px;">
+            <h3 style="margin-bottom:1rem; color:var(--primary-purple);">📊 إحصائيات البلاغات</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
+                <div style="background:white; padding:1rem; border-radius:8px;">
+                    <div style="font-size:1.5rem; font-weight:700; color:#FFC107;">${reports.filter(r => r.status === 'pending').length}</div>
+                    <div style="color:#666;">بلاغات جديدة</div>
                 </div>
-            ` : ''}
-
-            <div class="report-actions">
-                ${report.status !== 'in_progress' ? `
-                    <button class="btn btn-primary" onclick="updateReportStatus('${report.id}', 'in_progress')">
-                        🔄 بدء المعالجة
-                    </button>
-                ` : ''}
-                ${report.status !== 'resolved' ? `
-                    <button class="btn btn-success" onclick="showReportResponseModal('${report.id}')">
-                        ✅ حل البلاغ
-                    </button>
-                ` : ''}
-                <button class="btn btn-warning" onclick="deleteReport('${report.id}')">
-                    🗑️ حذف
-                </button>
+                <div style="background:white; padding:1rem; border-radius:8px;">
+                    <div style="font-size:1.5rem; font-weight:700; color:#2196F3;">${reports.filter(r => r.status === 'in_progress').length}</div>
+                    <div style="color:#666;">قيد المعالجة</div>
+                </div>
+                <div style="background:white; padding:1rem; border-radius:8px;">
+                    <div style="font-size:1.5rem; font-weight:700; color:#4CAF50;">${reports.filter(r => r.status === 'resolved').length}</div>
+                    <div style="color:#666;">تم الحل</div>
+                </div>
+                <div style="background:white; padding:1rem; border-radius:8px;">
+                    <div style="font-size:1.5rem; font-weight:700; color:var(--primary-purple);">${calculateAverageTime(reports)}</div>
+                    <div style="color:#666;">متوسط وقت الحل</div>
+                </div>
             </div>
         </div>
-    `).join('');
+    `;
+}
+
+function calculateTimeSpent(report) {
+    if (!report.submitTime) return null;
+
+    const start = new Date(report.submitTime);
+    const end = report.resolvedTime ? new Date(report.resolvedTime) : new Date();
+    const diff = end - start;
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    if (hours > 24) {
+        const days = Math.floor(hours / 24);
+        return `${days} يوم`;
+    } else if (hours > 0) {
+        return `${hours} ساعة`;
+    } else {
+        return `${minutes} دقيقة`;
+    }
+}
+
+function calculateAverageTime(reports) {
+    const resolved = reports.filter(r => r.status === 'resolved' && r.submitTime && r.resolvedTime);
+    if (resolved.length === 0) return '-';
+
+    const totalMinutes = resolved.reduce((sum, r) => {
+        const start = new Date(r.submitTime);
+        const end = new Date(r.resolvedTime);
+        return sum + (end - start) / (1000 * 60);
+    }, 0);
+
+    const avgMinutes = Math.floor(totalMinutes / resolved.length);
+    if (avgMinutes > 60) {
+        const hours = Math.floor(avgMinutes / 60);
+        return `${hours} ساعة`;
+    }
+    return `${avgMinutes} دقيقة`;
+}
+
+function viewReportDetails(reportId) {
+    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const report = reports.find(r => r.id === reportId);
+
+    if (!report) return;
+
+    const details = `
+📋 تفاصيل البلاغ الكاملة
+━━━━━━━━━━━━━━━━━━━━━━
+الموظف: ${report.employeeName}
+نوع البلاغ: ${report.category}
+الموضوع: ${report.subject}
+
+التفاصيل:
+${report.message}
+
+${report.customerInfo ? `معلومات العميل:\n${report.customerInfo}\n` : ''}
+${report.resolutionSummary ? `\nالحل:\n${report.resolutionSummary}` : ''}
+    `;
+
+    alert(details);
+}
+
+function acceptReport(reportId) {
+    const session = JSON.parse(localStorage.getItem('adminSession'));
+    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const report = reports.find(r => r.id === reportId);
+
+    if (report) {
+        report.status = 'in_progress';
+        report.receivedTime = new Date().toLocaleString('ar-SA');
+        report.receivedBy = session.name;
+        localStorage.setItem('customerReports', JSON.stringify(reports));
+
+        logActivity(`استلام البلاغ: "${report.subject}" من ${report.employeeName}`);
+        loadReports();
+    }
+}
+
+function showResolveModal(reportId) {
+    const summary = prompt('أدخل ملخص حل البلاغ (مفصل):');
+
+    if (summary && summary.trim()) {
+        const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+        const report = reports.find(r => r.id === reportId);
+
+        if (report) {
+            report.resolutionSummary = summary.trim();
+            report.status = 'resolved';
+            report.resolvedTime = new Date().toLocaleString('ar-SA');
+            localStorage.setItem('customerReports', JSON.stringify(reports));
+
+            logActivity(`تم حل البلاغ: "${report.subject}"`);
+            loadReports();
+            alert('✅ تم حل البلاغ بنجاح! يمكن للموظف الآن مراجعة الحل.');
+        }
+    }
 }
 
 function filterReportsByStatus(status) {
