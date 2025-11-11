@@ -485,8 +485,17 @@ function getDefaultProcedures() {
 
 // ==================== REPORTS MANAGEMENT ====================
 
+function getDefaultReports() {
+    // دمج البيانات التاريخية مع البيانات الجديدة
+    const historicalReports = typeof ALL_REPORTS !== 'undefined' ? ALL_REPORTS : [];
+    const newReports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+
+    // دمج القائمتين (البيانات الجديدة أولاً)
+    return [...newReports, ...historicalReports];
+}
+
 function loadReports(filter = 'all') {
-    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const reports = getDefaultReports();
     const container = document.getElementById('reportsManagement');
 
     // Update pending count
@@ -528,16 +537,21 @@ function loadReports(filter = 'all') {
                         const reportNum = report.id.replace('report_', '').substring(0, 8);
                         const timeSpent = calculateTimeSpent(report);
 
+                        const details = report.reportDetails || report.message || '-';
+                        const title = report.subject || report.reportDetails || 'بلاغ';
+                        const category = report.category || '📋 بلاغ عام';
+                        const extraInfo = report.customerInfo || (report.bookingNumber ? `رقم الحجز: ${report.bookingNumber}` : '');
+
                         return `
                         <tr>
                             <td><strong>#${reportNum}</strong></td>
                             <td>${report.employeeName || '-'}</td>
-                            <td><span style="font-size:0.85rem;">📋 ${report.category || '-'}</span></td>
+                            <td><span style="font-size:0.85rem;">${category}</span></td>
                             <td>
                                 <div style="max-width: 300px;">
-                                    <strong style="color: var(--primary-purple);">${report.subject}</strong><br>
-                                    <span style="font-size:0.85rem; color:#666;">${report.message.substring(0, 80)}${report.message.length > 80 ? '...' : ''}</span>
-                                    ${report.customerInfo ? `<br><span style="font-size:0.8rem; color:#888;">👤 ${report.customerInfo.substring(0, 50)}</span>` : ''}
+                                    <strong style="color: var(--primary-purple);">${title}</strong><br>
+                                    <span style="font-size:0.85rem; color:#666;">${details.substring(0, 80)}${details.length > 80 ? '...' : ''}</span>
+                                    ${extraInfo ? `<br><span style="font-size:0.8rem; color:#888;">👤 ${extraInfo.substring(0, 50)}</span>` : ''}
                                     <br><button onclick="viewReportDetails('${report.id}')" style="font-size:0.75rem; margin-top:0.3rem; padding:0.2rem 0.5rem; border:1px solid #ddd; background:white; cursor:pointer; border-radius:4px;">عرض التفاصيل الكاملة</button>
                                 </div>
                             </td>
@@ -655,7 +669,7 @@ function calculateAverageTime(reports) {
 }
 
 function viewReportDetails(reportId) {
-    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const reports = getDefaultReports();
     const report = reports.find(r => r.id === reportId);
 
     if (!report) return;
@@ -664,14 +678,17 @@ function viewReportDetails(reportId) {
 📋 تفاصيل البلاغ الكاملة
 ━━━━━━━━━━━━━━━━━━━━━━
 الموظف: ${report.employeeName}
-نوع البلاغ: ${report.category}
-الموضوع: ${report.subject}
+${report.category ? 'نوع البلاغ: ' + report.category : ''}
+${report.subject ? 'الموضوع: ' + report.subject : ''}
+${report.bookingNumber ? 'رقم الحجز: ' + report.bookingNumber : ''}
 
 التفاصيل:
-${report.message}
+${report.message || report.reportDetails || '-'}
 
 ${report.customerInfo ? `معلومات العميل:\n${report.customerInfo}\n` : ''}
 ${report.resolutionSummary ? `\nالحل:\n${report.resolutionSummary}` : ''}
+${report.operationDate ? `\nتاريخ العملية: ${report.operationDate}` : ''}
+${report.review ? `\nالمراجعة: ${report.review}` : ''}
     `;
 
     alert(details);
