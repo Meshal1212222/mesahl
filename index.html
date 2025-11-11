@@ -38,6 +38,7 @@
             min-height: 100vh;
             color: var(--text-dark);
             position: relative;
+            padding-bottom: 3rem;
         }
 
         /* Animated Background */
@@ -346,9 +347,10 @@
         /* Main Content Grid */
         .main-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-top: 2rem;
+            margin-bottom: 3rem;
         }
 
         .section-card {
@@ -391,8 +393,8 @@
 
         .section-content {
             padding: 1.5rem;
-            max-height: 600px;
-            overflow-y: auto;
+            max-height: none;
+            overflow-y: visible;
         }
 
         /* Filter Tabs */
