@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Care Library - المكتبة الرقمية الشاملة | Golden Host</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #4B3A8C;
+            --deep-purple: #362666;
+            --primary-pink: #E91E8C;
+            --hot-pink: #FF1493;
+            --gold: #FFD700;
+            --dark-bg: #1A1A2E;
+            --darker-bg: #0F0E1B;
+            --text-light: #FFFFFF;
+            --text-dark: #2D2D2D;
+            --gray-light: #F8F9FA;
+            --gray-medium: #6C757D;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #FF0000;
+            --info: #2196F3;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--primary-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        /* Animated Background */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-pink);
+            top: -200px;
+            right: -200px;
+        }
+
+        body::after {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-purple);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(15, 14, 27, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 3px solid var(--primary-pink);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(233, 30, 140, 0.4);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, white, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Performance Tracker */
+        .performance-tracker {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tracker-item {
+            padding: 0 1rem;
+            text-align: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tracker-item:first-child {
+            border-left: none;
+        }
+
+        .tracker-time {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .tracker-label {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Team Roles Section */
+        .team-roles {
+            background: linear-gradient(135deg, var(--danger), var(--primary-pink));
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .roles-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 1.2rem;
+            border-right: 4px solid var(--primary-purple);
+            transition: transform 0.3s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .role-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .role-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .role-warning {
+            background: var(--danger);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Search Box */
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--primary-pink);
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.2);
+        }
+
+        /* Statistics Cards */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .stat-text {
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-action {
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        .quick-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .quick-action-icon {
+            font-size: 1.5rem;
+        }
+
+        .quick-action-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .quick-action-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--hot-pink), var(--primary-pink));
+            animation: slide 3s ease-in-out infinite;
+        }
+
+        @keyframes slide {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .section-content {
+            padding: 1.5rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--gray-light);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
+            color: white;
+            border-color: var(--primary-pink);
+        }
+
+        /* Response Cards */
+        .response-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-right: 4px solid var(--primary-pink);
+            transition: all 0.3s;
+        }
+
+        .response-card:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .response-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .response-category {
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .response-problem {
+            background: var(--gray-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--gray-medium);
+        }
+
+        .response-text {
+            background: linear-gradient(135deg, #f0f9ff, white);
+            padding: 1rem;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 100px;
+            font-size: 1rem;
+            line-height: 1.6;
+            border-right: 3px solid var(--primary-purple);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(233, 30, 140, 0.3);
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(233, 30, 140, 0.5);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, var(--success), #45a049);
+        }
+
+        .warning-note {
+            background: linear-gradient(135deg, #fff3cd, #fff8dc);
+            border-right: 4px solid var(--warning);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, #6B5B95, var(--primary-purple));
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Procedures */
+        .procedure-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .procedure-item:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .procedure-header {
+            background: linear-gradient(135deg, var(--gray-light), white);
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .procedure-header:hover {
+            background: linear-gradient(135deg, #FFB6C1, white);
+        }
+
+        .procedure-header.active {
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+        }
+
+        .procedure-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .procedure-content.show {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        .procedure-step {
+            padding: 0.75rem 0;
+            padding-right: 2rem;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .procedure-step:last-child {
+            border-bottom: none;
+        }
+
+        .procedure-step::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 0.75rem;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--hot-pink));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Priority Indicators */
+        .priority-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .priority-critical { background: var(--danger); }
+        .priority-high { background: var(--primary-pink); }
+        .priority-medium { background: var(--primary-purple); }
+        .priority-low { background: var(--success); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-pink), var(--primary-purple));
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+            }
+
+            .performance-tracker {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .response-text {
+                padding-left: 1rem;
+                padding-top: 4rem;
+            }
+
+            .copy-btn {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <!-- Logo and Performance Tracker -->
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon">GH</div>
+                    <div class="logo-text">Digital Care Library</div>
+                </div>
+
+                <div class="performance-tracker">
+                    <div class="tracker-item">
+                        <div class="tracker-time" id="time1">10:00 AM</div>
+                        <div class="tracker-label">تقرير صباحي</div>
+                    </div>
+                    <div class="tracker-item">
+                        <div class="tracker-time" id="time2">5:00 PM</div>
+                        <div class="tracker-label">تقرير مسائي</div>
+                    </div>
+                    <div class="tracker-item">
+                        <div class="tracker-time" id="time3">12:00 AM</div>
+                        <div class="tracker-label">منتصف الليل</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Roles Section -->
+            <div class="team-roles">
+                <div class="roles-title">⚠️ تعريف الأدوار والصلاحيات - يجب الالتزام بها بشكل صارم ⚠️</div>
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <div class="role-name">يزيد (Yazeed)</div>
+                        <div class="role-desc">
+                            • مسؤول عن التقرير اليومي للمبيعات<br>
+                            • إعداد تقارير الأداء<br>
+                            • متابعة معدلات التحويل<br>
+                            • تحليل البيانات اليومية
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-name">عبدالعزيز (Abdulaziz)</div>
+                        <div class="role-desc">
+                            • مراقبة ومتابعة التقارير من هنوف ويزيد<br>
+                            • اتخاذ الإجراءات ورفعها للمدير المباشر للاعتماد<br>
+                            • إرسال الإجراءات المعتمدة للموارد البشرية<br>
+                            • مسؤول عن تقرير المكالمات اليومي<br>
+                            • رصد تقارير اليوم السابق لكل التقارير<br>
+                            • مراجعة جميع التقارير والتأكد من دقتها
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-name">إبراهيم (Ibrahim)</div>
+                        <div class="role-desc">دعم العملاء عبر المحادثة فقط</div>
+                        <div class="role-warning">⛔ ممنوع منعاً باتاً الرد خارج النصوص المحددة في المكتبة</div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-name">مصطفى (Mostafa)</div>
+                        <div class="role-desc">دعم العملاء عبر المحادثة فقط</div>
+                        <div class="role-warning">⛔ ممنوع منعاً باتاً الرد خارج النصوص المحددة في المكتبة</div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-name">هنوف (Hanouf)</div>
+                        <div class="role-desc">
+                            • مراقبة وسماع جودة المكالمات حسب شروط الأداء<br>
+                            • تقارير جودة المحادثات<br>
+                            • مراقبة الأداء اليومي<br>
+                            • فحص العقارات اليومي<br>
+                            • تقييم الالتزام بمعايير الجودة
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput"
+                       placeholder="البحث في المكتبة... (المشاكل، الحلول، الإجراءات)"
+                       oninput="performSearch()">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Statistics Dashboard -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-num">50+</div>
+                <div class="stat-text">رد معتمد</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">12</div>
+                <div class="stat-text">تصنيف</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">24/7</div>
+                <div class="stat-text">دعم متواصل</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">3x</div>
+                <div class="stat-text">تقارير يومية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-text">التزام بالنصوص</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">15+</div>
+                <div class="stat-text">إجراء موثق</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quickActions"></div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Responses Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span>📝</span>
+                        <span>الردود المعتمدة - يجب استخدامها حرفياً</span>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="filter-tabs" id="filterTabs"></div>
+                    <div id="responsesList"></div>
+                </div>
+            </div>
+
+            <!-- Procedures Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span>⚙️</span>
+                        <span>الإجراءات والسياسات والسكربتات</span>
+                    </div>
+                </div>
+                <div class="section-content" id="proceduresList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete Data Structure with ALL content
+        let currentFilter = 'all';
+
+        const libraryData = {
+            categories: [
+                { id: 'all', label: 'الكل' },
+                { id: 'identity', label: 'التوثيق' },
+                { id: 'financial', label: 'المالية' },
+                { id: 'technical', label: 'التقنية' },
+                { id: 'property', label: 'العقارات' },
+                { id: 'booking', label: 'الحجوزات' },
+                { id: 'ministry', label: 'الوزارة' },
+                { id: 'violation', label: 'المخالفات' },
+                { id: 'support', label: 'الدعم' },
+                { id: 'quality', label: 'الجودة' },
+                { id: 'sales', label: 'المبيعات' },
+                { id: 'reports', label: 'التقارير' }
+            ],
+
+            responses: [
+                // Identity Verification
+                {
+                    id: 1,
+                    category: 'identity',
+                    title: 'عدم تطابق اسم المستخدم مع الهوية',
+                    problem: 'اسم المستخدم لا يطابق اسم العميل الموجود بالهوية',
+                    response: 'عزيزي العميل، نعتذر منك. لا يمكن قبول التوثيق لعدم تطابق الاسم. يرجى إعادة رفع الطلب بالبيانات الصحيحة المطابقة للهوية الوطنية.',
+                    tags: ['توثيق', 'هوية', 'رفض'],
+                    priority: 'high',
+                    note: 'يتم إعادة الطلب مع توضيح السبب للعميل'
+                },
+                {
+                    id: 2,
+                    category: 'identity',
+                    title: 'العميل ليست لديه صورة الهوية',
+                    problem: 'العميل ليست لديه صورة الهوية',
+                    response: 'عزيزي العميل، يرجى رفع صورة واضحة من الهوية الوطنية لإكمال عملية التوثيق. نحن بانتظار إعادة رفع الطلب.',
+                    tags: ['توثيق', 'هوية', 'إعادة طلب'],
+                    priority: 'medium'
+                },
+                {
+                    id: 3,
+                    category: 'identity',
+                    title: 'صور غير واضحة أو معلومات خاطئة',
+                    problem: 'العملاء يرفعون صور غير واضحة أو يدخلون معلومات هوية خاطئة',
+                    response: 'عزيزي العميل، الصور المرفقة غير واضحة أو البيانات غير صحيحة. يرجى التأكد من وضوح الصورة وصحة البيانات المدخلة وإعادة المحاولة.',
+                    tags: ['صور', 'بيانات', 'متابعة'],
+                    priority: 'high',
+                    note: 'من المشاكل الشائعة - يتطلب متابعة فورية'
+                },
+
+                // Financial
+                {
+                    id: 4,
+                    category: 'financial',
+                    title: 'حوالة متأخرة للمضيف',
+                    problem: 'المضيف يسأل عن حوالة متأخرة',
+                    response: 'شريكنا الغالي، نشكرك على صبرك. سنتحقق من حالة الحوالة فوراً وسيتم التواصل معك خلال 24 ساعة.',
+                    tags: ['حوالات', 'مضيفين', 'تأخير'],
+                    priority: 'high',
+                    note: 'التحقق من: الداشبورد > المعاملات المالية للمستضيفين > الحوالات > البحث برقم الحجز'
+                },
+                {
+                    id: 5,
+                    category: 'financial',
+                    title: 'طلب استرداد للضيف',
+                    problem: 'الضيف يطلب استرداد مبلغه',
+                    response: 'حياك الله، تم رفع طلب الاسترداد الله يسعدك. خلال 48 ساعة راح يوصلك المبلغ بإذن الله عن طريق البنك طال عمرك 💜🙏',
+                    tags: ['استرداد', 'ضيوف', 'كاش باك'],
+                    priority: 'high',
+                    note: 'يُمنع منعاً باتاً إرسال سكرين شوت للعملية'
+                },
+                {
+                    id: 6,
+                    category: 'financial',
+                    title: 'الليالي المدفوعة من المضيف',
+                    problem: 'استفسار عن العمولة للليالي المدفوعة',
+                    response: 'شريكنا الغالي، العمولة للليالي المدفوعة هي 13% من قيمة الحجز + 25 ريال للليلة الواحدة.',
+                    tags: ['عمولة', 'ليالي مدفوعة', 'مضيفين'],
+                    priority: 'medium'
+                },
+                {
+                    id: 7,
+                    category: 'financial',
+                    title: 'المضيف بدون رقم حساب',
+                    problem: 'محاولة تحويل للمضيف بدون رقم حساب',
+                    response: 'شريكنا الغالي، يرجى إضافة رقم الحساب البنكي (IBAN) في الملف الشخصي حتى نتمكن من تحويل مستحقاتك.',
+                    tags: ['حساب بنكي', 'مضيفين', 'IBAN'],
+                    priority: 'high',
+                    note: 'إجراء إلزامي قبل أي تحويل'
+                },
+                {
+                    id: 8,
+                    category: 'financial',
+                    title: 'استفسار عن الفاتورة',
+                    problem: 'العميل يريد فاتورة ضريبية',
+                    response: 'عزيزي العميل، ستصلك الفاتورة الضريبية على بريدك الإلكتروني المسجل خلال 24 ساعة من إتمام الحجز.',
+                    tags: ['فاتورة', 'ضريبة', 'مالية'],
+                    priority: 'low'
+                },
+
+                // Technical Support
+                {
+                    id: 9,
+                    category: 'technical',
+                    title: 'مشكلة في التطبيق',
+                    problem: 'العميل يواجه مشكلة في التطبيق',
+                    response: 'طال عمرك ممكن تحدث التطبيق إلى آخر نسخة؟ في حال مازالت المشكلة مستمرة تواصل معنا مرة أخرى ولا تشيل هم الله يسلمك 🙏💜',
+                    tags: ['تطبيق', 'تحديث', 'تقني'],
+                    priority: 'medium'
+                },
+                {
+                    id: 10,
+                    category: 'technical',
+                    title: 'مشاكل تسجيل الدخول',
+                    problem: 'العميل لا يستطيع تسجيل الدخول',
+                    response: 'عزيزي العميل، يرجى التحقق من رقم الجوال أو آخر 4 أرقام من الهوية. إذا استمرت المشكلة، سنقوم بالتصعيد للدعم الفني.',
+                    tags: ['دخول', 'تحقق', 'تصعيد'],
+                    priority: 'high',
+                    note: 'إذا كانت البيانات صحيحة، قم بالإبلاغ في المجموعة'
+                },
+                {
+                    id: 11,
+                    category: 'technical',
+                    title: 'مشكلة في الدفع',
+                    problem: 'العميل يواجه مشكلة في عملية الدفع',
+                    response: 'عزيزي العميل، نأسف للإزعاج. يرجى التحقق من بيانات البطاقة والمحاولة مرة أخرى. إذا استمرت المشكلة، جرب وسيلة دفع أخرى أو تواصل معنا.',
+                    tags: ['دفع', 'بطاقة', 'تقني'],
+                    priority: 'high'
+                },
+                {
+                    id: 12,
+                    category: 'technical',
+                    title: 'عدم وصول رمز التحقق',
+                    problem: 'العميل لم يصله رمز التحقق',
+                    response: 'عزيزي العميل، يرجى التحقق من رقم الجوال والمحاولة مرة أخرى بعد دقيقة. إذا لم يصلك الرمز، جرب طلب إرسال الرمز عبر الواتساب.',
+                    tags: ['رمز', 'تحقق', 'رسالة'],
+                    priority: 'medium'
+                },
+
+                // Property Management
+                {
+                    id: 13,
+                    category: 'property',
+                    title: 'رفض العقار - مشكلة الصور',
+                    problem: 'العقار مرفوض بسبب الصور',
+                    response: 'عزيزي الشريك، تم رفض العقار لأن الصور يجب أن تكون واضحة، بدون حواف سوداء، وبدون نصوص أو حسابات. اسم العقار يجب أن يكون أربع كلمات. يرجى إعادة الرفع.',
+                    tags: ['عقارات', 'صور', 'رفض'],
+                    priority: 'medium',
+                    note: 'من الدليل الموحد - شروط صارمة'
+                },
+                {
+                    id: 14,
+                    category: 'property',
+                    title: 'مدة مراجعة العقارات',
+                    problem: 'المضيف يسأل عن وقت المراجعة',
+                    response: 'شريكنا الغالي، تتم مراجعة العقارات الجديدة خلال 48 ساعة عمل. سيتم إشعارك فور الانتهاء من المراجعة.',
+                    tags: ['عقارات', 'مراجعة', 'وقت'],
+                    priority: 'low'
+                },
+                {
+                    id: 15,
+                    category: 'property',
+                    title: 'طلب مراجعة عقار من الضيف',
+                    problem: 'الضيف يطلب مراجعة عقار',
+                    response: 'عزيزي الضيف، سيتم مراجعة العقار المذكور فوراً والتأكد من جودته. نشكرك على تواصلك معنا.',
+                    tags: ['عقارات', 'مراجعة', 'فوري'],
+                    priority: 'high',
+                    note: 'استجابة فورية مطلوبة'
+                },
+                {
+                    id: 16,
+                    category: 'property',
+                    title: 'استفسار عن موقع العقار',
+                    problem: 'العميل يسأل عن موقع عقار محدد',
+                    response: 'عزيزي العميل، ستجد جميع تفاصيل الموقع في صفحة العقار بالتطبيق، بما في ذلك العنوان الدقيق والخريطة. كما سيتم إرسال الموقع عند تأكيد الحجز.',
+                    tags: ['موقع', 'عقار', 'خريطة'],
+                    priority: 'medium'
+                },
+                {
+                    id: 17,
+                    category: 'property',
+                    title: 'العقار غير متوفر',
+                    problem: 'العقار المطلوب غير متوفر',
+                    response: 'عزيزي العميل، نأسف العقار المطلوب محجوز حالياً. يمكنك البحث عن عقارات مشابهة في نفس المنطقة أو اختيار تواريخ بديلة.',
+                    tags: ['توفر', 'عقار', 'بديل'],
+                    priority: 'medium'
+                },
+
+                // Bookings
+                {
+                    id: 18,
+                    category: 'booking',
+                    title: 'تأكيد الحجز الجديد',
+                    problem: 'عند استلام أي حجز جديد',
+                    response: 'عزيزي الضيف، تم تأكيد حجزك بنجاح. سيتم التواصل معك قريباً للتأكد من جميع التفاصيل. نتمنى لك إقامة سعيدة.',
+                    tags: ['حجوزات', 'تأكيد', 'اتصال'],
+                    priority: 'high',
+                    note: 'يجب الاتصال بالضيف وتوثيق ذلك في قروب تأكيد الحجوزات'
+                },
+                {
+                    id: 19,
+                    category: 'booking',
+                    title: 'إلغاء الحجز',
+                    problem: 'العميل يريد إلغاء الحجز',
+                    response: 'عزيزي العميل، سيتم إلغاء حجزك وفقاً لسياسة الإلغاء المعتمدة. سيصلك المبلغ المسترد خلال 48 ساعة عمل.',
+                    tags: ['حجوزات', 'إلغاء', 'استرداد'],
+                    priority: 'high'
+                },
+                {
+                    id: 20,
+                    category: 'booking',
+                    title: 'تغيير موعد الحجز',
+                    problem: 'العميل يريد تغيير موعد حجزه',
+                    response: 'عزيزي العميل، لتغيير موعد الحجز يرجى التواصل مع المضيف مباشرة عبر التطبيق. إذا لم يكن التغيير ممكناً، يمكنك إلغاء الحجز وإعادة الحجز في الموعد الجديد.',
+                    tags: ['تغيير', 'موعد', 'حجز'],
+                    priority: 'medium'
+                },
+                {
+                    id: 21,
+                    category: 'booking',
+                    title: 'طلب تمديد الإقامة',
+                    problem: 'الضيف يريد تمديد إقامته',
+                    response: 'عزيزي الضيف، للتمديد يرجى التواصل مع المضيف مباشرة عبر التطبيق للتحقق من التوفر والاتفاق على الشروط.',
+                    tags: ['تمديد', 'إقامة', 'حجز'],
+                    priority: 'medium'
+                },
+
+                // Ministry Communications
+                {
+                    id: 22,
+                    category: 'ministry',
+                    title: 'الرد على وزارة السياحة',
+                    problem: 'وصل إيميل من وزارة السياحة',
+                    response: 'استخدم النموذج الرسمي المعتمد من توجيهات الأستاذ مشعل. افتحه بالوورد وانسخه للإيميل.',
+                    tags: ['وزارة', 'رسمي', 'عاجل'],
+                    priority: 'critical',
+                    note: 'أول موظف في المناوبة مسؤول عن الرد'
+                },
+
+                // Violations
+                {
+                    id: 23,
+                    category: 'violation',
+                    title: 'محاولة تأجير خارج المنصة',
+                    problem: 'المضيف يحاول التأجير خارج المنصة',
+                    response: 'تم رصد محاولة تأجير خارج المنصة. سيتم إيقاف العقار فوراً وإشعار الإدارة.',
+                    tags: ['مخالفة', 'إيقاف', 'تقرير'],
+                    priority: 'critical',
+                    note: 'إيقاف فوري + تقرير للإدارة'
+                },
+
+                // Support
+                {
+                    id: 24,
+                    category: 'support',
+                    title: 'ترحيب بالعميل الجديد',
+                    problem: 'عميل جديد يتواصل للمرة الأولى',
+                    response: 'أهلاً وسهلاً بك في المضيف الذهبي 💜 نسعد بخدمتك. كيف يمكنني مساعدتك اليوم؟',
+                    tags: ['ترحيب', 'جديد', 'دعم'],
+                    priority: 'low'
+                },
+                {
+                    id: 25,
+                    category: 'support',
+                    title: 'طلب معلومات عامة',
+                    problem: 'العميل يسأل عن الخدمات',
+                    response: 'المضيف الذهبي منصة رائدة لحجز العقارات السياحية في المملكة. نوفر لك أفضل العقارات بأسعار منافسة مع ضمان الجودة والأمان.',
+                    tags: ['معلومات', 'عام', 'خدمات'],
+                    priority: 'low'
+                },
+                {
+                    id: 26,
+                    category: 'support',
+                    title: 'شكوى على المضيف',
+                    problem: 'الضيف لديه شكوى على المضيف',
+                    response: 'عزيزي الضيف، نأسف لهذه التجربة. تم استلام شكواك وسيتم التحقيق فيها خلال 24 ساعة. سنتواصل معك بالنتائج.',
+                    tags: ['شكاوى', 'تقرير', 'متابعة'],
+                    priority: 'high'
+                },
+                {
+                    id: 27,
+                    category: 'support',
+                    title: 'المكالمات المفقودة',
+                    problem: 'عدم الرد على مكالمة عميل',
+                    response: 'يجب إعادة الاتصال بالعميل فوراً والاعتذار عن التأخير.',
+                    tags: ['مكالمات', 'تصعيد', 'HR'],
+                    priority: 'critical',
+                    note: 'عبدالعزيز يرفع تقرير فوري للموارد البشرية'
+                },
+                {
+                    id: 28,
+                    category: 'support',
+                    title: 'طلب التواصل مع الإدارة',
+                    problem: 'العميل يريد التواصل مع الإدارة',
+                    response: 'عزيزي العميل، سيتم رفع طلبك للإدارة المختصة وسيتم التواصل معك خلال 48 ساعة عمل.',
+                    tags: ['إدارة', 'تصعيد', 'متابعة'],
+                    priority: 'medium'
+                },
+                {
+                    id: 29,
+                    category: 'support',
+                    title: 'شكر وتقدير',
+                    problem: 'العميل يشكر على الخدمة',
+                    response: 'شكراً لك على ثقتك بنا 💜 رضاك هو هدفنا. نتطلع لخدمتك دائماً بأفضل ما لدينا.',
+                    tags: ['شكر', 'إيجابي', 'تقدير'],
+                    priority: 'low'
+                },
+                {
+                    id: 30,
+                    category: 'support',
+                    title: 'الختام والوداع',
+                    problem: 'إنهاء المحادثة بشكل احترافي',
+                    response: 'شكراً لتواصلك معنا. هل هناك أي شيء آخر يمكنني مساعدتك فيه؟ نتمنى لك يوماً سعيداً 💜',
+                    tags: ['ختام', 'وداع', 'احترافي'],
+                    priority: 'low'
+                },
+
+                // Quality
+                {
+                    id: 31,
+                    category: 'quality',
+                    title: 'تقييم سيء من العميل',
+                    problem: 'العميل أعطى تقييم سيء',
+                    response: 'عزيزي العميل، نأسف لعدم رضاك عن الخدمة. رأيك مهم جداً لنا وسنعمل على تحسين تجربتك. سيتواصل معك مدير الجودة.',
+                    tags: ['جودة', 'تقييم', 'متابعة'],
+                    priority: 'high',
+                    note: 'هنوف تتابع مع العميل'
+                },
+                {
+                    id: 32,
+                    category: 'quality',
+                    title: 'مراقبة جودة المحادثات',
+                    problem: 'مراجعة يومية لمحادثات العملاء',
+                    response: 'مراقبة تقارير محادثات العملاء المسجلة، تحديد المخالفات غير المكتشفة، المراجعة اليومية لضمان الامتثال.',
+                    tags: ['جودة', 'مراقبة', 'يومي'],
+                    priority: 'high',
+                    note: 'مسؤولية فريق الجودة'
+                },
+
+                // Sales
+                {
+                    id: 33,
+                    category: 'sales',
+                    title: 'عرض خاص للعميل',
+                    problem: 'العميل يسأل عن العروض',
+                    response: 'عزيزي العميل، لدينا عرض خاص لك! خصم يصل إلى 30% على الحجوزات المختارة. للمزيد من التفاصيل سيتواصل معك فريق المبيعات.',
+                    tags: ['مبيعات', 'خصومات', 'عروض'],
+                    priority: 'medium',
+                    note: 'يزيد مسؤول عن المتابعة'
+                },
+                {
+                    id: 34,
+                    category: 'sales',
+                    title: 'صلاحيات فريق المبيعات',
+                    problem: 'استفسار عن صلاحيات المبيعات',
+                    response: 'المبيعات يمكنهم تطبيق خصم حتى 30% من هامش الربح. غير مسؤولين عن التصوير الاحترافي أو إدارة الحجوزات.',
+                    tags: ['مبيعات', 'خصومات', 'صلاحيات'],
+                    priority: 'medium',
+                    note: 'هدف المبيعات: 63% تحويل حجوزات = 25% من الراتب'
+                },
+                {
+                    id: 35,
+                    category: 'sales',
+                    title: 'طلب كود خصم',
+                    problem: 'العميل يطلب كود خصم',
+                    response: 'عزيزي العميل، تابع عروضنا الخاصة عبر التطبيق والرسائل النصية. سيتواصل معك فريق المبيعات لتقديم أفضل العروض المناسبة لك.',
+                    tags: ['خصم', 'كود', 'عروض'],
+                    priority: 'low',
+                    note: 'يزيد يتابع العروض الخاصة'
+                },
+
+                // Reports
+                {
+                    id: 36,
+                    category: 'reports',
+                    title: 'التقرير اليومي',
+                    problem: 'صيغة التقرير اليومي',
+                    response: 'التقرير اليومي:\n• عدد المستخدمين: X\n• غير محجوز: X\n• محجوز: X\n• تم التواصل: X\n• معدل التحويل اليوم: X%\n• معدل التحويل الشهري: X%',
+                    tags: ['تقارير', 'يومي', 'إحصائيات'],
+                    priority: 'high',
+                    note: 'يزيد مسؤول عن التقرير اليومي'
+                },
+                {
+                    id: 37,
+                    category: 'reports',
+                    title: 'تقرير النسبة المئوية',
+                    problem: 'متى يتم إرسال النسبة',
+                    response: 'يتم إرسال تقرير النسبة المئوية 3 مرات يومياً:\n• 10:00 صباحاً\n• 5:00 مساءً\n• 12:00 منتصف الليل',
+                    tags: ['تقارير', 'نسبة', 'يومي'],
+                    priority: 'high',
+                    note: 'الفريق المناوب مسؤول'
+                },
+                {
+                    id: 38,
+                    category: 'reports',
+                    title: 'مهام هنوف اليومية للعقارات',
+                    problem: 'المهام اليومية للعقارات',
+                    response: 'الفحص اليومي للعقارات الأعلى في كل مدينة، إعادة الترتيب حسب المظهر والسعر، إجراء حجوزات تجريبية.',
+                    tags: ['عقارات', 'يومي', 'هنوف'],
+                    priority: 'high'
+                }
+            ],
+
+            procedures: [
+                {
+                    title: '🔴 إجراءات تسجيل الأداء - 3 مرات يومياً',
+                    steps: [
+                        'التسجيل الأول: 10:00 AM - تقرير الأداء الصباحي',
+                        'التسجيل الثاني: 5:00 PM - تقرير الأداء المسائي',
+                        'التسجيل الثالث: 12:00 AM - تقرير منتصف الليل',
+                        '⚠️ هام: كل تقرير يرصد بيانات اليوم السابق',
+                        'عبدالعزيز يرصد تقارير اليوم السابق لجميع الأقسام',
+                        'يزيد مسؤول عن جمع البيانات وإعداد التقارير',
+                        'عبدالعزيز يراجع ويعتمد جميع التقارير',
+                        'رفع التقارير للمدير المباشر للاعتماد',
+                        'بعد الاعتماد، عبدالعزيز يرسلها للموارد البشرية'
+                    ]
+                },
+                {
+                    title: '📊 إجراءات مراقبة جودة المكالمات - هنوف',
+                    steps: [
+                        'الاستماع اليومي لعينة عشوائية من المكالمات',
+                        'تقييم الالتزام بشروط الأداء المحددة',
+                        'رصد المخالفات وتوثيقها',
+                        'تقييم نبرة الصوت والاحترافية',
+                        'التأكد من استخدام النصوص المعتمدة',
+                        'قياس سرعة الاستجابة',
+                        'إعداد تقرير الجودة اليومي',
+                        'رفع التقرير لعبدالعزيز للمراجعة'
+                    ]
+                },
+                {
+                    title: '📋 التقارير اليومية المطلوبة',
+                    steps: [
+                        'تقرير الأداء اليومي - يزيد',
+                        'تقرير المكالمات اليومي - عبدالعزيز',
+                        'تقرير اليوم السابق لكل التقارير - عبدالعزيز',
+                        'تقرير الاسترداد والكاش باك - عبدالعزيز',
+                        'تقرير البلاغات والمخالفات - عبدالعزيز',
+                        'تقرير النسبة المئوية (3 مرات يومياً)',
+                        'تقرير جودة المحادثات - هنوف',
+                        'تقرير جودة المكالمات - هنوف',
+                        'أي إجراء يكتب مباشرة في التقارير'
+                    ]
+                },
+                {
+                    title: '💬 إجراءات دعم العملاء - إبراهيم ومصطفى',
+                    steps: [
+                        '⛔ استخدام الردود المعتمدة حرفياً فقط',
+                        '⛔ عدم الخروج عن النصوص المحددة نهائياً',
+                        'التصعيد للمشرف عند الحاجة',
+                        'توثيق جميع المحادثات',
+                        'الرد خلال دقيقتين كحد أقصى',
+                        'استخدام نبرة احترافية وودودة',
+                        'عدم إعطاء وعود خارج الصلاحيات'
+                    ]
+                },
+                {
+                    title: '💰 الإجراءات المالية',
+                    steps: [
+                        'التحقق من: الداشبورد > المعاملات المالية > حوالات استرداد',
+                        'يُمنع منعاً باتاً إرسال سكرين شوت للعميل',
+                        'الرد خلال 48 ساعة للاستردادات',
+                        'التأكد من رقم حساب المضيف قبل التحويل',
+                        'البدء بعبارة "شريكنا الغالي" عند الرد على المضيفين',
+                        'توثيق جميع المعاملات في النظام',
+                        'العمولة: 13% + 25 ريال للليلة الواحدة'
+                    ]
+                },
+                {
+                    title: '🏠 إجراءات العقارات',
+                    steps: [
+                        'المراجعة الفورية للعقارات الجديدة',
+                        'الصور: واضحة، بدون حواف سوداء، بدون نصوص',
+                        'اسم العقار: يجب أن يكون أربع كلمات',
+                        'المراجعة خلال 48 ساعة عمل',
+                        'هنوف: فحص يومي للعقارات الأعلى في كل مدينة',
+                        'إعادة الترتيب حسب المظهر والسعر',
+                        'إجراء حجوزات تجريبية للتأكد من الجودة'
+                    ]
+                },
+                {
+                    title: '🆔 إجراءات توثيق الهوية',
+                    steps: [
+                        'المراجعة الفورية للهويات المرفوعة',
+                        'التأكد من مطابقة الاسم بشكل كامل',
+                        'التحقق من وضوح الصورة',
+                        'إعادة الطلب مع توضيح السبب عند الرفض',
+                        'المتابعة مع العميل خلال 24 ساعة',
+                        'التصعيد للمشرف في حالات خاصة'
+                    ]
+                },
+                {
+                    title: '📞 إجراءات الحجوزات',
+                    steps: [
+                        'الاتصال بالضيف مباشرة عند استلام حجز جديد',
+                        'التأكد من عدم وجود إشكاليات',
+                        'توثيق الاتصال في قروب تأكيد الحجوزات',
+                        'متابعة حالة الحجز يومياً',
+                        'التنسيق مع المضيف عند الحاجة',
+                        'حل أي مشاكل قبل موعد الوصول'
+                    ]
+                },
+                {
+                    title: '⚠️ التعاميم الإدارية',
+                    steps: [
+                        'متابعة المكالمات المفقودة - عبدالعزيز',
+                        'عبدالعزيز يعد تقرير المكالمات اليومي',
+                        'عبدالعزيز يتخذ الإجراءات ويرفعها للمدير المباشر',
+                        'بعد اعتماد المدير، عبدالعزيز يرسل للموارد البشرية',
+                        'رفع تقرير فوري للموارد البشرية عند المخالفات',
+                        'المشرف مسؤول عن إبلاغ HR عن الغياب',
+                        'كتابة "أنا متواجد" في بداية كل مناوبة',
+                        'الالتزام بأوقات الدوام المحددة',
+                        'عدم مغادرة المكان دون إذن'
+                    ]
+                },
+                {
+                    title: '🚨 إجراءات الطوارئ',
+                    steps: [
+                        'التصعيد الفوري للمشرف المباشر',
+                        'توثيق الحالة بشكل كامل',
+                        'عدم اتخاذ قرارات فردية',
+                        'إبلاغ العميل بأن الحالة تحت المعالجة',
+                        'المتابعة حتى حل المشكلة',
+                        'كتابة تقرير مفصل عن الحادثة'
+                    ]
+                },
+                {
+                    title: '📝 السكربتات المعتمدة',
+                    steps: [
+                        'سكربت التسجيل: "أنا متواجد" - في بداية المناوبة',
+                        'سكربت المبيعات: [النص المعتمد] مع الاتصال الفوري',
+                        'سكربت الوزارة: النموذج الرسمي من الأستاذ مشعل',
+                        'سكربت الإحصائيات: X مستخدمين، X غير محجوز، X محجوز، X تم التواصل',
+                        'سكربت النسبة: إرسال في 10 صباحاً، 5 مساءً، 12 منتصف الليل'
+                    ]
+                },
+                {
+                    title: '🎯 أهداف الأداء',
+                    steps: [
+                        'معدل التحويل المستهدف: 63%',
+                        'زمن الرد على المحادثات: دقيقتين كحد أقصى',
+                        'زمن الرد على المكالمات المفقودة: فوري',
+                        'مراجعة العقارات: خلال 48 ساعة',
+                        'الاستردادات: خلال 48 ساعة',
+                        'التقارير: في الأوقات المحددة بدقة'
+                    ]
+                }
+            ],
+
+            quickActions: [
+                { icon: '📞', label: 'الدعم الفني', value: '920XXXXXX' },
+                { icon: '📧', label: 'البريد الرسمي', value: 'support@goldenhost.sa' },
+                { icon: '📊', label: 'الداشبورد', value: 'dashboard.goldenhost.sa' },
+                { icon: '💰', label: 'العمولة', value: '13% + 25 ريال/ليلة' },
+                { icon: '⏰', label: 'أوقات التقارير', value: '10AM, 5PM, 12AM' },
+                { icon: '🎯', label: 'هدف التحويل', value: '63%' }
+            ]
+        };
+
+        // Initialize
+        function init() {
+            renderFilterTabs();
+            renderResponses();
+            renderProcedures();
+            renderQuickActions();
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+            checkPerformanceTime();
+            setInterval(checkPerformanceTime, 60000);
+        }
+
+        // Update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Highlight current report time
+            document.querySelectorAll('.tracker-item').forEach(item => {
+                item.style.background = 'transparent';
+            });
+
+            if (hours === 10) {
+                document.querySelector('.tracker-item:nth-child(1)').style.background = 'rgba(255, 215, 0, 0.2)';
+            } else if (hours === 17) {
+                document.querySelector('.tracker-item:nth-child(2)').style.background = 'rgba(255, 215, 0, 0.2)';
+            } else if (hours === 0) {
+                document.querySelector('.tracker-item:nth-child(3)').style.background = 'rgba(255, 215, 0, 0.2)';
+            }
+        }
+
+        // Check if it's time for performance report
+        function checkPerformanceTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+
+            if ((hours === 10 && minutes === 0) ||
+                (hours === 17 && minutes === 0) ||
+                (hours === 0 && minutes === 0)) {
+                showPerformanceAlert();
+            }
+        }
+
+        // Show performance alert
+        function showPerformanceAlert() {
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #FF0000, #E91E8C);
+                color: white;
+                padding: 2rem 3rem;
+                border-radius: 15px;
+                z-index: 9999;
+                box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+                text-align: center;
+                font-size: 1.3rem;
+                font-weight: 700;
+                border: 3px solid #FFD700;
+                animation: alertPulse 1s ease-in-out infinite;
+            `;
+            alertDiv.innerHTML = `
+                ⏰ حان وقت تسجيل الأداء! ⏰<br>
+                يجب إرسال التقرير الآن<br>
+                <small style="font-size: 1rem;">يزيد - قم بإعداد التقرير</small><br>
+                <small style="font-size: 0.9rem;">عبدالعزيز - راجع واعتمد</small>
+            `;
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes alertPulse {
+                    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                    50% { transform: translate(-50%, -50%) scale(1.05); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(alertDiv);
+
+            // Play alert sound (optional)
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjWO1vLPeywGKHvI8N2SQgoUXrTp66hVFApGn+DyvmwhBjWO1vLPeywGKHvI8N2SQgoUXrTp66hVFApGn+DyvmwhBjWO1vLPeywGKHvI8N2SQgoUXrTp66hVFA==');
+                audio.play();
+            } catch(e) {}
+
+            setTimeout(() => {
+                alertDiv.style.opacity = '0';
+                alertDiv.style.transition = 'opacity 1s';
+                setTimeout(() => alertDiv.remove(), 1000);
+            }, 10000);
+        }
+
+        // Render filter tabs
+        function renderFilterTabs() {
+            const container = document.getElementById('filterTabs');
+            container.innerHTML = libraryData.categories.map(cat => {
+                const count = cat.id === 'all'
+                    ? libraryData.responses.length
+                    : libraryData.responses.filter(r => r.category === cat.id).length;
+
+                return `
+                    <button class="filter-tab ${currentFilter === cat.id ? 'active' : ''}"
+                            onclick="filterResponses('${cat.id}')">
+                        ${cat.label} (${count})
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Render responses
+        function renderResponses() {
+            const container = document.getElementById('responsesList');
+            const searchTerm = document.getElementById('searchInput')?.value?.toLowerCase() || '';
+
+            let filtered = libraryData.responses.filter(response => {
+                const matchesFilter = currentFilter === 'all' || response.category === currentFilter;
+                const matchesSearch = !searchTerm ||
+                    response.title.toLowerCase().includes(searchTerm) ||
+                    response.problem.toLowerCase().includes(searchTerm) ||
+                    response.response.toLowerCase().includes(searchTerm) ||
+                    response.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                return matchesFilter && matchesSearch;
+            });
+
+            container.innerHTML = filtered.map(response => `
+                <div class="response-card">
+                    <div class="response-header">
+                        <div class="response-title">
+                            <span class="priority-dot priority-${response.priority || 'medium'}"></span>
+                            ${response.title}
+                        </div>
+                        <span class="response-category">${getCategoryLabel(response.category)}</span>
+                    </div>
+
+                    <div class="response-problem">
+                        <strong>المشكلة:</strong> ${response.problem}
+                    </div>
+
+                    <div class="response-text">
+                        ${response.response}
+                        <button class="copy-btn" onclick="copyResponse('${response.id}', this)">
+                            نسخ الرد
+                        </button>
+                    </div>
+
+                    ${response.note ? `
+                        <div class="warning-note">
+                            ⚠️ ملاحظة: ${response.note}
+                        </div>
+                    ` : ''}
+
+                    <div class="tags">
+                        ${response.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: #999;">
+                        لا توجد نتائج مطابقة للبحث
+                    </div>
+                `;
+            }
+        }
+
+        // Render procedures
+        function renderProcedures() {
+            const container = document.getElementById('proceduresList');
+            container.innerHTML = libraryData.procedures.map((proc, idx) => `
+                <div class="procedure-item">
+                    <div class="procedure-header ${idx === 0 ? 'active' : ''}"
+                         onclick="toggleProcedure('proc-${idx}')">
+                        <span>${proc.title}</span>
+                        <span>⌄</span>
+                    </div>
+                    <div class="procedure-content ${idx === 0 ? 'show' : ''}" id="proc-${idx}">
+                        ${proc.steps.map(step => `
+                            <div class="procedure-step">${step}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render quick actions
+        function renderQuickActions() {
+            const container = document.getElementById('quickActions');
+            container.innerHTML = libraryData.quickActions.map(action => `
+                <div class="quick-action" onclick="copyText('${action.value}')">
+                    <span class="quick-action-icon">${action.icon}</span>
+                    <div>
+                        <div class="quick-action-label">${action.label}</div>
+                        <div class="quick-action-value">${action.value}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Helper functions
+        function getCategoryLabel(categoryId) {
+            const category = libraryData.categories.find(c => c.id === categoryId);
+            return category ? category.label : categoryId;
+        }
+
+        function filterResponses(category) {
+            currentFilter = category;
+            renderFilterTabs();
+            renderResponses();
+        }
+
+        function copyResponse(responseId, button) {
+            const response = libraryData.responses.find(r => r.id == responseId);
+            if (response) {
+                navigator.clipboard.writeText(response.response).then(() => {
+                    const originalText = button.textContent;
+                    button.classList.add('copied');
+                    button.textContent = 'تم النسخ ✓';
+
+                    setTimeout(() => {
+                        button.classList.remove('copied');
+                        button.textContent = originalText;
+                    }, 2000);
+
+                    showNotification('تم نسخ الرد بنجاح');
+                    console.log(`Response copied: ${response.title} at ${new Date().toLocaleTimeString()}`);
+                });
+            }
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('تم النسخ بنجاح');
+            });
+        }
+
+        function toggleProcedure(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                header.classList.remove('active');
+            } else {
+                // Close other procedures
+                document.querySelectorAll('.procedure-content').forEach(el => {
+                    el.classList.remove('show');
+                    el.previousElementSibling.classList.remove('active');
+                });
+
+                content.classList.add('show');
+                header.classList.add('active');
+            }
+        }
+
+        function performSearch() {
+            renderResponses();
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #4CAF50, #45a049);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                z-index: 9999;
+                font-weight: 600;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
