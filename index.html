@@ -1867,8 +1867,231 @@
             }, 3000);
         }
 
+        // ==================== REPORTS SYSTEM ====================
+
+        function showReportModal() {
+            const modal = document.getElementById('reportModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('reportModal');
+            modal.style.display = 'none';
+            document.getElementById('reportForm').reset();
+        }
+
+        function submitReport(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('employeeName').value.trim();
+            const category = document.getElementById('reportCategory').value;
+            const subject = document.getElementById('reportSubject').value.trim();
+            const message = document.getElementById('reportMessage').value.trim();
+            const customerInfo = document.getElementById('customerInfo').value.trim();
+
+            if (!employeeName || !category || !subject || !message) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const report = {
+                id: 'report_' + Date.now(),
+                employeeName: employeeName,
+                category: category,
+                subject: subject,
+                message: message,
+                customerInfo: customerInfo,
+                status: 'pending',
+                date: new Date().toLocaleString('ar-SA'),
+                response: null
+            };
+
+            // Save to localStorage
+            const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+            reports.unshift(report);
+            localStorage.setItem('customerReports', JSON.stringify(reports));
+
+            // Show success message
+            showNotification('✅ تم رفع البلاغ بنجاح! سيتم مراجعته من قبل المشرف');
+
+            // Close modal
+            closeReportModal();
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <!-- Floating Report Button -->
+    <button onclick="showReportModal()" style="
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FF0000, #CC0000);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255,0,0,0.4);
+        z-index: 1000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        🚨
+    </button>
+
+    <!-- Report Modal -->
+    <div id="reportModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #4B3A8C; font-size: 1.5rem;">🚨 رفع بلاغ للمشرف</h2>
+                <button onclick="closeReportModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="reportForm" onsubmit="submitReport(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسمك <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="employeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        نوع البلاغ <span style="color: red;">*</span>
+                    </label>
+                    <select id="reportCategory" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر نوع البلاغ</option>
+                        <option value="عميل صعب">🔴 عميل صعب / مشكلة مع عميل</option>
+                        <option value="استفسار">❓ استفسار / طلب توضيح</option>
+                        <option value="مشكلة تقنية">⚙️ مشكلة تقنية في النظام</option>
+                        <option value="شكوى">⚠️ شكوى</option>
+                        <option value="اقتراح">💡 اقتراح تحسين</option>
+                        <option value="طارئ">🚨 حالة طارئة</option>
+                        <option value="أخرى">📋 أخرى</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        عنوان البلاغ <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="reportSubject" required placeholder="مثال: عميل يطلب استرداد بدون سبب" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تفاصيل البلاغ <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="reportMessage" required rows="5" placeholder="اشرح الموقف بالتفصيل..." style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        معلومات العميل (اختياري)
+                    </label>
+                    <textarea id="customerInfo" rows="3" placeholder="رقم الحجز، اسم العميل، رقم الهاتف، إلخ..." style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #E91E8C, #FF1493);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📤 إرسال البلاغ
+                    </button>
+                    <button type="button" onclick="closeReportModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

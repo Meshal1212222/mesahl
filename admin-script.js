@@ -61,6 +61,12 @@ function loadData() {
     const saved = localStorage.getItem('libraryData');
     if (saved) {
         libraryData = JSON.parse(saved);
+        // إذا كانت البيانات القديمة أقل من 38 رد، نحدث البيانات
+        if (!libraryData.responses || libraryData.responses.length < 38) {
+            libraryData.responses = getDefaultResponses();
+            libraryData.procedures = getDefaultProcedures();
+            saveData();
+        }
     } else {
         // Initialize with default data
         libraryData.responses = getDefaultResponses();
@@ -109,6 +115,7 @@ function showSection(sectionId) {
     // Load section data
     if (sectionId === 'responses') loadResponsesTable();
     if (sectionId === 'procedures') loadProceduresManagement();
+    if (sectionId === 'reports') loadReports();
     if (sectionId === 'team') loadTeamManagement();
     if (sectionId === 'activity') loadActivityLog();
     if (sectionId === 'stats') loadStatistics();
@@ -474,8 +481,258 @@ function getDefaultProcedures() {
     return ALL_PROCEDURES;
 }
 
+// ==================== REPORTS MANAGEMENT ====================
+
+function loadReports(filter = 'all') {
+    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const container = document.getElementById('reportsManagement');
+
+    // Update pending count
+    const pendingCount = reports.filter(r => r.status === 'pending').length;
+    document.getElementById('pendingReportsCount').textContent = pendingCount > 0 ? `${pendingCount} بلاغ جديد` : '';
+
+    let filteredReports = reports;
+    if (filter !== 'all') {
+        filteredReports = reports.filter(r => r.status === filter);
+    }
+
+    if (filteredReports.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#666; padding:2rem;">لا توجد بلاغات</p>';
+        return;
+    }
+
+    container.innerHTML = filteredReports.map(report => `
+        <div class="report-card">
+            <div class="report-header">
+                <div>
+                    <span class="status-badge status-${report.status}">
+                        ${report.status === 'pending' ? 'جديد' :
+                          report.status === 'in_progress' ? 'قيد المعالجة' : 'تم الحل'}
+                    </span>
+                </div>
+                <div class="report-meta">
+                    <strong>${report.employeeName || 'موظف'}</strong> • ${report.date}
+                </div>
+            </div>
+
+            <div class="report-content">
+                <h4 style="color: var(--primary-purple); margin-bottom:0.5rem;">📋 ${report.category || 'بلاغ عام'}</h4>
+                <p style="margin-bottom:0.5rem;"><strong>الموضوع:</strong> ${report.subject}</p>
+                <p style="line-height:1.8;">${report.message}</p>
+                ${report.customerInfo ? `
+                    <div style="margin-top:1rem; padding:0.8rem; background:#f0f0f0; border-radius:5px;">
+                        <strong>معلومات العميل:</strong><br>
+                        ${report.customerInfo}
+                    </div>
+                ` : ''}
+            </div>
+
+            ${report.response ? `
+                <div class="report-response">
+                    <strong>✅ رد المشرف:</strong><br>
+                    ${report.response}
+                </div>
+            ` : ''}
+
+            <div class="report-actions">
+                ${report.status !== 'in_progress' ? `
+                    <button class="btn btn-primary" onclick="updateReportStatus('${report.id}', 'in_progress')">
+                        🔄 بدء المعالجة
+                    </button>
+                ` : ''}
+                ${report.status !== 'resolved' ? `
+                    <button class="btn btn-success" onclick="showReportResponseModal('${report.id}')">
+                        ✅ حل البلاغ
+                    </button>
+                ` : ''}
+                <button class="btn btn-warning" onclick="deleteReport('${report.id}')">
+                    🗑️ حذف
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterReportsByStatus(status) {
+    // Update active tab
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    loadReports(status);
+}
+
+function updateReportStatus(reportId, newStatus) {
+    const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+    const report = reports.find(r => r.id === reportId);
+
+    if (report) {
+        report.status = newStatus;
+        localStorage.setItem('customerReports', JSON.stringify(reports));
+
+        const statusText = newStatus === 'in_progress' ? 'قيد المعالجة' :
+                          newStatus === 'resolved' ? 'تم الحل' : 'جديد';
+        logActivity(`تغيير حالة البلاغ "${report.subject}" إلى: ${statusText}`);
+
+        loadReports();
+    }
+}
+
+function showReportResponseModal(reportId) {
+    const response = prompt('أدخل الرد على البلاغ:');
+
+    if (response && response.trim()) {
+        const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+        const report = reports.find(r => r.id === reportId);
+
+        if (report) {
+            report.response = response.trim();
+            report.status = 'resolved';
+            report.resolvedDate = new Date().toLocaleString('ar-SA');
+            localStorage.setItem('customerReports', JSON.stringify(reports));
+
+            logActivity(`تم حل البلاغ: "${report.subject}"`);
+            loadReports();
+            alert('✅ تم حل البلاغ وإرسال الرد');
+        }
+    }
+}
+
+function deleteReport(reportId) {
+    if (confirm('هل أنت متأكد من حذف هذا البلاغ؟')) {
+        let reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+        reports = reports.filter(r => r.id !== reportId);
+        localStorage.setItem('customerReports', JSON.stringify(reports));
+
+        logActivity('حذف بلاغ');
+        loadReports();
+    }
+}
+
+// ==================== TEAM MANAGEMENT ====================
+
+function loadTeamManagement() {
+    const team = libraryData.team;
+    const container = document.getElementById('teamManagement');
+
+    container.innerHTML = `
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>الدور</th>
+                        <th>القسم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الهاتف</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${team.map(member => `
+                        <tr>
+                            <td><strong>${member.name}</strong></td>
+                            <td>${member.role}</td>
+                            <td>${member.department || '-'}</td>
+                            <td>${member.email || '-'}</td>
+                            <td>${member.phone || '-'}</td>
+                            <td>
+                                <span class="status-badge ${member.active ? 'status-resolved' : 'status-pending'}">
+                                    ${member.active ? 'نشط' : 'غير نشط'}
+                                </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" style="padding:0.3rem 0.8rem; font-size:0.85rem;"
+                                        onclick="editTeamMember('${member.id}')">تعديل</button>
+                                <button class="btn btn-warning" style="padding:0.3rem 0.8rem; font-size:0.85rem;"
+                                        onclick="toggleTeamMemberStatus('${member.id}')">
+                                    ${member.active ? 'تعطيل' : 'تفعيل'}
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function showAddTeamModal() {
+    const name = prompt('اسم العضو:');
+    if (!name) return;
+
+    const role = prompt('الدور (مشرف / موظف دعم / مسؤول جودة):');
+    if (!role) return;
+
+    const department = prompt('القسم:');
+    const email = prompt('البريد الإلكتروني:');
+    const phone = prompt('رقم الهاتف:');
+
+    const newMember = {
+        id: 'member_' + Date.now(),
+        name: name.trim(),
+        role: role.trim(),
+        department: department?.trim() || '',
+        email: email?.trim() || '',
+        phone: phone?.trim() || '',
+        active: true
+    };
+
+    libraryData.team.push(newMember);
+    saveData();
+    loadTeamManagement();
+    logActivity(`إضافة عضو جديد: ${newMember.name}`);
+    alert('✅ تم إضافة العضو بنجاح');
+}
+
+function editTeamMember(memberId) {
+    const member = libraryData.team.find(m => m.id === memberId);
+    if (!member) return;
+
+    const name = prompt('اسم العضو:', member.name);
+    if (name === null) return;
+
+    const role = prompt('الدور:', member.role);
+    if (role === null) return;
+
+    const department = prompt('القسم:', member.department);
+    const email = prompt('البريد الإلكتروني:', member.email);
+    const phone = prompt('رقم الهاتف:', member.phone);
+
+    member.name = name.trim();
+    member.role = role.trim();
+    member.department = department?.trim() || '';
+    member.email = email?.trim() || '';
+    member.phone = phone?.trim() || '';
+
+    saveData();
+    loadTeamManagement();
+    logActivity(`تعديل بيانات: ${member.name}`);
+    alert('✅ تم تحديث البيانات');
+}
+
+function toggleTeamMemberStatus(memberId) {
+    const member = libraryData.team.find(m => m.id === memberId);
+    if (!member) return;
+
+    member.active = !member.active;
+    saveData();
+    loadTeamManagement();
+    logActivity(`${member.active ? 'تفعيل' : 'تعطيل'} العضو: ${member.name}`);
+}
+
 // Initialize
 window.addEventListener('DOMContentLoaded', () => {
     loadData();
     loadRecentActivity();
+
+    // Load reports if on reports page
+    if (document.getElementById('reportsManagement')) {
+        loadReports();
+    }
+
+    // Load team if on team page
+    if (document.getElementById('teamManagement')) {
+        loadTeamManagement();
+    }
 });
