@@ -1918,8 +1918,116 @@
             // Show success message
             showNotification('✅ تم رفع البلاغ بنجاح! سيتم مراجعته من قبل المشرف');
 
-            // Close modal
             closeReportModal();
+        }
+
+        // ==================== REFUNDS SYSTEM ====================
+
+        function showRefundModal() {
+            const modal = document.getElementById('refundModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeRefundModal() {
+            const modal = document.getElementById('refundModal');
+            modal.style.display = 'none';
+            document.getElementById('refundForm').reset();
+        }
+
+        function submitRefund(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('refundEmployeeName').value.trim();
+            const bookingNumber = document.getElementById('bookingNumber').value.trim();
+            const customerName = document.getElementById('customerName').value.trim();
+            const amount = document.getElementById('refundAmount').value;
+            const reason = document.getElementById('refundReason').value;
+            const details = document.getElementById('refundDetails').value.trim();
+
+            if (!employeeName || !bookingNumber || !customerName || !amount || !reason || !details) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const refund = {
+                id: 'refund_' + Date.now(),
+                employeeName: employeeName,
+                bookingNumber: bookingNumber,
+                customerName: customerName,
+                amount: parseFloat(amount),
+                reason: reason,
+                details: details,
+                status: 'pending',
+                submitTime: new Date().toLocaleString('ar-SA'),
+                approvedTime: null,
+                approvedBy: null,
+                processedTime: null,
+                notes: null
+            };
+
+            // Save to localStorage
+            const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+            refunds.unshift(refund);
+            localStorage.setItem('customerRefunds', JSON.stringify(refunds));
+
+            // Show success message
+            showNotification('✅ تم رفع طلب الاسترداد بنجاح! سيتم معالجته خلال 48 ساعة');
+
+            closeRefundModal();
+        }
+
+        // ==================== CONVERSATIONS SYSTEM ====================
+
+        function showConversationModal() {
+            const modal = document.getElementById('conversationModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeConversationModal() {
+            const modal = document.getElementById('conversationModal');
+            modal.style.display = 'none';
+            document.getElementById('conversationForm').reset();
+        }
+
+        function submitConversation(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('convEmployeeName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const type = document.getElementById('conversationType').value;
+            const subject = document.getElementById('conversationSubject').value.trim();
+            const summary = document.getElementById('conversationSummary').value.trim();
+            const requiredAction = document.getElementById('requiredAction').value;
+
+            if (!employeeName || !customerPhone || !type || !subject || !summary) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const conversation = {
+                id: 'conv_' + Date.now(),
+                employeeName: employeeName,
+                customerPhone: customerPhone,
+                type: type,
+                subject: subject,
+                summary: summary,
+                requiredAction: requiredAction,
+                status: requiredAction === 'لا يوجد' ? 'completed' : 'pending',
+                recordTime: new Date().toLocaleString('ar-SA'),
+                reviewedBy: null,
+                reviewTime: null,
+                actionTaken: null
+            };
+
+            // Save to localStorage
+            const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+            conversations.unshift(conversation);
+            localStorage.setItem('customerConversations', JSON.stringify(conversations));
+
+            // Show success message
+            showNotification('✅ تم حفظ المحادثة بنجاح!');
+
+            closeConversationModal();
         }
 
         // Initialize on page load
@@ -1927,6 +2035,7 @@
     </script>
 
     <!-- Floating Report Button -->
+    <!-- Quick Action Buttons -->
     <button onclick="showReportModal()" style="
         position: fixed;
         bottom: 30px;
@@ -1942,8 +2051,46 @@
         box-shadow: 0 4px 20px rgba(255,0,0,0.4);
         z-index: 1000;
         transition: all 0.3s;
-    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="رفع بلاغ">
         🚨
+    </button>
+
+    <button onclick="showRefundModal()" style="
+        position: fixed;
+        bottom: 100px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FFA500, #FF8C00);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255,165,0,0.4);
+        z-index: 1000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="طلب استرداد">
+        💰
+    </button>
+
+    <button onclick="showConversationModal()" style="
+        position: fixed;
+        bottom: 170px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4B3A8C, #6B4FB5);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(75,58,140,0.4);
+        z-index: 1000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="متابعة محادثة">
+        💬
     </button>
 
     <!-- Report Modal -->
@@ -2078,6 +2225,335 @@
                         📤 إرسال البلاغ
                     </button>
                     <button type="button" onclick="closeReportModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Refund Modal -->
+    <div id="refundModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #FF8C00; font-size: 1.5rem;">💰 طلب استرداد</h2>
+                <button onclick="closeRefundModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="refundForm" onsubmit="submitRefund(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسم الموظف <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="refundEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم الحجز <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="bookingNumber" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="customerName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        المبلغ المطلوب <span style="color: red;">*</span>
+                    </label>
+                    <input type="number" id="refundAmount" required placeholder="مثال: 500" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        سبب الاسترداد <span style="color: red;">*</span>
+                    </label>
+                    <select id="refundReason" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر السبب</option>
+                        <option value="عقار غير متاح">عقار غير متاح</option>
+                        <option value="مشكلة نظافة">مشكلة نظافة</option>
+                        <option value="مشكلة تأمين">مشكلة تأمين</option>
+                        <option value="عدم توفر المواصفات">عدم توفر المواصفات</option>
+                        <option value="إلغاء من العميل">إلغاء من العميل</option>
+                        <option value="سبب آخر">سبب آخر</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تفاصيل إضافية <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="refundDetails" required rows="4" placeholder="اكتب التفاصيل الكاملة..." style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #FFA500, #FF8C00);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📤 إرسال طلب الاسترداد
+                    </button>
+                    <button type="button" onclick="closeRefundModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Conversation Modal -->
+    <div id="conversationModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #4B3A8C; font-size: 1.5rem;">💬 متابعة محادثة عميل</h2>
+                <button onclick="closeConversationModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="conversationForm" onsubmit="submitConversation(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسم الموظف <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="convEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="customerPhone" required placeholder="مثال: 0501234567" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        نوع المحادثة <span style="color: red;">*</span>
+                    </label>
+                    <select id="conversationType" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر النوع</option>
+                        <option value="استفسار">استفسار</option>
+                        <option value="متابعة حجز">متابعة حجز</option>
+                        <option value="شكوى">شكوى</option>
+                        <option value="طلب دعم">طلب دعم</option>
+                        <option value="اقتراح">اقتراح</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الموضوع <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="conversationSubject" required placeholder="مثال: العميل يسأل عن موعد التسليم" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        ملخص المحادثة <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="conversationSummary" required rows="5" placeholder="اكتب ملخص المحادثة مع العميل..." style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الإجراء المطلوب
+                    </label>
+                    <select id="requiredAction" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="لا يوجد">لا يوجد - للعلم فقط</option>
+                        <option value="متابعة من المشرف">يحتاج متابعة من المشرف</option>
+                        <option value="إجراء عاجل">إجراء عاجل مطلوب</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #4B3A8C, #6B4FB5);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📤 حفظ المحادثة
+                    </button>
+                    <button type="button" onclick="closeConversationModal()" style="
                         flex: 1;
                         padding: 1rem;
                         background: #6c757d;

@@ -116,6 +116,8 @@ function showSection(sectionId) {
     if (sectionId === 'responses') loadResponsesTable();
     if (sectionId === 'procedures') loadProceduresManagement();
     if (sectionId === 'reports') loadReports();
+    if (sectionId === 'refunds') loadRefunds();
+    if (sectionId === 'conversations') loadConversations();
     if (sectionId === 'team') loadTeamManagement();
     if (sectionId === 'activity') loadActivityLog();
     if (sectionId === 'stats') loadStatistics();
@@ -764,6 +766,382 @@ function deleteReport(reportId) {
         logActivity('حذف بلاغ');
         loadReports();
     }
+}
+
+// ==================== REFUNDS MANAGEMENT ====================
+
+function loadRefunds(filter = 'all') {
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const container = document.getElementById('refundsManagement');
+
+    let filteredRefunds = refunds;
+    if (filter !== 'all') {
+        filteredRefunds = refunds.filter(r => r.status === filter);
+    }
+
+    if (filteredRefunds.length === 0) {
+        container.innerHTML = '<div class="no-data">📭 لا توجد طلبات استرداد</div>';
+        return;
+    }
+
+    let html = `
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>رقم الطلب</th>
+                        <th>الموظف</th>
+                        <th>رقم الحجز</th>
+                        <th>العميل</th>
+                        <th>المبلغ</th>
+                        <th>السبب</th>
+                        <th>التفاصيل</th>
+                        <th>وقت الطلب</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    filteredRefunds.forEach(refund => {
+        const statusBadge = refund.status === 'pending' ? 'status-pending' :
+                          refund.status === 'approved' ? 'status-in_progress' :
+                          'status-resolved';
+        const statusText = refund.status === 'pending' ? 'قيد الانتظار' :
+                         refund.status === 'approved' ? 'تمت الموافقة' :
+                         'مكتمل';
+
+        html += `
+            <tr>
+                <td style="font-weight: 600;">#${refund.id.slice(-6)}</td>
+                <td>${refund.employeeName}</td>
+                <td>${refund.bookingNumber}</td>
+                <td>${refund.customerName}</td>
+                <td style="font-weight: 700; color: var(--primary-pink);">${refund.amount} ر.س</td>
+                <td>${refund.reason}</td>
+                <td>${refund.details.substring(0, 50)}${refund.details.length > 50 ? '...' : ''}</td>
+                <td style="font-size: 0.85rem; color: #666;">${refund.submitTime}</td>
+                <td><span class="status-badge ${statusBadge}">${statusText}</span></td>
+                <td>
+                    <button class="btn-action btn-view" onclick="viewRefundDetails('${refund.id}')" title="عرض">👁️</button>
+                    ${refund.status === 'pending' ? `
+                        <button class="btn-action btn-success" onclick="approveRefund('${refund.id}')" title="موافقة">✅</button>
+                        <button class="btn-action btn-danger" onclick="rejectRefund('${refund.id}')" title="رفض">❌</button>
+                    ` : ''}
+                    ${refund.status === 'approved' ? `
+                        <button class="btn-action btn-success" onclick="completeRefund('${refund.id}')" title="اكتمل">✅</button>
+                    ` : ''}
+                    <button class="btn-action btn-danger" onclick="deleteRefund('${refund.id}')" title="حذف">🗑️</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function filterRefunds(status) {
+    // Update active tab
+    const tabs = document.querySelectorAll('#refunds .tab-btn');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+
+    loadRefunds(status);
+}
+
+function approveRefund(refundId) {
+    const supervisorName = prompt('اسم المشرف الموافق على الطلب:');
+    if (!supervisorName) return;
+
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const refundIndex = refunds.findIndex(r => r.id === refundId);
+
+    if (refundIndex !== -1) {
+        refunds[refundIndex].status = 'approved';
+        refunds[refundIndex].approvedTime = new Date().toLocaleString('ar-SA');
+        refunds[refundIndex].approvedBy = supervisorName;
+
+        localStorage.setItem('customerRefunds', JSON.stringify(refunds));
+        alert('✅ تمت الموافقة على الطلب');
+        loadRefunds();
+    }
+}
+
+function rejectRefund(refundId) {
+    const reason = prompt('سبب رفض الطلب:');
+    if (!reason) return;
+
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const refundIndex = refunds.findIndex(r => r.id === refundId);
+
+    if (refundIndex !== -1) {
+        refunds[refundIndex].status = 'rejected';
+        refunds[refundIndex].notes = reason;
+
+        localStorage.setItem('customerRefunds', JSON.stringify(refunds));
+        alert('❌ تم رفض الطلب');
+        loadRefunds();
+    }
+}
+
+function completeRefund(refundId) {
+    if (!confirm('هل تم تحويل المبلغ للعميل؟')) return;
+
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const refundIndex = refunds.findIndex(r => r.id === refundId);
+
+    if (refundIndex !== -1) {
+        refunds[refundIndex].status = 'completed';
+        refunds[refundIndex].processedTime = new Date().toLocaleString('ar-SA');
+
+        localStorage.setItem('customerRefunds', JSON.stringify(refunds));
+        alert('✅ تم تحديث الحالة إلى مكتمل');
+        loadRefunds();
+    }
+}
+
+function deleteRefund(refundId) {
+    if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
+
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const filteredRefunds = refunds.filter(r => r.id !== refundId);
+
+    localStorage.setItem('customerRefunds', JSON.stringify(filteredRefunds));
+    alert('✅ تم حذف الطلب');
+    loadRefunds();
+}
+
+function viewRefundDetails(refundId) {
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const refund = refunds.find(r => r.id === refundId);
+
+    if (!refund) return;
+
+    const details = `
+💰 تفاصيل طلب الاسترداد
+━━━━━━━━━━━━━━━━━━━━━━
+الموظف: ${refund.employeeName}
+رقم الحجز: ${refund.bookingNumber}
+اسم العميل: ${refund.customerName}
+المبلغ: ${refund.amount} ر.س
+
+السبب: ${refund.reason}
+
+التفاصيل:
+${refund.details}
+
+وقت الطلب: ${refund.submitTime}
+${refund.approvedTime ? 'وقت الموافقة: ' + refund.approvedTime : ''}
+${refund.approvedBy ? 'الموافق: ' + refund.approvedBy : ''}
+${refund.processedTime ? 'وقت المعالجة: ' + refund.processedTime : ''}
+${refund.notes ? 'ملاحظات: ' + refund.notes : ''}
+
+الحالة: ${refund.status === 'pending' ? 'قيد الانتظار' :
+          refund.status === 'approved' ? 'تمت الموافقة' :
+          refund.status === 'completed' ? 'مكتمل' : 'مرفوض'}
+    `;
+
+    alert(details);
+}
+
+function exportRefunds() {
+    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    if (refunds.length === 0) {
+        alert('لا توجد بيانات للتصدير');
+        return;
+    }
+
+    const csvContent = 'data:text/csv;charset=utf-8,'
+        + 'رقم الطلب,الموظف,رقم الحجز,العميل,المبلغ,السبب,التفاصيل,وقت الطلب,الحالة\n'
+        + refunds.map(r =>
+            `${r.id},${r.employeeName},${r.bookingNumber},${r.customerName},${r.amount},${r.reason},"${r.details}",${r.submitTime},${r.status}`
+        ).join('\n');
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `refunds_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// ==================== CONVERSATIONS MANAGEMENT ====================
+
+function loadConversations(filter = 'all') {
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const container = document.getElementById('conversationsManagement');
+
+    let filteredConversations = conversations;
+    if (filter !== 'all') {
+        if (filter === 'warning') {
+            filteredConversations = conversations.filter(c => c.requiredAction !== 'لا يوجد' && c.status === 'pending');
+        } else if (filter === 'resolved') {
+            filteredConversations = conversations.filter(c => c.status === 'completed');
+        }
+    }
+
+    if (filteredConversations.length === 0) {
+        container.innerHTML = '<div class="no-data">📭 لا توجد محادثات مسجلة</div>';
+        return;
+    }
+
+    let html = `
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>رقم المتابعة</th>
+                        <th>الموظف</th>
+                        <th>رقم العميل</th>
+                        <th>النوع</th>
+                        <th>الموضوع</th>
+                        <th>الملخص</th>
+                        <th>الإجراء المطلوب</th>
+                        <th>وقت التسجيل</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    filteredConversations.forEach(conv => {
+        const statusBadge = conv.status === 'pending' ? 'status-pending' : 'status-resolved';
+        const statusText = conv.status === 'pending' ? 'قيد المراجعة' : 'مكتمل';
+        const actionColor = conv.requiredAction === 'إجراء عاجل' ? 'color: red; font-weight: 700;' :
+                          conv.requiredAction === 'متابعة من المشرف' ? 'color: orange; font-weight: 600;' :
+                          'color: green;';
+
+        html += `
+            <tr>
+                <td style="font-weight: 600;">#${conv.id.slice(-6)}</td>
+                <td>${conv.employeeName}</td>
+                <td>${conv.customerPhone}</td>
+                <td>${conv.type}</td>
+                <td>${conv.subject}</td>
+                <td>${conv.summary.substring(0, 60)}${conv.summary.length > 60 ? '...' : ''}</td>
+                <td style="${actionColor}">${conv.requiredAction}</td>
+                <td style="font-size: 0.85rem; color: #666;">${conv.recordTime}</td>
+                <td><span class="status-badge ${statusBadge}">${statusText}</span></td>
+                <td>
+                    <button class="btn-action btn-view" onclick="viewConversationDetails('${conv.id}')" title="عرض">👁️</button>
+                    ${conv.status === 'pending' ? `
+                        <button class="btn-action btn-success" onclick="completeConversation('${conv.id}')" title="اكتمل">✅</button>
+                    ` : ''}
+                    <button class="btn-action btn-danger" onclick="deleteConversation('${conv.id}')" title="حذف">🗑️</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function filterConversations(status) {
+    // Update active tab
+    const tabs = document.querySelectorAll('#conversations .tab-btn');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+
+    loadConversations(status);
+}
+
+function completeConversation(convId) {
+    const action = prompt('ما الإجراء الذي تم اتخاذه؟');
+    if (!action) return;
+
+    const supervisorName = prompt('اسم المراجع:');
+    if (!supervisorName) return;
+
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const convIndex = conversations.findIndex(c => c.id === convId);
+
+    if (convIndex !== -1) {
+        conversations[convIndex].status = 'completed';
+        conversations[convIndex].reviewTime = new Date().toLocaleString('ar-SA');
+        conversations[convIndex].reviewedBy = supervisorName;
+        conversations[convIndex].actionTaken = action;
+
+        localStorage.setItem('customerConversations', JSON.stringify(conversations));
+        alert('✅ تم تحديث الحالة إلى مكتمل');
+        loadConversations();
+    }
+}
+
+function deleteConversation(convId) {
+    if (!confirm('هل أنت متأكد من حذف هذه المتابعة؟')) return;
+
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const filteredConversations = conversations.filter(c => c.id !== convId);
+
+    localStorage.setItem('customerConversations', JSON.stringify(filteredConversations));
+    alert('✅ تم حذف المتابعة');
+    loadConversations();
+}
+
+function viewConversationDetails(convId) {
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const conv = conversations.find(c => c.id === convId);
+
+    if (!conv) return;
+
+    const details = `
+💬 تفاصيل متابعة المحادثة
+━━━━━━━━━━━━━━━━━━━━━━
+الموظف: ${conv.employeeName}
+رقم العميل: ${conv.customerPhone}
+النوع: ${conv.type}
+الموضوع: ${conv.subject}
+
+ملخص المحادثة:
+${conv.summary}
+
+الإجراء المطلوب: ${conv.requiredAction}
+وقت التسجيل: ${conv.recordTime}
+${conv.reviewTime ? 'وقت المراجعة: ' + conv.reviewTime : ''}
+${conv.reviewedBy ? 'المراجع: ' + conv.reviewedBy : ''}
+${conv.actionTaken ? 'الإجراء المتخذ: ' + conv.actionTaken : ''}
+
+الحالة: ${conv.status === 'pending' ? 'قيد المراجعة' : 'مكتمل'}
+    `;
+
+    alert(details);
+}
+
+function exportConversations() {
+    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    if (conversations.length === 0) {
+        alert('لا توجد بيانات للتصدير');
+        return;
+    }
+
+    const csvContent = 'data:text/csv;charset=utf-8,'
+        + 'رقم المتابعة,الموظف,رقم العميل,النوع,الموضوع,الملخص,الإجراء المطلوب,وقت التسجيل,الحالة\n'
+        + conversations.map(c =>
+            `${c.id},${c.employeeName},${c.customerPhone},${c.type},${c.subject},"${c.summary}",${c.requiredAction},${c.recordTime},${c.status}`
+        ).join('\n');
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `conversations_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 // ==================== TEAM MANAGEMENT ====================
