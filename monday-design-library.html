@@ -343,6 +343,122 @@
         .card {
             animation: fadeIn 0.5s ease-out;
         }
+
+        /* Modal for file data */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .data-info {
+            background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-right: 4px solid var(--gold);
+        }
+
+        .data-info h3 {
+            color: var(--primary-purple);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+            direction: ltr;
+            text-align: left;
+            background: #f8f9fa;
+        }
+
+        .data-textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+        }
+
+        .copy-btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .copy-btn-container button {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -413,6 +529,37 @@
             <button class="btn btn-success" onclick="saveDesignNotes()" style="margin-top: 1rem; width: 100%;">
                 💾 حفظ الملاحظات
             </button>
+        </div>
+    </div>
+
+    <!-- Modal for showing file data -->
+    <div id="fileDataModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">📋 بيانات الملف</div>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="data-info">
+                <h3>📌 تعليمات للمطور</h3>
+                <p><strong>اسم الملف:</strong> <span id="modalFileName"></span></p>
+                <p><strong>نوع الملف:</strong> <span id="modalFileType"></span></p>
+                <p><strong>الحجم:</strong> <span id="modalFileSize"></span></p>
+                <p style="margin-top: 1rem;">
+                    <strong>الخطوات:</strong><br>
+                    1️⃣ اضغط على زر "نسخ البيانات" أدناه<br>
+                    2️⃣ البيانات ستُنسخ تلقائياً<br>
+                    3️⃣ الصق البيانات في رسالة للمطور
+                </p>
+            </div>
+            <textarea id="fileDataTextarea" class="data-textarea" readonly></textarea>
+            <div class="copy-btn-container">
+                <button class="btn btn-success" onclick="copyFileData()">
+                    📋 نسخ البيانات
+                </button>
+                <button class="btn btn-primary" onclick="closeModal()">
+                    ❌ إغلاق
+                </button>
+            </div>
         </div>
     </div>
 
@@ -579,6 +726,9 @@
                             <button onclick="viewWireframe(${wireframe.id})" class="btn btn-primary">
                                 👁️ معاينة
                             </button>
+                            <button onclick="showFileData(${wireframe.id}, 'wireframe')" class="btn" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;">
+                                📋 نسخ البيانات
+                            </button>
                             <button onclick="downloadFile(${wireframe.id}, 'wireframe')" class="btn btn-download">
                                 ⬇️ تحميل
                             </button>
@@ -624,6 +774,9 @@
                         <div class="item-actions">
                             <button onclick="viewImage(${image.id})" class="btn btn-primary">
                                 👁️ عرض
+                            </button>
+                            <button onclick="showFileData(${image.id}, 'brand')" class="btn" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;">
+                                📋 نسخ البيانات
                             </button>
                             <button onclick="downloadFile(${image.id}, 'brand')" class="btn btn-download">
                                 ⬇️ تحميل
@@ -864,6 +1017,61 @@
             const totalSizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
             document.getElementById('totalSize').textContent = totalSizeInMB + ' MB';
         }
+
+        // Show File Data in Modal
+        function showFileData(id, type) {
+            const designData = getDesignLibraryData();
+            const file = type === 'wireframe'
+                ? designData.wireframes.find(w => w.id === id)
+                : designData.brandIdentity.find(img => img.id === id);
+
+            if (!file) {
+                alert('❌ لم يتم العثور على الملف!');
+                return;
+            }
+
+            // Populate modal
+            document.getElementById('modalFileName').textContent = file.name;
+            document.getElementById('modalFileType').textContent = file.type === 'pdf' ? 'PDF Document' : 'Image';
+            document.getElementById('modalFileSize').textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+            document.getElementById('fileDataTextarea').value = file.data;
+
+            // Show modal
+            document.getElementById('fileDataModal').classList.add('active');
+        }
+
+        // Copy File Data to Clipboard
+        function copyFileData() {
+            const textarea = document.getElementById('fileDataTextarea');
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+
+            try {
+                document.execCommand('copy');
+                alert('✅ تم نسخ البيانات!\n\nالآن الصق البيانات في رسالة للمطور.');
+            } catch (err) {
+                // Fallback for older browsers
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    alert('✅ تم نسخ البيانات!\n\nالآن الصق البيانات في رسالة للمطور.');
+                }).catch(() => {
+                    alert('⚠️ حدث خطأ في النسخ. حاول تحديد النص ونسخه يدوياً (Ctrl+C)');
+                });
+            }
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('fileDataModal').classList.remove('active');
+            document.getElementById('fileDataTextarea').value = '';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('fileDataModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
 
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
