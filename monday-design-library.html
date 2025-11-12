@@ -443,32 +443,55 @@
             const file = event.target.files[0];
             if (!file) return;
 
+            console.log('PDF File selected:', file.name, 'Size:', file.size, 'Type:', file.type);
+
             if (file.type !== 'application/pdf') {
-                alert('⚠️ يرجى رفع ملف PDF فقط');
+                alert('⚠️ يرجى رفع ملف PDF فقط\nنوع الملف: ' + file.type);
                 return;
             }
 
             if (file.size > 10 * 1024 * 1024) {
-                alert('⚠️ حجم الملف كبير جداً. الحد الأقصى 10MB');
+                const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                alert('⚠️ حجم الملف كبير جداً: ' + sizeInMB + ' MB\nالحد الأقصى: 10 MB');
                 return;
             }
 
             const reader = new FileReader();
-            reader.onload = function(e) {
-                const designData = getDesignLibraryData();
-                const wireframe = {
-                    id: Date.now(),
-                    name: file.name,
-                    uploadDate: new Date().toISOString(),
-                    data: e.target.result,
-                    size: file.size,
-                    type: 'pdf'
-                };
 
-                designData.wireframes.push(wireframe);
-                saveDesignLibraryData(designData);
-                displayWireframes();
-                alert('✅ تم رفع Wireframe بنجاح!');
+            reader.onerror = function(error) {
+                console.error('Error reading file:', error);
+                alert('❌ حدث خطأ في قراءة الملف. حاول مرة أخرى.');
+            };
+
+            reader.onload = function(e) {
+                try {
+                    const designData = getDesignLibraryData();
+                    const wireframe = {
+                        id: Date.now(),
+                        name: file.name,
+                        uploadDate: new Date().toISOString(),
+                        data: e.target.result,
+                        size: file.size,
+                        type: 'pdf'
+                    };
+
+                    designData.wireframes.push(wireframe);
+
+                    try {
+                        saveDesignLibraryData(designData);
+                        displayWireframes();
+                        alert('✅ تم رفع Wireframe بنجاح!');
+                        console.log('PDF uploaded successfully:', file.name);
+                    } catch (storageError) {
+                        console.error('LocalStorage error:', storageError);
+                        alert('❌ خطأ في الحفظ!\n\nالسبب المحتمل: localStorage ممتلئ.\n\nالحل: احذف بعض الملفات القديمة أو استخدم ملف PDF أصغر حجماً.');
+                        designData.wireframes.pop();
+                        displayWireframes();
+                    }
+                } catch (error) {
+                    console.error('Error processing file:', error);
+                    alert('❌ حدث خطأ في معالجة الملف: ' + error.message);
+                }
             };
 
             reader.readAsDataURL(file);
