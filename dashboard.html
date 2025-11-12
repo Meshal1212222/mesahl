@@ -766,6 +766,24 @@
                        placeholder="البحث في المكتبة... (المشاكل، الحلول، الإجراءات)"
                        oninput="performSearch()">
             </div>
+
+            <!-- Analytics Link -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="employee-analytics.html" style="
+                    display: inline-block;
+                    padding: 1rem 2rem;
+                    background: linear-gradient(135deg, #FFD700, #FFA500);
+                    color: #333;
+                    text-decoration: none;
+                    border-radius: 50px;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+                    transition: all 0.3s;
+                " onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    📊 عرض تحليلات الأداء الشهرية
+                </a>
+            </div>
         </div>
     </header>
 
@@ -1683,6 +1701,826 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', init);
+
+        // ==================== REPORTS SYSTEM ====================
+
+        function showReportModal() {
+            document.getElementById('reportModal').style.display = 'flex';
+        }
+
+        function closeReportModal() {
+            document.getElementById('reportModal').style.display = 'none';
+            document.getElementById('reportForm').reset();
+        }
+
+        function submitReport(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('reportEmployeeName').value.trim();
+            const bookingNumber = document.getElementById('reportBookingNumber').value.trim();
+            const reportDetails = document.getElementById('reportDetails').value.trim();
+
+            if (!employeeName || !reportDetails) {
+                alert('⚠️ يرجى تعبئة الحقول المطلوبة');
+                return;
+            }
+
+            const report = {
+                id: 'report_' + Date.now(),
+                employeeName: employeeName,
+                bookingNumber: bookingNumber,
+                reportDetails: reportDetails,
+                submitTime: new Date().toLocaleString('ar-SA'),
+                operationDate: new Date().toLocaleDateString('ar-SA'),
+                status: 'pending',
+                receivedTime: null,
+                resolvedTime: null,
+                receivedBy: null,
+                resolutionSummary: null,
+                review: null
+            };
+
+            const reports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+            reports.unshift(report);
+            localStorage.setItem('customerReports', JSON.stringify(reports));
+
+            showNotification('✅ تم رفع البلاغ بنجاح!');
+            closeReportModal();
+        }
+
+        // ==================== REFUNDS SYSTEM ====================
+
+        function showRefundModal() {
+            document.getElementById('refundModal').style.display = 'flex';
+        }
+
+        function closeRefundModal() {
+            document.getElementById('refundModal').style.display = 'none';
+            document.getElementById('refundForm').reset();
+        }
+
+        function submitRefund(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('refundEmployeeName').value.trim();
+            const customerNumber = document.getElementById('refundCustomerNumber').value.trim();
+            const bookingNumber = document.getElementById('refundBookingNumber').value.trim();
+            const amount = document.getElementById('refundAmount').value.trim();
+            const reason = document.getElementById('refundReason').value.trim();
+
+            if (!employeeName || !customerNumber || !amount || !reason) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const refund = {
+                id: 'refund_' + Date.now(),
+                employeeName: employeeName,
+                customerNumber: customerNumber,
+                bookingNumber: bookingNumber,
+                amount: amount,
+                reason: reason,
+                requestDate: new Date().toLocaleDateString('ar-SA'),
+                status: 'pending',
+                approvedBy: null,
+                approvalDate: null,
+                notes: null
+            };
+
+            const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+            refunds.unshift(refund);
+            localStorage.setItem('customerRefunds', JSON.stringify(refunds));
+
+            showNotification('✅ تم تسجيل طلب الاسترداد بنجاح!');
+            closeRefundModal();
+        }
+
+        // ==================== CONVERSATIONS SYSTEM ====================
+
+        function showConversationModal() {
+            document.getElementById('conversationModal').style.display = 'flex';
+        }
+
+        function closeConversationModal() {
+            document.getElementById('conversationModal').style.display = 'none';
+            document.getElementById('conversationForm').reset();
+        }
+
+        function submitConversation(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('convEmployeeName').value.trim();
+            const customerNumber = document.getElementById('convCustomerNumber').value.trim();
+            const conversationType = document.getElementById('conversationType').value;
+            const conversationDetails = document.getElementById('conversationDetails').value.trim();
+
+            if (!employeeName || !customerNumber || !conversationType || !conversationDetails) {
+                alert('⚠️ يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            const conversation = {
+                id: 'conv_' + Date.now(),
+                employeeName: employeeName,
+                customerNumber: customerNumber,
+                conversationType: conversationType,
+                conversationDetails: conversationDetails,
+                date: new Date().toLocaleDateString('ar-SA'),
+                time: new Date().toLocaleTimeString('ar-SA'),
+                status: 'pending',
+                followUpRequired: false,
+                notes: null
+            };
+
+            const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+            conversations.unshift(conversation);
+            localStorage.setItem('customerConversations', JSON.stringify(conversations));
+
+            showNotification('✅ تم تسجيل المحادثة بنجاح!');
+            closeConversationModal();
+        }
+
+        // ==================== SALES SYSTEM ====================
+
+        function showSalesModal() {
+            document.getElementById('salesModal').style.display = 'flex';
+        }
+
+        function closeSalesModal() {
+            document.getElementById('salesModal').style.display = 'none';
+            document.getElementById('salesForm').reset();
+        }
+
+        function submitSales(event) {
+            event.preventDefault();
+
+            const employeeName = document.getElementById('salesEmployeeName').value.trim();
+            const customerNumber = document.getElementById('salesCustomerNumber').value.trim();
+            const bookingNumber = document.getElementById('salesBookingNumber').value.trim();
+            const action = document.getElementById('salesAction').value;
+            const status = document.getElementById('salesStatus').value;
+            const notes = document.getElementById('salesNotes').value.trim();
+
+            if (!employeeName || !customerNumber || !action) {
+                alert('⚠️ يرجى تعبئة الحقول المطلوبة');
+                return;
+            }
+
+            const sale = {
+                id: 'sale_' + Date.now(),
+                employeeName: employeeName,
+                customerNumber: customerNumber,
+                bookingNumber: bookingNumber,
+                action: action,
+                status: status,
+                notes: notes,
+                date: new Date().toLocaleDateString('ar-SA'),
+                time: new Date().toLocaleTimeString('ar-SA')
+            };
+
+            const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+            sales.unshift(sale);
+            localStorage.setItem('customerSales', JSON.stringify(sales));
+
+            showNotification('✅ تم تسجيل عملية المبيعات بنجاح!');
+            closeSalesModal();
+        }
     </script>
+
+    <!-- Quick Action Buttons for Employees -->
+    <button onclick="showReportModal()" style="
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FF0000, #CC0000);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255,0,0,0.4);
+        z-index: 10000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="رفع بلاغ">
+        🚨
+    </button>
+
+    <button onclick="showRefundModal()" style="
+        position: fixed;
+        bottom: 100px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FFA500, #FF8C00);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255,165,0,0.4);
+        z-index: 10000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="طلب استرداد">
+        💰
+    </button>
+
+    <button onclick="showConversationModal()" style="
+        position: fixed;
+        bottom: 170px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4B3A8C, #6B4FB5);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(75,58,140,0.4);
+        z-index: 10000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="متابعة محادثة">
+        💬
+    </button>
+
+    <button onclick="showSalesModal()" style="
+        position: fixed;
+        bottom: 240px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #28A745, #20C997);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(40,167,69,0.4);
+        z-index: 10000;
+        transition: all 0.3s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="تسجيل مبيعات">
+        📈
+    </button>
+
+    <!-- Report Modal -->
+    <div id="reportModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 20000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #FF0000; font-size: 1.5rem;">🚨 رفع بلاغ جديد</h2>
+                <button onclick="closeReportModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="reportForm" onsubmit="submitReport(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسمك <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="reportEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم الحجز
+                    </label>
+                    <input type="text" id="reportBookingNumber" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تفاصيل البلاغ <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="reportDetails" required rows="4" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #FF0000, #CC0000);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        📤 حفظ البلاغ
+                    </button>
+                    <button type="button" onclick="closeReportModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Refund Modal -->
+    <div id="refundModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 20000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #FFA500; font-size: 1.5rem;">💰 طلب استرداد</h2>
+                <button onclick="closeRefundModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="refundForm" onsubmit="submitRefund(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسمك <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="refundEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="refundCustomerNumber" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم الحجز
+                    </label>
+                    <input type="text" id="refundBookingNumber" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        المبلغ المطلوب <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="refundAmount" required placeholder="مثال: 500 ريال" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        سبب الاسترداد <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="refundReason" required rows="3" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #FFA500, #FF8C00);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        📤 حفظ الطلب
+                    </button>
+                    <button type="button" onclick="closeRefundModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Conversation Modal -->
+    <div id="conversationModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 20000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #4B3A8C; font-size: 1.5rem;">💬 متابعة محادثة</h2>
+                <button onclick="closeConversationModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="conversationForm" onsubmit="submitConversation(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسمك <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="convEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="convCustomerNumber" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        نوع المحادثة <span style="color: red;">*</span>
+                    </label>
+                    <select id="conversationType" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر نوع المحادثة</option>
+                        <option value="استفسار">استفسار</option>
+                        <option value="شكوى">شكوى</option>
+                        <option value="متابعة">متابعة</option>
+                        <option value="طلب خاص">طلب خاص</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        تفاصيل المحادثة <span style="color: red;">*</span>
+                    </label>
+                    <textarea id="conversationDetails" required rows="4" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #4B3A8C, #6B4FB5);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        📤 حفظ المحادثة
+                    </button>
+                    <button type="button" onclick="closeConversationModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sales Modal -->
+    <div id="salesModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 20000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #28A745; font-size: 1.5rem;">📈 تسجيل عملية مبيعات</h2>
+                <button onclick="closeSalesModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #666;
+                ">✕</button>
+            </div>
+
+            <form id="salesForm" onsubmit="submitSales(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        اسمك <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="salesEmployeeName" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم العميل <span style="color: red;">*</span>
+                    </label>
+                    <input type="text" id="salesCustomerNumber" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        رقم الحجز
+                    </label>
+                    <input type="text" id="salesBookingNumber" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الإجراء المتخذ <span style="color: red;">*</span>
+                    </label>
+                    <select id="salesAction" required style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="">اختر الإجراء</option>
+                        <option value="تم التواصل">تم التواصل</option>
+                        <option value="تم الحجز">تم الحجز</option>
+                        <option value="لا يرد">لا يرد</option>
+                        <option value="رقم خاطئ">رقم خاطئ</option>
+                        <option value="متابعة لاحقة">متابعة لاحقة</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        الحالة
+                    </label>
+                    <select id="salesStatus" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                    ">
+                        <option value="قيد المتابعة">قيد المتابعة</option>
+                        <option value="مكتمل">مكتمل</option>
+                        <option value="ملغي">ملغي</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333;">
+                        ملاحظات إضافية
+                    </label>
+                    <textarea id="salesNotes" rows="3" style="
+                        width: 100%;
+                        padding: 0.8rem;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-family: 'Cairo', sans-serif;
+                        font-size: 1rem;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #28A745, #20C997);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        📤 حفظ العملية
+                    </button>
+                    <button type="button" onclick="closeSalesModal()" style="
+                        flex: 1;
+                        padding: 1rem;
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        font-family: 'Cairo', sans-serif;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

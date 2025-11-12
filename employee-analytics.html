@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل أداء الموظفين الشهري | Golden Host</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="reports-data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #4B3A8C;
+            --deep-purple: #362666;
+            --primary-pink: #E91E8C;
+            --gold: #FFD700;
+            --dark-bg: #1A1A2E;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #FF0000;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-purple);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(75, 58, 140, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .employee-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid var(--primary-purple);
+        }
+
+        .employee-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .employee-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+        }
+
+        .employee-rank {
+            padding: 0.5rem 1.5rem;
+            background: var(--gold);
+            color: #333;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .chart-canvas {
+            max-height: 300px;
+        }
+
+        .monthly-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .monthly-table th,
+        .monthly-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .monthly-table th {
+            background: var(--primary-purple);
+            color: white;
+            font-weight: 700;
+        }
+
+        .monthly-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .performance-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .badge-excellent {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-good {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .badge-average {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-poor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .employee-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 تحليل أداء الموظفين الشهري</h1>
+            <p>نظام متقدم لتتبع وتحليل أداء الموظفين خلال الأشهر الماضية</p>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>الموظف</label>
+                <select id="employeeFilter" onchange="filterData()">
+                    <option value="all">الكل</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>الشهر</label>
+                <select id="monthFilter" onchange="filterData()">
+                    <option value="all">جميع الأشهر</option>
+                    <option value="0">يناير</option>
+                    <option value="1">فبراير</option>
+                    <option value="2">مارس</option>
+                    <option value="3">أبريل</option>
+                    <option value="4">مايو</option>
+                    <option value="5">يونيو</option>
+                    <option value="6">يوليو</option>
+                    <option value="7">أغسطس</option>
+                    <option value="8">سبتمبر</option>
+                    <option value="9">أكتوبر</option>
+                    <option value="10">نوفمبر</option>
+                    <option value="11">ديسمبر</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>السنة</label>
+                <select id="yearFilter" onchange="filterData()">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="refreshAnalytics()">🔄 تحديث البيانات</button>
+            <button class="btn" onclick="exportToExcel()" style="background: linear-gradient(135deg, #28A745, #20C997);">📥 تصدير Excel</button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number" id="totalReports">0</div>
+                <div class="label">🚨 إجمالي البلاغات</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #FFA500, #FF8C00);">
+                <div class="number" id="totalRefunds">0</div>
+                <div class="label">💰 إجمالي الاستردادات</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #4B3A8C, #6B4FB5);">
+                <div class="number" id="totalConversations">0</div>
+                <div class="label">💬 إجمالي المحادثات</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #28A745, #20C997);">
+                <div class="number" id="totalSales">0</div>
+                <div class="label">📈 إجمالي المبيعات</div>
+            </div>
+        </div>
+
+        <div id="employeeAnalytics"></div>
+    </div>
+
+    <script>
+        let allData = {
+            reports: [],
+            refunds: [],
+            conversations: [],
+            sales: []
+        };
+
+        const monthNames = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+                            'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+
+        function init() {
+            loadAllData();
+            populateEmployeeFilter();
+            renderAnalytics();
+        }
+
+        function loadAllData() {
+            // Load reports (historical + new)
+            const historicalReports = typeof ALL_REPORTS !== 'undefined' ? ALL_REPORTS : [];
+            const newReports = JSON.parse(localStorage.getItem('customerReports') || '[]');
+            allData.reports = [...newReports, ...historicalReports];
+
+            // Load refunds
+            allData.refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+
+            // Load conversations
+            allData.conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+
+            // Load sales
+            allData.sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+        }
+
+        function populateEmployeeFilter() {
+            const employees = new Set();
+
+            allData.reports.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+            allData.refunds.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+            allData.conversations.forEach(c => employees.add(c.employeeName || 'غير محدد'));
+            allData.sales.forEach(s => employees.add(s.employeeName || 'غير محدد'));
+
+            const select = document.getElementById('employeeFilter');
+            Array.from(employees).sort().forEach(emp => {
+                const option = document.createElement('option');
+                option.value = emp;
+                option.textContent = emp;
+                select.appendChild(option);
+            });
+        }
+
+        function parseDate(dateString) {
+            if (!dateString) return null;
+
+            // Try different date formats
+            // Format: "26/08/2025" or "26/08/2025 09:10"
+            const parts = dateString.split(/[\s\/]/);
+            if (parts.length >= 3) {
+                const day = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1;
+                const year = parseInt(parts[2]);
+                return new Date(year, month, day);
+            }
+
+            return new Date(dateString);
+        }
+
+        function filterDataByDate(data, month, year) {
+            if (!data || data.length === 0) return [];
+
+            return data.filter(item => {
+                const dateStr = item.operationDate || item.requestDate || item.date || item.submitTime;
+                if (!dateStr) return false;
+
+                const date = parseDate(dateStr);
+                if (!date || isNaN(date.getTime())) return false;
+
+                const itemMonth = date.getMonth();
+                const itemYear = date.getFullYear();
+
+                const monthMatch = month === 'all' || itemMonth === parseInt(month);
+                const yearMatch = parseInt(year) === itemYear;
+
+                return monthMatch && yearMatch;
+            });
+        }
+
+        function filterData() {
+            renderAnalytics();
+        }
+
+        function renderAnalytics() {
+            const employeeFilter = document.getElementById('employeeFilter').value;
+            const monthFilter = document.getElementById('monthFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
+
+            // Filter data
+            let reports = allData.reports;
+            let refunds = allData.refunds;
+            let conversations = allData.conversations;
+            let sales = allData.sales;
+
+            // Filter by date
+            reports = filterDataByDate(reports, monthFilter, yearFilter);
+            refunds = filterDataByDate(refunds, monthFilter, yearFilter);
+            conversations = filterDataByDate(conversations, monthFilter, yearFilter);
+            sales = filterDataByDate(sales, monthFilter, yearFilter);
+
+            // Filter by employee
+            if (employeeFilter !== 'all') {
+                reports = reports.filter(r => r.employeeName === employeeFilter);
+                refunds = refunds.filter(r => r.employeeName === employeeFilter);
+                conversations = conversations.filter(c => c.employeeName === employeeFilter);
+                sales = sales.filter(s => s.employeeName === employeeFilter);
+            }
+
+            // Update stats
+            document.getElementById('totalReports').textContent = reports.length;
+            document.getElementById('totalRefunds').textContent = refunds.length;
+            document.getElementById('totalConversations').textContent = conversations.length;
+            document.getElementById('totalSales').textContent = sales.length;
+
+            // Render employee sections
+            const container = document.getElementById('employeeAnalytics');
+            container.innerHTML = '';
+
+            if (employeeFilter === 'all') {
+                // Show all employees
+                const employees = new Set();
+                reports.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+                refunds.forEach(r => employees.add(r.employeeName || 'غير محدد'));
+                conversations.forEach(c => employees.add(c.employeeName || 'غير محدد'));
+                sales.forEach(s => employees.add(s.employeeName || 'غير محدد'));
+
+                const employeePerformance = Array.from(employees).map(emp => {
+                    const empReports = reports.filter(r => r.employeeName === emp);
+                    const empRefunds = refunds.filter(r => r.employeeName === emp);
+                    const empConversations = conversations.filter(c => c.employeeName === emp);
+                    const empSales = sales.filter(s => s.employeeName === emp);
+                    const total = empReports.length + empRefunds.length + empConversations.length + empSales.length;
+
+                    return {
+                        name: emp,
+                        reports: empReports,
+                        refunds: empRefunds,
+                        conversations: empConversations,
+                        sales: empSales,
+                        total: total
+                    };
+                }).sort((a, b) => b.total - a.total);
+
+                employeePerformance.forEach((emp, index) => {
+                    renderEmployeeSection(emp, index + 1);
+                });
+            } else {
+                // Show single employee
+                renderEmployeeSection({
+                    name: employeeFilter,
+                    reports: reports,
+                    refunds: refunds,
+                    conversations: conversations,
+                    sales: sales,
+                    total: reports.length + refunds.length + conversations.length + sales.length
+                }, 1);
+            }
+        }
+
+        function renderEmployeeSection(employee, rank) {
+            const section = document.createElement('div');
+            section.className = 'employee-section';
+
+            const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '👤';
+
+            section.innerHTML = `
+                <div class="employee-header">
+                    <div class="employee-name">${rankEmoji} ${employee.name}</div>
+                    <div class="employee-rank">الترتيب: #${rank}</div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">توزيع الأنشطة</div>
+                        <canvas id="activity-chart-${employee.name.replace(/\s/g, '-')}" class="chart-canvas"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">الأداء الشهري</div>
+                        <canvas id="monthly-chart-${employee.name.replace(/\s/g, '-')}" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 2rem;">
+                    <div class="chart-title">جدول الأداء التفصيلي</div>
+                    <table class="monthly-table">
+                        <thead>
+                            <tr>
+                                <th>الشهر</th>
+                                <th>🚨 البلاغات</th>
+                                <th>💰 الاستردادات</th>
+                                <th>💬 المحادثات</th>
+                                <th>📈 المبيعات</th>
+                                <th>المجموع</th>
+                                <th>التقييم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="monthly-table-${employee.name.replace(/\s/g, '-')}">
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            document.getElementById('employeeAnalytics').appendChild(section);
+
+            // Render charts
+            renderActivityChart(employee);
+            renderMonthlyChart(employee);
+            renderMonthlyTable(employee);
+        }
+
+        function renderActivityChart(employee) {
+            const canvasId = `activity-chart-${employee.name.replace(/\s/g, '-')}`;
+            const ctx = document.getElementById(canvasId);
+            if (!ctx) return;
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['البلاغات', 'الاستردادات', 'المحادثات', 'المبيعات'],
+                    datasets: [{
+                        data: [
+                            employee.reports.length,
+                            employee.refunds.length,
+                            employee.conversations.length,
+                            employee.sales.length
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.8)',
+                            'rgba(255, 165, 0, 0.8)',
+                            'rgba(75, 58, 140, 0.8)',
+                            'rgba(40, 167, 69, 0.8)'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Cairo',
+                                    size: 12
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderMonthlyChart(employee) {
+            const canvasId = `monthly-chart-${employee.name.replace(/\s/g, '-')}`;
+            const ctx = document.getElementById(canvasId);
+            if (!ctx) return;
+
+            // Get monthly data
+            const monthlyData = {};
+            for (let i = 0; i < 12; i++) {
+                monthlyData[i] = { reports: 0, refunds: 0, conversations: 0, sales: 0 };
+            }
+
+            employee.reports.forEach(r => {
+                const date = parseDate(r.operationDate || r.submitTime);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].reports++;
+                }
+            });
+
+            employee.refunds.forEach(r => {
+                const date = parseDate(r.requestDate);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].refunds++;
+                }
+            });
+
+            employee.conversations.forEach(c => {
+                const date = parseDate(c.date);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].conversations++;
+                }
+            });
+
+            employee.sales.forEach(s => {
+                const date = parseDate(s.date);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].sales++;
+                }
+            });
+
+            const months = Object.keys(monthlyData).map(m => monthNames[parseInt(m)]);
+            const totals = Object.values(monthlyData).map(d => d.reports + d.refunds + d.conversations + d.sales);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'إجمالي الأنشطة',
+                        data: totals,
+                        borderColor: 'rgba(75, 58, 140, 1)',
+                        backgroundColor: 'rgba(75, 58, 140, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                font: {
+                                    family: 'Cairo'
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Cairo'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    family: 'Cairo'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderMonthlyTable(employee) {
+            const tableId = `monthly-table-${employee.name.replace(/\s/g, '-')}`;
+            const tbody = document.getElementById(tableId);
+            if (!tbody) return;
+
+            // Get monthly data
+            const monthlyData = {};
+            for (let i = 0; i < 12; i++) {
+                monthlyData[i] = { reports: 0, refunds: 0, conversations: 0, sales: 0 };
+            }
+
+            employee.reports.forEach(r => {
+                const date = parseDate(r.operationDate || r.submitTime);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].reports++;
+                }
+            });
+
+            employee.refunds.forEach(r => {
+                const date = parseDate(r.requestDate);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].refunds++;
+                }
+            });
+
+            employee.conversations.forEach(c => {
+                const date = parseDate(c.date);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].conversations++;
+                }
+            });
+
+            employee.sales.forEach(s => {
+                const date = parseDate(s.date);
+                if (date && !isNaN(date.getTime())) {
+                    monthlyData[date.getMonth()].sales++;
+                }
+            });
+
+            tbody.innerHTML = '';
+
+            Object.keys(monthlyData).forEach(month => {
+                const data = monthlyData[month];
+                const total = data.reports + data.refunds + data.conversations + data.sales;
+
+                let badge = '';
+                let badgeClass = '';
+                if (total >= 50) {
+                    badge = 'ممتاز';
+                    badgeClass = 'badge-excellent';
+                } else if (total >= 30) {
+                    badge = 'جيد';
+                    badgeClass = 'badge-good';
+                } else if (total >= 10) {
+                    badge = 'متوسط';
+                    badgeClass = 'badge-average';
+                } else if (total > 0) {
+                    badge = 'ضعيف';
+                    badgeClass = 'badge-poor';
+                } else {
+                    badge = 'لا توجد بيانات';
+                    badgeClass = '';
+                }
+
+                const row = `
+                    <tr>
+                        <td><strong>${monthNames[month]}</strong></td>
+                        <td>${data.reports}</td>
+                        <td>${data.refunds}</td>
+                        <td>${data.conversations}</td>
+                        <td>${data.sales}</td>
+                        <td><strong>${total}</strong></td>
+                        <td><span class="performance-badge ${badgeClass}">${badge}</span></td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function refreshAnalytics() {
+            loadAllData();
+            renderAnalytics();
+            alert('✅ تم تحديث البيانات بنجاح!');
+        }
+
+        function exportToExcel() {
+            alert('🚧 ميزة التصدير إلى Excel قيد التطوير');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
