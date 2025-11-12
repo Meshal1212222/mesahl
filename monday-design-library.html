@@ -362,6 +362,9 @@
                 <button class="btn btn-success" onclick="document.getElementById('brandIdentityUpload').click()">
                     🎨 رفع الهوية البصرية
                 </button>
+                <button class="btn" style="background: linear-gradient(135deg, #10B981, #059669); color: white;" onclick="exportAllData()">
+                    💾 تصدير البيانات (للمطور)
+                </button>
                 <button class="btn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;" onclick="clearAllData()">
                     🗑️ مسح جميع الملفات
                 </button>
@@ -811,6 +814,40 @@
             if (notesArea) {
                 notesArea.value = designData.notes || '';
             }
+        }
+
+        // Export All Data
+        function exportAllData() {
+            const designData = getDesignLibraryData();
+
+            if (designData.wireframes.length === 0 && designData.brandIdentity.length === 0) {
+                alert('⚠️ لا توجد ملفات للتصدير!');
+                return;
+            }
+
+            // Create export data
+            const exportData = {
+                exportDate: new Date().toISOString(),
+                wireframes: designData.wireframes,
+                brandIdentity: designData.brandIdentity,
+                notes: designData.notes
+            };
+
+            // Convert to JSON
+            const jsonString = JSON.stringify(exportData, null, 2);
+
+            // Create download link
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `monday-design-export-${Date.now()}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            alert('✅ تم تصدير البيانات بنجاح!\n\nارفع الملف JSON للمطور لتنفيذ التصميم.');
         }
 
         // Update Stats
