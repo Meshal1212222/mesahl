@@ -589,6 +589,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" onclick="showSection('design-library')" style="background: linear-gradient(135deg, #E91E8C, #FF1493); color: white;">
+                    🎨 مكتبة التصميم (Monday.com)
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" onclick="showSection('activity')">
                     📋 سجل النشاطات
                 </a>
@@ -928,6 +933,49 @@
                     <button class="btn btn-danger" onclick="resetAllData()">🔄 إعادة تعيين البيانات</button>
                 </div>
                 <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+            </div>
+        </section>
+
+        <!-- Design Library Section -->
+        <section id="design-library" class="content-section">
+            <div class="header">
+                <h1 class="page-title">🎨 مكتبة التصميم - Monday.com</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="document.getElementById('wireframeUpload').click()">
+                        📤 رفع Wireframe (PDF)
+                    </button>
+                    <button class="btn btn-success" onclick="document.getElementById('brandIdentityUpload').click()">
+                        🎨 رفع الهوية البصرية
+                    </button>
+                </div>
+            </div>
+
+            <input type="file" id="wireframeUpload" accept=".pdf" style="display: none;" onchange="uploadWireframe(event)">
+            <input type="file" id="brandIdentityUpload" accept="image/*" style="display: none;" onchange="uploadBrandIdentity(event)">
+
+            <!-- Wireframes Card -->
+            <div class="card">
+                <h2 class="card-title">📄 Wireframes من Monday.com</h2>
+                <div id="wireframesContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Wireframes will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Brand Identity Card -->
+            <div class="card">
+                <h2 class="card-title">🎨 الهوية البصرية</h2>
+                <div id="brandIdentityContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <!-- Brand identity images will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Notes Card -->
+            <div class="card">
+                <h2 class="card-title">📝 ملاحظات التصميم</h2>
+                <textarea id="designNotes" class="form-textarea" placeholder="أضف ملاحظاتك حول التصميم والهوية البصرية هنا..." style="min-height: 150px;"></textarea>
+                <button class="btn btn-primary" onclick="saveDesignNotes()" style="margin-top: 1rem;">
+                    💾 حفظ الملاحظات
+                </button>
             </div>
         </section>
     </main>
