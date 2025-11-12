@@ -1091,7 +1091,11 @@ function deleteReport(reportId) {
 // ==================== REFUNDS MANAGEMENT ====================
 
 function loadRefunds(filter = 'all') {
-    const refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    // دمج البيانات التاريخية مع البيانات الجديدة
+    const historicalRefunds = typeof ALL_REFUNDS !== 'undefined' ? ALL_REFUNDS : [];
+    const newRefunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+    const refunds = [...newRefunds, ...historicalRefunds];
+
     const container = document.getElementById('refundsManagement');
 
     let filteredRefunds = refunds;
@@ -1296,7 +1300,11 @@ function exportRefunds() {
 // ==================== CONVERSATIONS MANAGEMENT ====================
 
 function loadConversations(filter = 'all') {
-    const conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    // دمج البيانات التاريخية مع البيانات الجديدة
+    const historicalConversations = typeof ALL_CONVERSATIONS !== 'undefined' ? ALL_CONVERSATIONS : [];
+    const newConversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+    const conversations = [...newConversations, ...historicalConversations];
+
     const container = document.getElementById('conversationsManagement');
 
     let filteredConversations = conversations;
@@ -1467,7 +1475,11 @@ function exportConversations() {
 // ==================== SALES MANAGEMENT ====================
 
 function loadSales(filter = 'all') {
-    const sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    // دمج البيانات التاريخية مع البيانات الجديدة
+    const historicalSales = typeof ALL_SALES !== 'undefined' ? ALL_SALES : [];
+    const newSales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+    const sales = [...newSales, ...historicalSales];
+
     const container = document.getElementById('salesManagement');
 
     if (!container) return;

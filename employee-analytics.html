@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="reports-data.js"></script>
+    <script src="refunds-data.js"></script>
+    <script src="conversations-data.js"></script>
+    <script src="complete-sales-data.js"></script>
     <style>
         * {
             margin: 0;
@@ -351,14 +354,20 @@
             const newReports = JSON.parse(localStorage.getItem('customerReports') || '[]');
             allData.reports = [...newReports, ...historicalReports];
 
-            // Load refunds
-            allData.refunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+            // Load refunds (historical + new)
+            const historicalRefunds = typeof ALL_REFUNDS !== 'undefined' ? ALL_REFUNDS : [];
+            const newRefunds = JSON.parse(localStorage.getItem('customerRefunds') || '[]');
+            allData.refunds = [...newRefunds, ...historicalRefunds];
 
-            // Load conversations
-            allData.conversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+            // Load conversations (historical + new)
+            const historicalConversations = typeof ALL_CONVERSATIONS !== 'undefined' ? ALL_CONVERSATIONS : [];
+            const newConversations = JSON.parse(localStorage.getItem('customerConversations') || '[]');
+            allData.conversations = [...newConversations, ...historicalConversations];
 
-            // Load sales
-            allData.sales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+            // Load sales (historical + new)
+            const historicalSales = typeof ALL_SALES !== 'undefined' ? ALL_SALES : [];
+            const newSales = JSON.parse(localStorage.getItem('customerSales') || '[]');
+            allData.sales = [...newSales, ...historicalSales];
         }
 
         function populateEmployeeFilter() {
