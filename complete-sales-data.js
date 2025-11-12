@@ -1,4 +1,4 @@
-// بيانات المبيعات الضخمة - 708 سجل
+// بيانات المبيعات مع قيم الحجوزات - 708 سجل
 
 const ALL_SALES = [
   {
@@ -10,7 +10,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/08/2025",
-    "time": "11:30:00"
+    "time": "11:30:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1754006400001",
@@ -21,7 +22,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/08/2025",
-    "time": "13:40:00"
+    "time": "13:40:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754006400002",
@@ -32,7 +34,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/08/2025",
-    "time": "15:40:00"
+    "time": "15:40:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754006400003",
@@ -43,7 +46,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/08/2025",
-    "time": "11:21:00"
+    "time": "11:21:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1754006400004",
@@ -54,7 +58,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/08/2025",
-    "time": "15:22:00"
+    "time": "15:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754006400005",
@@ -65,7 +70,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/08/2025",
-    "time": "16:30:00"
+    "time": "16:30:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1754006400006",
@@ -76,7 +82,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/08/2025",
-    "time": "12:03:00"
+    "time": "12:03:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1754006400007",
@@ -87,7 +94,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/08/2025",
-    "time": "14:04:00"
+    "time": "14:04:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754006400008",
@@ -98,7 +106,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/08/2025",
-    "time": "11:44:00"
+    "time": "11:44:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1754092804000",
@@ -109,7 +118,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/08/2025",
-    "time": "12:06:00"
+    "time": "12:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754092804001",
@@ -120,7 +130,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/08/2025",
-    "time": "11:21:00"
+    "time": "11:21:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1754092804002",
@@ -131,7 +142,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/08/2025",
-    "time": "15:43:00"
+    "time": "15:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754092804003",
@@ -142,7 +154,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/08/2025",
-    "time": "15:57:00"
+    "time": "15:57:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1754092804004",
@@ -153,7 +166,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "02/08/2025",
-    "time": "09:33:00"
+    "time": "09:33:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1754092804005",
@@ -164,7 +178,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "02/08/2025",
-    "time": "14:36:00"
+    "time": "14:36:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1754092804006",
@@ -175,7 +190,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "02/08/2025",
-    "time": "15:36:00"
+    "time": "15:36:00",
+    "bookingValue": "4000 ريال"
   },
   {
     "id": "sale_1754179208000",
@@ -186,7 +202,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/08/2025",
-    "time": "11:22:00"
+    "time": "11:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754179208001",
@@ -197,7 +214,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "03/08/2025",
-    "time": "14:09:00"
+    "time": "14:09:00",
+    "bookingValue": "4500 ريال"
   },
   {
     "id": "sale_1754179208002",
@@ -208,7 +226,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/08/2025",
-    "time": "10:57:00"
+    "time": "10:57:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1754179208003",
@@ -219,7 +238,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/08/2025",
-    "time": "13:59:00"
+    "time": "13:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754265612000",
@@ -230,7 +250,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/08/2025",
-    "time": "14:16:00"
+    "time": "14:16:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1754265612001",
@@ -241,7 +262,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/08/2025",
-    "time": "17:23:00"
+    "time": "17:23:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1754265612002",
@@ -252,7 +274,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/08/2025",
-    "time": "11:09:00"
+    "time": "11:09:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1754265612003",
@@ -263,7 +286,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/08/2025",
-    "time": "17:56:00"
+    "time": "17:56:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754265612004",
@@ -274,7 +298,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/08/2025",
-    "time": "14:54:00"
+    "time": "14:54:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1754265612005",
@@ -285,7 +310,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/08/2025",
-    "time": "12:44:00"
+    "time": "12:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754265612006",
@@ -296,7 +322,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/08/2025",
-    "time": "10:11:00"
+    "time": "10:11:00",
+    "bookingValue": "350 ريال"
   },
   {
     "id": "sale_1754265612007",
@@ -307,7 +334,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/08/2025",
-    "time": "11:38:00"
+    "time": "11:38:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1754352016000",
@@ -318,7 +346,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/08/2025",
-    "time": "12:07:00"
+    "time": "12:07:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754352016001",
@@ -329,7 +358,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/08/2025",
-    "time": "14:37:00"
+    "time": "14:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754352016002",
@@ -340,7 +370,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/08/2025",
-    "time": "17:57:00"
+    "time": "17:57:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754352016003",
@@ -351,7 +382,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/08/2025",
-    "time": "12:42:00"
+    "time": "12:42:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1754352016004",
@@ -362,7 +394,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/08/2025",
-    "time": "13:15:00"
+    "time": "13:15:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1754352016005",
@@ -373,7 +406,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/08/2025",
-    "time": "12:34:00"
+    "time": "12:34:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754438420000",
@@ -384,7 +418,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "16:19:00"
+    "time": "16:19:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420001",
@@ -395,7 +430,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "10:25:00"
+    "time": "10:25:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420002",
@@ -406,7 +442,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "16:36:00"
+    "time": "16:36:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1754438420003",
@@ -417,7 +454,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "15:01:00"
+    "time": "15:01:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420004",
@@ -428,7 +466,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "11:49:00"
+    "time": "11:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420005",
@@ -439,7 +478,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "15:27:00"
+    "time": "15:27:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420006",
@@ -450,7 +490,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "15:25:00"
+    "time": "15:25:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754438420007",
@@ -461,7 +502,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/08/2025",
-    "time": "12:42:00"
+    "time": "12:42:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754524824000",
@@ -472,7 +514,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "07/08/2025",
-    "time": "10:50:00"
+    "time": "10:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754524824001",
@@ -483,7 +526,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/08/2025",
-    "time": "11:03:00"
+    "time": "11:03:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1754524824002",
@@ -494,7 +538,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/08/2025",
-    "time": "13:50:00"
+    "time": "13:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754524824003",
@@ -505,7 +550,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/08/2025",
-    "time": "16:32:00"
+    "time": "16:32:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754524824004",
@@ -516,7 +562,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/08/2025",
-    "time": "18:41:00"
+    "time": "18:41:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1754611228000",
@@ -527,7 +574,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "08/08/2025",
-    "time": "18:56:00"
+    "time": "18:56:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1754611228001",
@@ -538,7 +586,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "08/08/2025",
-    "time": "11:53:00"
+    "time": "11:53:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1754611228002",
@@ -549,7 +598,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/08/2025",
-    "time": "14:59:00"
+    "time": "14:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754611228003",
@@ -560,7 +610,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/08/2025",
-    "time": "18:39:00"
+    "time": "18:39:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1754611228004",
@@ -571,7 +622,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/08/2025",
-    "time": "12:37:00"
+    "time": "12:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754611228005",
@@ -582,7 +634,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/08/2025",
-    "time": "16:00:00"
+    "time": "16:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754611228006",
@@ -593,7 +646,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/08/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754611228007",
@@ -604,7 +658,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/08/2025",
-    "time": "15:11:00"
+    "time": "15:11:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1754611228008",
@@ -615,7 +670,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/08/2025",
-    "time": "17:46:00"
+    "time": "17:46:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632000",
@@ -626,7 +682,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/08/2025",
-    "time": "17:00:00"
+    "time": "17:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632001",
@@ -637,7 +694,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/08/2025",
-    "time": "15:09:00"
+    "time": "15:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632002",
@@ -648,7 +706,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/08/2025",
-    "time": "14:43:00"
+    "time": "14:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632003",
@@ -659,7 +718,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/08/2025",
-    "time": "15:02:00"
+    "time": "15:02:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632004",
@@ -670,7 +730,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/08/2025",
-    "time": "16:03:00"
+    "time": "16:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632005",
@@ -681,7 +742,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/08/2025",
-    "time": "11:18:00"
+    "time": "11:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632006",
@@ -692,7 +754,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/08/2025",
-    "time": "10:53:00"
+    "time": "10:53:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1754697632007",
@@ -703,7 +766,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/08/2025",
-    "time": "10:21:00"
+    "time": "10:21:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754697632008",
@@ -714,7 +778,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/08/2025",
-    "time": "11:59:00"
+    "time": "11:59:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1754697632009",
@@ -725,7 +790,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/08/2025",
-    "time": "18:01:00"
+    "time": "18:01:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1754784036000",
@@ -736,7 +802,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/08/2025",
-    "time": "13:51:00"
+    "time": "13:51:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1754784036001",
@@ -747,7 +814,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/08/2025",
-    "time": "10:12:00"
+    "time": "10:12:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754784036002",
@@ -758,7 +826,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/08/2025",
-    "time": "15:01:00"
+    "time": "15:01:00",
+    "bookingValue": "9000 ريال"
   },
   {
     "id": "sale_1754784036003",
@@ -769,7 +838,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/08/2025",
-    "time": "17:50:00"
+    "time": "17:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754784036004",
@@ -780,7 +850,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/08/2025",
-    "time": "10:47:00"
+    "time": "10:47:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754870440000",
@@ -791,7 +862,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "11/08/2025",
-    "time": "12:41:00"
+    "time": "12:41:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754870440001",
@@ -802,7 +874,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/08/2025",
-    "time": "13:40:00"
+    "time": "13:40:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1754870440002",
@@ -813,7 +886,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/08/2025",
-    "time": "18:19:00"
+    "time": "18:19:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1754870440003",
@@ -824,7 +898,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "11/08/2025",
-    "time": "17:02:00"
+    "time": "17:02:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1754870440004",
@@ -835,7 +910,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "11/08/2025",
-    "time": "17:27:00"
+    "time": "17:27:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754870440005",
@@ -846,7 +922,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/08/2025",
-    "time": "15:44:00"
+    "time": "15:44:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1754870440006",
@@ -857,7 +934,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "11/08/2025",
-    "time": "17:43:00"
+    "time": "17:43:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1754870440007",
@@ -868,7 +946,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "11/08/2025",
-    "time": "14:33:00"
+    "time": "14:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754956844000",
@@ -879,7 +958,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "12/08/2025",
-    "time": "12:22:00"
+    "time": "12:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754956844001",
@@ -890,7 +970,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "12/08/2025",
-    "time": "18:24:00"
+    "time": "18:24:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1754956844002",
@@ -901,7 +982,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "12/08/2025",
-    "time": "10:06:00"
+    "time": "10:06:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1754956844003",
@@ -912,7 +994,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/08/2025",
-    "time": "18:01:00"
+    "time": "18:01:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1754956844004",
@@ -923,7 +1006,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "12/08/2025",
-    "time": "14:50:00"
+    "time": "14:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1754956844005",
@@ -934,7 +1018,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "12/08/2025",
-    "time": "10:41:00"
+    "time": "10:41:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1755043248000",
@@ -945,7 +1030,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "13/08/2025",
-    "time": "10:55:00"
+    "time": "10:55:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1755043248001",
@@ -956,7 +1042,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/08/2025",
-    "time": "13:26:00"
+    "time": "13:26:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755043248002",
@@ -967,7 +1054,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/08/2025",
-    "time": "10:28:00"
+    "time": "10:28:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1755043248003",
@@ -978,7 +1066,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "13/08/2025",
-    "time": "09:01:00"
+    "time": "09:01:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1755043248004",
@@ -989,7 +1078,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/08/2025",
-    "time": "10:36:00"
+    "time": "10:36:00",
+    "bookingValue": "3500 ريال"
   },
   {
     "id": "sale_1755043248005",
@@ -1000,7 +1090,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/08/2025",
-    "time": "09:45:00"
+    "time": "09:45:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1755043248006",
@@ -1011,7 +1102,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "13/08/2025",
-    "time": "12:44:00"
+    "time": "12:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755043248007",
@@ -1022,7 +1114,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/08/2025",
-    "time": "16:11:00"
+    "time": "16:11:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1755129652000",
@@ -1033,7 +1126,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "14/08/2025",
-    "time": "13:30:00"
+    "time": "13:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755129652001",
@@ -1044,7 +1138,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/08/2025",
-    "time": "15:43:00"
+    "time": "15:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755129652002",
@@ -1055,7 +1150,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/08/2025",
-    "time": "16:12:00"
+    "time": "16:12:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1755129652003",
@@ -1066,7 +1162,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/08/2025",
-    "time": "16:18:00"
+    "time": "16:18:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1755129652004",
@@ -1077,7 +1174,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/08/2025",
-    "time": "18:29:00"
+    "time": "18:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755129652005",
@@ -1088,7 +1186,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "14/08/2025",
-    "time": "10:40:00"
+    "time": "10:40:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755129652006",
@@ -1099,7 +1198,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/08/2025",
-    "time": "15:43:00"
+    "time": "15:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755129652007",
@@ -1110,7 +1210,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/08/2025",
-    "time": "18:35:00"
+    "time": "18:35:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1755129652008",
@@ -1121,7 +1222,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/08/2025",
-    "time": "09:47:00"
+    "time": "09:47:00",
+    "bookingValue": "4000 ريال"
   },
   {
     "id": "sale_1755216056000",
@@ -1132,7 +1234,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/08/2025",
-    "time": "09:23:00"
+    "time": "09:23:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1755216056001",
@@ -1143,7 +1246,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/08/2025",
-    "time": "16:33:00"
+    "time": "16:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755216056002",
@@ -1154,7 +1258,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "15/08/2025",
-    "time": "16:33:00"
+    "time": "16:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755216056003",
@@ -1165,7 +1270,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/08/2025",
-    "time": "18:53:00"
+    "time": "18:53:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1755216056004",
@@ -1176,7 +1282,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "15/08/2025",
-    "time": "14:18:00"
+    "time": "14:18:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1755216056005",
@@ -1187,7 +1294,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "15/08/2025",
-    "time": "13:18:00"
+    "time": "13:18:00",
+    "bookingValue": "3500 ريال"
   },
   {
     "id": "sale_1755216056006",
@@ -1198,7 +1306,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/08/2025",
-    "time": "12:25:00"
+    "time": "12:25:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1755302460000",
@@ -1209,7 +1318,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/08/2025",
-    "time": "13:26:00"
+    "time": "13:26:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1755302460001",
@@ -1220,7 +1330,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/08/2025",
-    "time": "11:31:00"
+    "time": "11:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755302460002",
@@ -1231,7 +1342,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/08/2025",
-    "time": "11:11:00"
+    "time": "11:11:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1755302460003",
@@ -1242,7 +1354,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/08/2025",
-    "time": "18:10:00"
+    "time": "18:10:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1755302460004",
@@ -1253,7 +1366,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "16/08/2025",
-    "time": "14:19:00"
+    "time": "14:19:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1755302460005",
@@ -1264,7 +1378,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/08/2025",
-    "time": "12:00:00"
+    "time": "12:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755302460006",
@@ -1275,7 +1390,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "16/08/2025",
-    "time": "11:10:00"
+    "time": "11:10:00",
+    "bookingValue": "5000 ريال"
   },
   {
     "id": "sale_1755302460007",
@@ -1286,7 +1402,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/08/2025",
-    "time": "16:02:00"
+    "time": "16:02:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755302460008",
@@ -1297,7 +1414,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "16/08/2025",
-    "time": "17:18:00"
+    "time": "17:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755388864000",
@@ -1308,7 +1426,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/08/2025",
-    "time": "15:16:00"
+    "time": "15:16:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1755388864001",
@@ -1319,7 +1438,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/08/2025",
-    "time": "14:49:00"
+    "time": "14:49:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1755388864002",
@@ -1330,7 +1450,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "17/08/2025",
-    "time": "09:57:00"
+    "time": "09:57:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1755388864003",
@@ -1341,7 +1462,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/08/2025",
-    "time": "13:25:00"
+    "time": "13:25:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1755388864004",
@@ -1352,7 +1474,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/08/2025",
-    "time": "18:45:00"
+    "time": "18:45:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1755388864005",
@@ -1363,7 +1486,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "17/08/2025",
-    "time": "17:07:00"
+    "time": "17:07:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1755388864006",
@@ -1374,7 +1498,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/08/2025",
-    "time": "09:56:00"
+    "time": "09:56:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1755388864007",
@@ -1385,7 +1510,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "17/08/2025",
-    "time": "17:20:00"
+    "time": "17:20:00",
+    "bookingValue": "4500 ريال"
   },
   {
     "id": "sale_1755475268000",
@@ -1396,7 +1522,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "18/08/2025",
-    "time": "15:10:00"
+    "time": "15:10:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755475268001",
@@ -1407,7 +1534,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "18/08/2025",
-    "time": "17:57:00"
+    "time": "17:57:00",
+    "bookingValue": "3500 ريال"
   },
   {
     "id": "sale_1755475268002",
@@ -1418,7 +1546,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "18/08/2025",
-    "time": "18:50:00"
+    "time": "18:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755475268003",
@@ -1429,7 +1558,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "18/08/2025",
-    "time": "11:38:00"
+    "time": "11:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755475268004",
@@ -1440,7 +1570,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "18/08/2025",
-    "time": "12:42:00"
+    "time": "12:42:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1755475268005",
@@ -1451,7 +1582,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "18/08/2025",
-    "time": "12:34:00"
+    "time": "12:34:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1755561672000",
@@ -1462,7 +1594,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/08/2025",
-    "time": "10:58:00"
+    "time": "10:58:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1755561672001",
@@ -1473,7 +1606,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "19/08/2025",
-    "time": "18:49:00"
+    "time": "18:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755561672002",
@@ -1484,7 +1618,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/08/2025",
-    "time": "09:32:00"
+    "time": "09:32:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1755561672003",
@@ -1495,7 +1630,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "19/08/2025",
-    "time": "14:37:00"
+    "time": "14:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755561672004",
@@ -1506,7 +1642,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "19/08/2025",
-    "time": "14:51:00"
+    "time": "14:51:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755561672005",
@@ -1517,7 +1654,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/08/2025",
-    "time": "15:14:00"
+    "time": "15:14:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1755561672006",
@@ -1528,7 +1666,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "19/08/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1755648076000",
@@ -1539,7 +1678,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "20/08/2025",
-    "time": "18:06:00"
+    "time": "18:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755648076001",
@@ -1550,7 +1690,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "20/08/2025",
-    "time": "14:40:00"
+    "time": "14:40:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1755648076002",
@@ -1561,7 +1702,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "20/08/2025",
-    "time": "14:40:00"
+    "time": "14:40:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755648076003",
@@ -1572,7 +1714,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/08/2025",
-    "time": "14:21:00"
+    "time": "14:21:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1755648076004",
@@ -1583,7 +1726,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/08/2025",
-    "time": "09:34:00"
+    "time": "09:34:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1755648076005",
@@ -1594,7 +1738,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/08/2025",
-    "time": "11:17:00"
+    "time": "11:17:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1755648076006",
@@ -1605,7 +1750,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "20/08/2025",
-    "time": "12:20:00"
+    "time": "12:20:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755648076007",
@@ -1616,7 +1762,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "20/08/2025",
-    "time": "18:13:00"
+    "time": "18:13:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1755648076008",
@@ -1627,7 +1774,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/08/2025",
-    "time": "16:40:00"
+    "time": "16:40:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1755734480000",
@@ -1638,7 +1786,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "21/08/2025",
-    "time": "15:46:00"
+    "time": "15:46:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1755734480001",
@@ -1649,7 +1798,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "21/08/2025",
-    "time": "16:22:00"
+    "time": "16:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755734480002",
@@ -1660,7 +1810,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "21/08/2025",
-    "time": "18:54:00"
+    "time": "18:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755734480003",
@@ -1671,7 +1822,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "21/08/2025",
-    "time": "14:13:00"
+    "time": "14:13:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1755820884000",
@@ -1682,7 +1834,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/08/2025",
-    "time": "16:50:00"
+    "time": "16:50:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1755820884001",
@@ -1693,7 +1846,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/08/2025",
-    "time": "15:28:00"
+    "time": "15:28:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755820884002",
@@ -1704,7 +1858,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/08/2025",
-    "time": "10:35:00"
+    "time": "10:35:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1755820884003",
@@ -1715,7 +1870,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/08/2025",
-    "time": "14:39:00"
+    "time": "14:39:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755820884004",
@@ -1726,7 +1882,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/08/2025",
-    "time": "16:44:00"
+    "time": "16:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755820884005",
@@ -1737,7 +1894,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "22/08/2025",
-    "time": "14:48:00"
+    "time": "14:48:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1755820884006",
@@ -1748,7 +1906,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "22/08/2025",
-    "time": "11:36:00"
+    "time": "11:36:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1755820884007",
@@ -1759,7 +1918,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/08/2025",
-    "time": "13:41:00"
+    "time": "13:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755820884008",
@@ -1770,7 +1930,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "22/08/2025",
-    "time": "16:41:00"
+    "time": "16:41:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1755820884009",
@@ -1781,7 +1942,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/08/2025",
-    "time": "15:13:00"
+    "time": "15:13:00",
+    "bookingValue": "3000 ريال"
   },
   {
     "id": "sale_1755907288000",
@@ -1792,7 +1954,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/08/2025",
-    "time": "15:48:00"
+    "time": "15:48:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1755907288001",
@@ -1803,7 +1966,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "23/08/2025",
-    "time": "12:06:00"
+    "time": "12:06:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1755907288002",
@@ -1814,7 +1978,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/08/2025",
-    "time": "10:22:00"
+    "time": "10:22:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1755907288003",
@@ -1825,7 +1990,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "23/08/2025",
-    "time": "17:41:00"
+    "time": "17:41:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1755907288004",
@@ -1836,7 +2002,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/08/2025",
-    "time": "11:07:00"
+    "time": "11:07:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1755993692000",
@@ -1847,7 +2014,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "24/08/2025",
-    "time": "16:26:00"
+    "time": "16:26:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1755993692001",
@@ -1858,7 +2026,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "24/08/2025",
-    "time": "10:27:00"
+    "time": "10:27:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755993692002",
@@ -1869,7 +2038,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "24/08/2025",
-    "time": "14:44:00"
+    "time": "14:44:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1755993692003",
@@ -1880,7 +2050,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "24/08/2025",
-    "time": "14:29:00"
+    "time": "14:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1755993692004",
@@ -1891,7 +2062,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "24/08/2025",
-    "time": "14:35:00"
+    "time": "14:35:00",
+    "bookingValue": "350 ريال"
   },
   {
     "id": "sale_1755993692005",
@@ -1902,7 +2074,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/08/2025",
-    "time": "18:22:00"
+    "time": "18:22:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1755993692006",
@@ -1913,7 +2086,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/08/2025",
-    "time": "12:43:00"
+    "time": "12:43:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1755993692007",
@@ -1924,7 +2098,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "24/08/2025",
-    "time": "12:00:00"
+    "time": "12:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756080096000",
@@ -1935,7 +2110,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "25/08/2025",
-    "time": "12:41:00"
+    "time": "12:41:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1756080096001",
@@ -1946,7 +2122,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "25/08/2025",
-    "time": "14:41:00"
+    "time": "14:41:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1756080096002",
@@ -1957,7 +2134,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/08/2025",
-    "time": "16:36:00"
+    "time": "16:36:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1756080096003",
@@ -1968,7 +2146,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/08/2025",
-    "time": "17:09:00"
+    "time": "17:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756166500000",
@@ -1979,7 +2158,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "26/08/2025",
-    "time": "12:47:00"
+    "time": "12:47:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756166500001",
@@ -1990,7 +2170,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/08/2025",
-    "time": "15:41:00"
+    "time": "15:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756166500002",
@@ -2001,7 +2182,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "26/08/2025",
-    "time": "15:31:00"
+    "time": "15:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756166500003",
@@ -2012,7 +2194,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/08/2025",
-    "time": "09:54:00"
+    "time": "09:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756166500004",
@@ -2023,7 +2206,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/08/2025",
-    "time": "18:24:00"
+    "time": "18:24:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1756166500005",
@@ -2034,7 +2218,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "26/08/2025",
-    "time": "15:03:00"
+    "time": "15:03:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1756166500006",
@@ -2045,7 +2230,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "26/08/2025",
-    "time": "12:29:00"
+    "time": "12:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756252904000",
@@ -2056,7 +2242,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "27/08/2025",
-    "time": "12:09:00"
+    "time": "12:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756252904001",
@@ -2067,7 +2254,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "27/08/2025",
-    "time": "13:45:00"
+    "time": "13:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756252904002",
@@ -2078,7 +2266,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/08/2025",
-    "time": "10:02:00"
+    "time": "10:02:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1756252904003",
@@ -2089,7 +2278,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "27/08/2025",
-    "time": "09:29:00"
+    "time": "09:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756252904004",
@@ -2100,7 +2290,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/08/2025",
-    "time": "14:41:00"
+    "time": "14:41:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1756252904005",
@@ -2111,7 +2302,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/08/2025",
-    "time": "12:50:00"
+    "time": "12:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756252904006",
@@ -2122,7 +2314,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "27/08/2025",
-    "time": "17:02:00"
+    "time": "17:02:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756252904007",
@@ -2133,7 +2326,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "27/08/2025",
-    "time": "17:03:00"
+    "time": "17:03:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1756339308000",
@@ -2144,7 +2338,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "28/08/2025",
-    "time": "16:27:00"
+    "time": "16:27:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1756339308001",
@@ -2155,7 +2350,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/08/2025",
-    "time": "15:10:00"
+    "time": "15:10:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1756339308002",
@@ -2166,7 +2362,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/08/2025",
-    "time": "09:39:00"
+    "time": "09:39:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1756339308003",
@@ -2177,7 +2374,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/08/2025",
-    "time": "16:41:00"
+    "time": "16:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756339308004",
@@ -2188,7 +2386,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/08/2025",
-    "time": "17:00:00"
+    "time": "17:00:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1756339308005",
@@ -2199,7 +2398,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/08/2025",
-    "time": "17:29:00"
+    "time": "17:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756339308006",
@@ -2210,7 +2410,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "28/08/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756339308007",
@@ -2221,7 +2422,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/08/2025",
-    "time": "16:08:00"
+    "time": "16:08:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756425712000",
@@ -2232,7 +2434,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/08/2025",
-    "time": "11:50:00"
+    "time": "11:50:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1756425712001",
@@ -2243,7 +2446,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "29/08/2025",
-    "time": "09:25:00"
+    "time": "09:25:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756425712002",
@@ -2254,7 +2458,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "29/08/2025",
-    "time": "17:59:00"
+    "time": "17:59:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1756425712003",
@@ -2265,7 +2470,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "29/08/2025",
-    "time": "09:44:00"
+    "time": "09:44:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1756425712004",
@@ -2276,7 +2482,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "29/08/2025",
-    "time": "14:18:00"
+    "time": "14:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756425712005",
@@ -2287,7 +2494,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/08/2025",
-    "time": "13:57:00"
+    "time": "13:57:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1756425712006",
@@ -2298,7 +2506,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "29/08/2025",
-    "time": "14:54:00"
+    "time": "14:54:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1756425712007",
@@ -2309,7 +2518,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/08/2025",
-    "time": "11:45:00"
+    "time": "11:45:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1756425712008",
@@ -2320,7 +2530,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "29/08/2025",
-    "time": "18:24:00"
+    "time": "18:24:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756512116000",
@@ -2331,7 +2542,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/08/2025",
-    "time": "17:01:00"
+    "time": "17:01:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1756512116001",
@@ -2342,7 +2554,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/08/2025",
-    "time": "14:09:00"
+    "time": "14:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756512116002",
@@ -2353,7 +2566,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "30/08/2025",
-    "time": "12:30:00"
+    "time": "12:30:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1756512116003",
@@ -2364,7 +2578,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "30/08/2025",
-    "time": "10:17:00"
+    "time": "10:17:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1756512116004",
@@ -2375,7 +2590,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "30/08/2025",
-    "time": "17:59:00"
+    "time": "17:59:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1756512116005",
@@ -2386,7 +2602,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "30/08/2025",
-    "time": "14:27:00"
+    "time": "14:27:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1756598520000",
@@ -2397,7 +2614,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "31/08/2025",
-    "time": "14:18:00"
+    "time": "14:18:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1756598520001",
@@ -2408,7 +2626,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "31/08/2025",
-    "time": "10:21:00"
+    "time": "10:21:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1756598520002",
@@ -2419,7 +2638,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "31/08/2025",
-    "time": "11:02:00"
+    "time": "11:02:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1756598520003",
@@ -2430,7 +2650,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "31/08/2025",
-    "time": "14:38:00"
+    "time": "14:38:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1756598520004",
@@ -2441,7 +2662,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "31/08/2025",
-    "time": "18:55:00"
+    "time": "18:55:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1756598520005",
@@ -2452,7 +2674,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "31/08/2025",
-    "time": "15:53:00"
+    "time": "15:53:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756598520006",
@@ -2463,7 +2686,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "31/08/2025",
-    "time": "13:34:00"
+    "time": "13:34:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756684924000",
@@ -2474,7 +2698,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/09/2025",
-    "time": "10:21:00"
+    "time": "10:21:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756684924001",
@@ -2485,7 +2710,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/09/2025",
-    "time": "17:02:00"
+    "time": "17:02:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1756684924002",
@@ -2496,7 +2722,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/09/2025",
-    "time": "13:22:00"
+    "time": "13:22:00",
+    "bookingValue": "4500 ريال"
   },
   {
     "id": "sale_1756684924003",
@@ -2507,7 +2734,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/09/2025",
-    "time": "15:42:00"
+    "time": "15:42:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1756684924004",
@@ -2518,7 +2746,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/09/2025",
-    "time": "12:29:00"
+    "time": "12:29:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756684924005",
@@ -2529,7 +2758,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/09/2025",
-    "time": "13:47:00"
+    "time": "13:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756684924006",
@@ -2540,7 +2770,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/09/2025",
-    "time": "18:12:00"
+    "time": "18:12:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1756684924007",
@@ -2551,7 +2782,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/09/2025",
-    "time": "14:36:00"
+    "time": "14:36:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756684924008",
@@ -2562,7 +2794,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/09/2025",
-    "time": "10:05:00"
+    "time": "10:05:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1756771328000",
@@ -2573,7 +2806,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/09/2025",
-    "time": "10:02:00"
+    "time": "10:02:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756771328001",
@@ -2584,7 +2818,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/09/2025",
-    "time": "17:43:00"
+    "time": "17:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756771328002",
@@ -2595,7 +2830,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/09/2025",
-    "time": "15:19:00"
+    "time": "15:19:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756771328003",
@@ -2606,7 +2842,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/09/2025",
-    "time": "09:59:00"
+    "time": "09:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756771328004",
@@ -2617,7 +2854,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "02/09/2025",
-    "time": "12:29:00"
+    "time": "12:29:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1756771328005",
@@ -2628,7 +2866,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "02/09/2025",
-    "time": "18:42:00"
+    "time": "18:42:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1756771328006",
@@ -2639,7 +2878,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/09/2025",
-    "time": "17:42:00"
+    "time": "17:42:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756771328007",
@@ -2650,7 +2890,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "02/09/2025",
-    "time": "18:22:00"
+    "time": "18:22:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1756771328008",
@@ -2661,7 +2902,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/09/2025",
-    "time": "18:32:00"
+    "time": "18:32:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756857732000",
@@ -2672,7 +2914,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/09/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756857732001",
@@ -2683,7 +2926,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/09/2025",
-    "time": "11:44:00"
+    "time": "11:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756857732002",
@@ -2694,7 +2938,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/09/2025",
-    "time": "09:16:00"
+    "time": "09:16:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756857732003",
@@ -2705,7 +2950,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/09/2025",
-    "time": "09:14:00"
+    "time": "09:14:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756857732004",
@@ -2716,7 +2962,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/09/2025",
-    "time": "13:20:00"
+    "time": "13:20:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756944136000",
@@ -2727,7 +2974,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/09/2025",
-    "time": "12:42:00"
+    "time": "12:42:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756944136001",
@@ -2738,7 +2986,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "04/09/2025",
-    "time": "14:23:00"
+    "time": "14:23:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1756944136002",
@@ -2749,7 +2998,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/09/2025",
-    "time": "13:57:00"
+    "time": "13:57:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1756944136003",
@@ -2760,7 +3010,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/09/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1756944136004",
@@ -2771,7 +3022,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/09/2025",
-    "time": "16:45:00"
+    "time": "16:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1756944136005",
@@ -2782,7 +3034,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "04/09/2025",
-    "time": "14:31:00"
+    "time": "14:31:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1756944136006",
@@ -2793,7 +3046,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/09/2025",
-    "time": "09:05:00"
+    "time": "09:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757030540000",
@@ -2804,7 +3058,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/09/2025",
-    "time": "17:23:00"
+    "time": "17:23:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1757030540001",
@@ -2815,7 +3070,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/09/2025",
-    "time": "12:59:00"
+    "time": "12:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757030540002",
@@ -2826,7 +3082,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/09/2025",
-    "time": "11:21:00"
+    "time": "11:21:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1757030540003",
@@ -2837,7 +3094,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/09/2025",
-    "time": "13:45:00"
+    "time": "13:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757030540004",
@@ -2848,7 +3106,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/09/2025",
-    "time": "16:07:00"
+    "time": "16:07:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1757030540005",
@@ -2859,7 +3118,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/09/2025",
-    "time": "15:12:00"
+    "time": "15:12:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757030540006",
@@ -2870,7 +3130,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/09/2025",
-    "time": "11:01:00"
+    "time": "11:01:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1757116944000",
@@ -2881,7 +3142,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "06/09/2025",
-    "time": "13:23:00"
+    "time": "13:23:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1757116944001",
@@ -2892,7 +3154,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "06/09/2025",
-    "time": "11:51:00"
+    "time": "11:51:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1757116944002",
@@ -2903,7 +3166,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/09/2025",
-    "time": "10:36:00"
+    "time": "10:36:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757116944003",
@@ -2914,7 +3178,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/09/2025",
-    "time": "11:51:00"
+    "time": "11:51:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1757116944004",
@@ -2925,7 +3190,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "06/09/2025",
-    "time": "15:39:00"
+    "time": "15:39:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1757116944005",
@@ -2936,7 +3202,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/09/2025",
-    "time": "18:31:00"
+    "time": "18:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757116944006",
@@ -2947,7 +3214,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/09/2025",
-    "time": "12:57:00"
+    "time": "12:57:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757203348000",
@@ -2958,7 +3226,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/09/2025",
-    "time": "12:01:00"
+    "time": "12:01:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1757203348001",
@@ -2969,7 +3238,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/09/2025",
-    "time": "09:02:00"
+    "time": "09:02:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1757203348002",
@@ -2980,7 +3250,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "07/09/2025",
-    "time": "13:52:00"
+    "time": "13:52:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757203348003",
@@ -2991,7 +3262,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/09/2025",
-    "time": "18:34:00"
+    "time": "18:34:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1757203348004",
@@ -3002,7 +3274,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "07/09/2025",
-    "time": "15:54:00"
+    "time": "15:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757203348005",
@@ -3013,7 +3286,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "07/09/2025",
-    "time": "14:51:00"
+    "time": "14:51:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1757203348006",
@@ -3024,7 +3298,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/09/2025",
-    "time": "13:21:00"
+    "time": "13:21:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757203348007",
@@ -3035,7 +3310,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/09/2025",
-    "time": "18:47:00"
+    "time": "18:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757203348008",
@@ -3046,7 +3322,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "07/09/2025",
-    "time": "09:04:00"
+    "time": "09:04:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1757289752000",
@@ -3057,7 +3334,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "08/09/2025",
-    "time": "12:08:00"
+    "time": "12:08:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1757289752001",
@@ -3068,7 +3346,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/09/2025",
-    "time": "12:28:00"
+    "time": "12:28:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757289752002",
@@ -3079,7 +3358,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/09/2025",
-    "time": "17:00:00"
+    "time": "17:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757289752003",
@@ -3090,7 +3370,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/09/2025",
-    "time": "12:18:00"
+    "time": "12:18:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1757289752004",
@@ -3101,7 +3382,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/09/2025",
-    "time": "15:00:00"
+    "time": "15:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757289752005",
@@ -3112,7 +3394,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "08/09/2025",
-    "time": "09:03:00"
+    "time": "09:03:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1757289752006",
@@ -3123,7 +3406,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/09/2025",
-    "time": "15:45:00"
+    "time": "15:45:00",
+    "bookingValue": "9000 ريال"
   },
   {
     "id": "sale_1757376156000",
@@ -3134,7 +3418,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/09/2025",
-    "time": "12:14:00"
+    "time": "12:14:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1757376156001",
@@ -3145,7 +3430,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/09/2025",
-    "time": "11:53:00"
+    "time": "11:53:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1757376156002",
@@ -3156,7 +3442,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/09/2025",
-    "time": "11:32:00"
+    "time": "11:32:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1757376156003",
@@ -3167,7 +3454,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/09/2025",
-    "time": "12:40:00"
+    "time": "12:40:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1757462560000",
@@ -3178,7 +3466,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/09/2025",
-    "time": "17:59:00"
+    "time": "17:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757462560001",
@@ -3189,7 +3478,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/09/2025",
-    "time": "17:05:00"
+    "time": "17:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757462560002",
@@ -3200,7 +3490,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/09/2025",
-    "time": "11:08:00"
+    "time": "11:08:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1757462560003",
@@ -3211,7 +3502,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/09/2025",
-    "time": "11:22:00"
+    "time": "11:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757462560004",
@@ -3222,7 +3514,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "10/09/2025",
-    "time": "15:34:00"
+    "time": "15:34:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1757462560005",
@@ -3233,7 +3526,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/09/2025",
-    "time": "12:09:00"
+    "time": "12:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757462560006",
@@ -3244,7 +3538,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/09/2025",
-    "time": "12:49:00"
+    "time": "12:49:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1757462560007",
@@ -3255,7 +3550,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/09/2025",
-    "time": "12:38:00"
+    "time": "12:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757548964000",
@@ -3266,7 +3562,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "11/09/2025",
-    "time": "16:21:00"
+    "time": "16:21:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757548964001",
@@ -3277,7 +3574,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "11/09/2025",
-    "time": "13:09:00"
+    "time": "13:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757548964002",
@@ -3288,7 +3586,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "11/09/2025",
-    "time": "10:30:00"
+    "time": "10:30:00",
+    "bookingValue": "7000 ريال"
   },
   {
     "id": "sale_1757548964003",
@@ -3299,7 +3598,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "11/09/2025",
-    "time": "12:47:00"
+    "time": "12:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757548964004",
@@ -3310,7 +3610,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "11/09/2025",
-    "time": "15:56:00"
+    "time": "15:56:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1757548964005",
@@ -3321,7 +3622,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/09/2025",
-    "time": "11:06:00"
+    "time": "11:06:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1757635368000",
@@ -3332,7 +3634,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/09/2025",
-    "time": "14:56:00"
+    "time": "14:56:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1757635368001",
@@ -3343,7 +3646,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "12/09/2025",
-    "time": "16:04:00"
+    "time": "16:04:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1757635368002",
@@ -3354,7 +3658,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/09/2025",
-    "time": "12:24:00"
+    "time": "12:24:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757635368003",
@@ -3365,7 +3670,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "12/09/2025",
-    "time": "16:54:00"
+    "time": "16:54:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1757635368004",
@@ -3376,7 +3682,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "12/09/2025",
-    "time": "11:56:00"
+    "time": "11:56:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1757635368005",
@@ -3387,7 +3694,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/09/2025",
-    "time": "10:41:00"
+    "time": "10:41:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1757721772000",
@@ -3398,7 +3706,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/09/2025",
-    "time": "15:47:00"
+    "time": "15:47:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1757721772001",
@@ -3409,7 +3718,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "13/09/2025",
-    "time": "18:24:00"
+    "time": "18:24:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1757721772002",
@@ -3420,7 +3730,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/09/2025",
-    "time": "09:44:00"
+    "time": "09:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757721772003",
@@ -3431,7 +3742,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/09/2025",
-    "time": "14:30:00"
+    "time": "14:30:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1757721772004",
@@ -3442,7 +3754,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "13/09/2025",
-    "time": "10:59:00"
+    "time": "10:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757721772005",
@@ -3453,7 +3766,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "13/09/2025",
-    "time": "18:11:00"
+    "time": "18:11:00",
+    "bookingValue": "3000 ريال"
   },
   {
     "id": "sale_1757721772006",
@@ -3464,7 +3778,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/09/2025",
-    "time": "13:46:00"
+    "time": "13:46:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1757808176000",
@@ -3475,7 +3790,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "14/09/2025",
-    "time": "14:54:00"
+    "time": "14:54:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1757808176001",
@@ -3486,7 +3802,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/09/2025",
-    "time": "13:03:00"
+    "time": "13:03:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1757808176002",
@@ -3497,7 +3814,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/09/2025",
-    "time": "15:37:00"
+    "time": "15:37:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1757808176003",
@@ -3508,7 +3826,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/09/2025",
-    "time": "15:25:00"
+    "time": "15:25:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1757808176004",
@@ -3519,7 +3838,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/09/2025",
-    "time": "11:27:00"
+    "time": "11:27:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757808176005",
@@ -3530,7 +3850,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/09/2025",
-    "time": "14:41:00"
+    "time": "14:41:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1757808176006",
@@ -3541,7 +3862,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/09/2025",
-    "time": "13:36:00"
+    "time": "13:36:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757808176007",
@@ -3552,7 +3874,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "14/09/2025",
-    "time": "16:41:00"
+    "time": "16:41:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1757808176008",
@@ -3563,7 +3886,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/09/2025",
-    "time": "16:07:00"
+    "time": "16:07:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1757894580000",
@@ -3574,7 +3898,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "15/09/2025",
-    "time": "12:16:00"
+    "time": "12:16:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757894580001",
@@ -3585,7 +3910,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/09/2025",
-    "time": "10:06:00"
+    "time": "10:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757894580002",
@@ -3596,7 +3922,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/09/2025",
-    "time": "11:34:00"
+    "time": "11:34:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757894580003",
@@ -3607,7 +3934,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/09/2025",
-    "time": "10:45:00"
+    "time": "10:45:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1757894580004",
@@ -3618,7 +3946,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "15/09/2025",
-    "time": "12:03:00"
+    "time": "12:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757894580005",
@@ -3629,7 +3958,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/09/2025",
-    "time": "17:09:00"
+    "time": "17:09:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1757894580006",
@@ -3640,7 +3970,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/09/2025",
-    "time": "09:24:00"
+    "time": "09:24:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1757894580007",
@@ -3651,7 +3982,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "15/09/2025",
-    "time": "09:19:00"
+    "time": "09:19:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1757980984000",
@@ -3662,7 +3994,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/09/2025",
-    "time": "14:57:00"
+    "time": "14:57:00",
+    "bookingValue": "7000 ريال"
   },
   {
     "id": "sale_1757980984001",
@@ -3673,7 +4006,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "16/09/2025",
-    "time": "15:06:00"
+    "time": "15:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757980984002",
@@ -3684,7 +4018,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/09/2025",
-    "time": "09:14:00"
+    "time": "09:14:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1757980984003",
@@ -3695,7 +4030,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/09/2025",
-    "time": "10:16:00"
+    "time": "10:16:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1757980984004",
@@ -3706,7 +4042,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/09/2025",
-    "time": "09:24:00"
+    "time": "09:24:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1757980984005",
@@ -3717,7 +4054,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/09/2025",
-    "time": "17:52:00"
+    "time": "17:52:00",
+    "bookingValue": "3500 ريال"
   },
   {
     "id": "sale_1757980984006",
@@ -3728,7 +4066,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/09/2025",
-    "time": "09:34:00"
+    "time": "09:34:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757980984007",
@@ -3739,7 +4078,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/09/2025",
-    "time": "09:47:00"
+    "time": "09:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1757980984008",
@@ -3750,7 +4090,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/09/2025",
-    "time": "17:57:00"
+    "time": "17:57:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1757980984009",
@@ -3761,7 +4102,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/09/2025",
-    "time": "14:07:00"
+    "time": "14:07:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1758067388000",
@@ -3772,7 +4114,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/09/2025",
-    "time": "10:05:00"
+    "time": "10:05:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1758067388001",
@@ -3783,7 +4126,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/09/2025",
-    "time": "09:10:00"
+    "time": "09:10:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758067388002",
@@ -3794,7 +4138,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/09/2025",
-    "time": "10:47:00"
+    "time": "10:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758067388003",
@@ -3805,7 +4150,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "17/09/2025",
-    "time": "10:09:00"
+    "time": "10:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758067388004",
@@ -3816,7 +4162,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/09/2025",
-    "time": "15:47:00"
+    "time": "15:47:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1758067388005",
@@ -3827,7 +4174,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "17/09/2025",
-    "time": "10:06:00"
+    "time": "10:06:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1758153792000",
@@ -3838,7 +4186,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "18/09/2025",
-    "time": "09:19:00"
+    "time": "09:19:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1758153792001",
@@ -3849,7 +4198,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "18/09/2025",
-    "time": "15:11:00"
+    "time": "15:11:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758153792002",
@@ -3860,7 +4210,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "18/09/2025",
-    "time": "11:54:00"
+    "time": "11:54:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1758153792003",
@@ -3871,7 +4222,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "18/09/2025",
-    "time": "11:08:00"
+    "time": "11:08:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1758240196000",
@@ -3882,7 +4234,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "19/09/2025",
-    "time": "14:06:00"
+    "time": "14:06:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1758240196001",
@@ -3893,7 +4246,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/09/2025",
-    "time": "14:22:00"
+    "time": "14:22:00",
+    "bookingValue": "9000 ريال"
   },
   {
     "id": "sale_1758240196002",
@@ -3904,7 +4258,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "19/09/2025",
-    "time": "18:49:00"
+    "time": "18:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758240196003",
@@ -3915,7 +4270,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "19/09/2025",
-    "time": "18:53:00"
+    "time": "18:53:00",
+    "bookingValue": "4000 ريال"
   },
   {
     "id": "sale_1758240196004",
@@ -3926,7 +4282,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/09/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1758326600000",
@@ -3937,7 +4294,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/09/2025",
-    "time": "09:07:00"
+    "time": "09:07:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1758326600001",
@@ -3948,7 +4306,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/09/2025",
-    "time": "14:36:00"
+    "time": "14:36:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1758326600002",
@@ -3959,7 +4318,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "20/09/2025",
-    "time": "10:50:00"
+    "time": "10:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758326600003",
@@ -3970,7 +4330,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/09/2025",
-    "time": "15:40:00"
+    "time": "15:40:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1758326600004",
@@ -3981,7 +4342,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/09/2025",
-    "time": "09:21:00"
+    "time": "09:21:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1758326600005",
@@ -3992,7 +4354,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "20/09/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758326600006",
@@ -4003,7 +4366,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/09/2025",
-    "time": "10:14:00"
+    "time": "10:14:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1758326600007",
@@ -4014,7 +4378,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "20/09/2025",
-    "time": "16:24:00"
+    "time": "16:24:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758326600008",
@@ -4025,7 +4390,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "20/09/2025",
-    "time": "16:09:00"
+    "time": "16:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758326600009",
@@ -4036,7 +4402,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "20/09/2025",
-    "time": "16:06:00"
+    "time": "16:06:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1758413004000",
@@ -4047,7 +4414,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "21/09/2025",
-    "time": "14:36:00"
+    "time": "14:36:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1758413004001",
@@ -4058,7 +4426,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "21/09/2025",
-    "time": "15:31:00"
+    "time": "15:31:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1758413004002",
@@ -4069,7 +4438,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "21/09/2025",
-    "time": "12:41:00"
+    "time": "12:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758413004003",
@@ -4080,7 +4450,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "21/09/2025",
-    "time": "17:41:00"
+    "time": "17:41:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1758499408000",
@@ -4091,7 +4462,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/09/2025",
-    "time": "13:34:00"
+    "time": "13:34:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1758499408001",
@@ -4102,7 +4474,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/09/2025",
-    "time": "14:03:00"
+    "time": "14:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758499408002",
@@ -4113,7 +4486,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "22/09/2025",
-    "time": "12:52:00"
+    "time": "12:52:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1758499408003",
@@ -4124,7 +4498,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/09/2025",
-    "time": "18:37:00"
+    "time": "18:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758499408004",
@@ -4135,7 +4510,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/09/2025",
-    "time": "18:14:00"
+    "time": "18:14:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758499408005",
@@ -4146,7 +4522,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/09/2025",
-    "time": "15:37:00"
+    "time": "15:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758499408006",
@@ -4157,7 +4534,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/09/2025",
-    "time": "12:39:00"
+    "time": "12:39:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758499408007",
@@ -4168,7 +4546,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/09/2025",
-    "time": "10:08:00"
+    "time": "10:08:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1758585812000",
@@ -4179,7 +4558,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "23/09/2025",
-    "time": "09:20:00"
+    "time": "09:20:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1758585812001",
@@ -4190,7 +4570,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "23/09/2025",
-    "time": "13:21:00"
+    "time": "13:21:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1758585812002",
@@ -4201,7 +4582,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "23/09/2025",
-    "time": "16:51:00"
+    "time": "16:51:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1758585812003",
@@ -4212,7 +4594,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "23/09/2025",
-    "time": "13:44:00"
+    "time": "13:44:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1758585812004",
@@ -4223,7 +4606,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "23/09/2025",
-    "time": "16:26:00"
+    "time": "16:26:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1758585812005",
@@ -4234,7 +4618,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "23/09/2025",
-    "time": "13:08:00"
+    "time": "13:08:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758672216000",
@@ -4245,7 +4630,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "24/09/2025",
-    "time": "14:18:00"
+    "time": "14:18:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1758672216001",
@@ -4256,7 +4642,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/09/2025",
-    "time": "11:30:00"
+    "time": "11:30:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1758672216002",
@@ -4267,7 +4654,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/09/2025",
-    "time": "16:57:00"
+    "time": "16:57:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1758672216003",
@@ -4278,7 +4666,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/09/2025",
-    "time": "14:14:00"
+    "time": "14:14:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1758672216004",
@@ -4289,7 +4678,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "24/09/2025",
-    "time": "10:08:00"
+    "time": "10:08:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1758758620000",
@@ -4300,7 +4690,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "25/09/2025",
-    "time": "09:56:00"
+    "time": "09:56:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758758620001",
@@ -4311,7 +4702,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "25/09/2025",
-    "time": "10:26:00"
+    "time": "10:26:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1758758620002",
@@ -4322,7 +4714,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "25/09/2025",
-    "time": "13:14:00"
+    "time": "13:14:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1758758620003",
@@ -4333,7 +4726,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/09/2025",
-    "time": "18:55:00"
+    "time": "18:55:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758758620004",
@@ -4344,7 +4738,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/09/2025",
-    "time": "10:38:00"
+    "time": "10:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758845024000",
@@ -4355,7 +4750,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/09/2025",
-    "time": "13:16:00"
+    "time": "13:16:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758845024001",
@@ -4366,7 +4762,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/09/2025",
-    "time": "12:36:00"
+    "time": "12:36:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758845024002",
@@ -4377,7 +4774,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/09/2025",
-    "time": "13:05:00"
+    "time": "13:05:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1758845024003",
@@ -4388,7 +4786,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/09/2025",
-    "time": "11:01:00"
+    "time": "11:01:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758845024004",
@@ -4399,7 +4798,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "26/09/2025",
-    "time": "11:10:00"
+    "time": "11:10:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758845024005",
@@ -4410,7 +4810,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "26/09/2025",
-    "time": "13:19:00"
+    "time": "13:19:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1758845024006",
@@ -4421,7 +4822,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "26/09/2025",
-    "time": "14:42:00"
+    "time": "14:42:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1758845024007",
@@ -4432,7 +4834,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/09/2025",
-    "time": "14:37:00"
+    "time": "14:37:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1758931428000",
@@ -4443,7 +4846,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/09/2025",
-    "time": "10:03:00"
+    "time": "10:03:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1758931428001",
@@ -4454,7 +4858,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/09/2025",
-    "time": "18:13:00"
+    "time": "18:13:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758931428002",
@@ -4465,7 +4870,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/09/2025",
-    "time": "14:41:00"
+    "time": "14:41:00",
+    "bookingValue": "4000 ريال"
   },
   {
     "id": "sale_1758931428003",
@@ -4476,7 +4882,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "27/09/2025",
-    "time": "17:33:00"
+    "time": "17:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1758931428004",
@@ -4487,7 +4894,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/09/2025",
-    "time": "17:11:00"
+    "time": "17:11:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1759017832000",
@@ -4498,7 +4906,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "28/09/2025",
-    "time": "18:45:00"
+    "time": "18:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759017832001",
@@ -4509,7 +4918,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/09/2025",
-    "time": "11:45:00"
+    "time": "11:45:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1759017832002",
@@ -4520,7 +4930,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "28/09/2025",
-    "time": "15:39:00"
+    "time": "15:39:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1759017832003",
@@ -4531,7 +4942,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/09/2025",
-    "time": "17:05:00"
+    "time": "17:05:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759017832004",
@@ -4542,7 +4954,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "28/09/2025",
-    "time": "15:59:00"
+    "time": "15:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759017832005",
@@ -4553,7 +4966,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "28/09/2025",
-    "time": "16:00:00"
+    "time": "16:00:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1759017832006",
@@ -4564,7 +4978,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/09/2025",
-    "time": "14:12:00"
+    "time": "14:12:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1759017832007",
@@ -4575,7 +4990,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "28/09/2025",
-    "time": "18:38:00"
+    "time": "18:38:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759104236000",
@@ -4586,7 +5002,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "29/09/2025",
-    "time": "17:20:00"
+    "time": "17:20:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1759104236001",
@@ -4597,7 +5014,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/09/2025",
-    "time": "18:51:00"
+    "time": "18:51:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1759104236002",
@@ -4608,7 +5026,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/09/2025",
-    "time": "15:32:00"
+    "time": "15:32:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1759104236003",
@@ -4619,7 +5038,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "29/09/2025",
-    "time": "17:31:00"
+    "time": "17:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759104236004",
@@ -4630,7 +5050,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "29/09/2025",
-    "time": "15:25:00"
+    "time": "15:25:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759104236005",
@@ -4641,7 +5062,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/09/2025",
-    "time": "10:34:00"
+    "time": "10:34:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1759190640000",
@@ -4652,7 +5074,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "30/09/2025",
-    "time": "18:15:00"
+    "time": "18:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759190640001",
@@ -4663,7 +5086,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "30/09/2025",
-    "time": "10:54:00"
+    "time": "10:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759190640002",
@@ -4674,7 +5098,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/09/2025",
-    "time": "10:54:00"
+    "time": "10:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759190640003",
@@ -4685,7 +5110,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "30/09/2025",
-    "time": "12:12:00"
+    "time": "12:12:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759190640004",
@@ -4696,7 +5122,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/09/2025",
-    "time": "14:45:00"
+    "time": "14:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759277044000",
@@ -4707,7 +5134,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/10/2025",
-    "time": "18:48:00"
+    "time": "18:48:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759277044001",
@@ -4718,7 +5146,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/10/2025",
-    "time": "14:35:00"
+    "time": "14:35:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1759277044002",
@@ -4729,7 +5158,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/10/2025",
-    "time": "17:07:00"
+    "time": "17:07:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759277044003",
@@ -4740,7 +5170,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/10/2025",
-    "time": "17:37:00"
+    "time": "17:37:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1759277044004",
@@ -4751,7 +5182,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/10/2025",
-    "time": "12:09:00"
+    "time": "12:09:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759277044005",
@@ -4762,7 +5194,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/10/2025",
-    "time": "10:14:00"
+    "time": "10:14:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759277044006",
@@ -4773,7 +5206,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/10/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759277044007",
@@ -4784,7 +5218,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/10/2025",
-    "time": "09:49:00"
+    "time": "09:49:00",
+    "bookingValue": "8000 ريال"
   },
   {
     "id": "sale_1759277044008",
@@ -4795,7 +5230,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "01/10/2025",
-    "time": "16:44:00"
+    "time": "16:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759363448000",
@@ -4806,7 +5242,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "02/10/2025",
-    "time": "12:49:00"
+    "time": "12:49:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759363448001",
@@ -4817,7 +5254,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/10/2025",
-    "time": "09:19:00"
+    "time": "09:19:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759363448002",
@@ -4828,7 +5266,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/10/2025",
-    "time": "16:36:00"
+    "time": "16:36:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1759363448003",
@@ -4839,7 +5278,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/10/2025",
-    "time": "10:56:00"
+    "time": "10:56:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759363448004",
@@ -4850,7 +5290,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/10/2025",
-    "time": "09:49:00"
+    "time": "09:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759363448005",
@@ -4861,7 +5302,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/10/2025",
-    "time": "11:06:00"
+    "time": "11:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759449852000",
@@ -4872,7 +5314,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "03/10/2025",
-    "time": "14:29:00"
+    "time": "14:29:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1759449852001",
@@ -4883,7 +5326,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/10/2025",
-    "time": "10:08:00"
+    "time": "10:08:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759449852002",
@@ -4894,7 +5338,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/10/2025",
-    "time": "10:57:00"
+    "time": "10:57:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759449852003",
@@ -4905,7 +5350,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "03/10/2025",
-    "time": "11:27:00"
+    "time": "11:27:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1759449852004",
@@ -4916,7 +5362,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/10/2025",
-    "time": "13:47:00"
+    "time": "13:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759449852005",
@@ -4927,7 +5374,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "03/10/2025",
-    "time": "14:56:00"
+    "time": "14:56:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759449852006",
@@ -4938,7 +5386,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "03/10/2025",
-    "time": "18:20:00"
+    "time": "18:20:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1759536256000",
@@ -4949,7 +5398,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/10/2025",
-    "time": "11:37:00"
+    "time": "11:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759536256001",
@@ -4960,7 +5410,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/10/2025",
-    "time": "14:34:00"
+    "time": "14:34:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759536256002",
@@ -4971,7 +5422,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/10/2025",
-    "time": "16:05:00"
+    "time": "16:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759536256003",
@@ -4982,7 +5434,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/10/2025",
-    "time": "09:59:00"
+    "time": "09:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759536256004",
@@ -4993,7 +5446,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "04/10/2025",
-    "time": "15:58:00"
+    "time": "15:58:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1759536256005",
@@ -5004,7 +5458,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/10/2025",
-    "time": "11:50:00"
+    "time": "11:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759536256006",
@@ -5015,7 +5470,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "04/10/2025",
-    "time": "16:33:00"
+    "time": "16:33:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1759536256007",
@@ -5026,7 +5482,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/10/2025",
-    "time": "09:04:00"
+    "time": "09:04:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759622660000",
@@ -5037,7 +5494,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/10/2025",
-    "time": "15:46:00"
+    "time": "15:46:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759622660001",
@@ -5048,7 +5506,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/10/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1759622660002",
@@ -5059,7 +5518,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/10/2025",
-    "time": "17:33:00"
+    "time": "17:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759622660003",
@@ -5070,7 +5530,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/10/2025",
-    "time": "12:06:00"
+    "time": "12:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759622660004",
@@ -5081,7 +5542,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/10/2025",
-    "time": "14:52:00"
+    "time": "14:52:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1759622660005",
@@ -5092,7 +5554,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/10/2025",
-    "time": "18:16:00"
+    "time": "18:16:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1759622660006",
@@ -5103,7 +5566,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/10/2025",
-    "time": "09:30:00"
+    "time": "09:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759622660007",
@@ -5114,7 +5578,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/10/2025",
-    "time": "14:06:00"
+    "time": "14:06:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1759622660008",
@@ -5125,7 +5590,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "05/10/2025",
-    "time": "12:43:00"
+    "time": "12:43:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1759622660009",
@@ -5136,7 +5602,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "05/10/2025",
-    "time": "13:07:00"
+    "time": "13:07:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1759709064000",
@@ -5147,7 +5614,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/10/2025",
-    "time": "14:03:00"
+    "time": "14:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064001",
@@ -5158,7 +5626,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/10/2025",
-    "time": "15:49:00"
+    "time": "15:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064002",
@@ -5169,7 +5638,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/10/2025",
-    "time": "14:49:00"
+    "time": "14:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064003",
@@ -5180,7 +5650,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/10/2025",
-    "time": "09:32:00"
+    "time": "09:32:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064004",
@@ -5191,7 +5662,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/10/2025",
-    "time": "10:04:00"
+    "time": "10:04:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064005",
@@ -5202,7 +5674,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/10/2025",
-    "time": "09:53:00"
+    "time": "09:53:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759709064006",
@@ -5213,7 +5686,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "06/10/2025",
-    "time": "15:04:00"
+    "time": "15:04:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1759709064007",
@@ -5224,7 +5698,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "06/10/2025",
-    "time": "16:17:00"
+    "time": "16:17:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1759795468000",
@@ -5235,7 +5710,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/10/2025",
-    "time": "16:17:00"
+    "time": "16:17:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1759795468001",
@@ -5246,7 +5722,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/10/2025",
-    "time": "15:23:00"
+    "time": "15:23:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1759795468002",
@@ -5257,7 +5734,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/10/2025",
-    "time": "18:54:00"
+    "time": "18:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759795468003",
@@ -5268,7 +5746,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/10/2025",
-    "time": "09:05:00"
+    "time": "09:05:00",
+    "bookingValue": "3000 ريال"
   },
   {
     "id": "sale_1759795468004",
@@ -5279,7 +5758,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/10/2025",
-    "time": "16:42:00"
+    "time": "16:42:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1759795468005",
@@ -5290,7 +5770,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/10/2025",
-    "time": "13:23:00"
+    "time": "13:23:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759795468006",
@@ -5301,7 +5782,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "07/10/2025",
-    "time": "12:51:00"
+    "time": "12:51:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1759881872000",
@@ -5312,7 +5794,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/10/2025",
-    "time": "10:18:00"
+    "time": "10:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759881872001",
@@ -5323,7 +5806,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/10/2025",
-    "time": "16:22:00"
+    "time": "16:22:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1759881872002",
@@ -5334,7 +5818,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/10/2025",
-    "time": "15:06:00"
+    "time": "15:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759881872003",
@@ -5345,7 +5830,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/10/2025",
-    "time": "09:55:00"
+    "time": "09:55:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1759881872004",
@@ -5356,7 +5842,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/10/2025",
-    "time": "18:29:00"
+    "time": "18:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759968276000",
@@ -5367,7 +5854,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "09/10/2025",
-    "time": "09:31:00"
+    "time": "09:31:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1759968276001",
@@ -5378,7 +5866,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/10/2025",
-    "time": "11:37:00"
+    "time": "11:37:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1759968276002",
@@ -5389,7 +5878,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/10/2025",
-    "time": "15:30:00"
+    "time": "15:30:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1759968276003",
@@ -5400,7 +5890,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/10/2025",
-    "time": "10:50:00"
+    "time": "10:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759968276004",
@@ -5411,7 +5902,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "09/10/2025",
-    "time": "16:29:00"
+    "time": "16:29:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1759968276005",
@@ -5422,7 +5914,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/10/2025",
-    "time": "12:06:00"
+    "time": "12:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759968276006",
@@ -5433,7 +5926,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/10/2025",
-    "time": "12:16:00"
+    "time": "12:16:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1759968276007",
@@ -5444,7 +5938,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "09/10/2025",
-    "time": "17:56:00"
+    "time": "17:56:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1759968276008",
@@ -5455,7 +5950,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "09/10/2025",
-    "time": "17:54:00"
+    "time": "17:54:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1759968276009",
@@ -5466,7 +5962,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/10/2025",
-    "time": "18:08:00"
+    "time": "18:08:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1760054680000",
@@ -5477,7 +5974,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/10/2025",
-    "time": "16:07:00"
+    "time": "16:07:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1760054680001",
@@ -5488,7 +5986,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/10/2025",
-    "time": "13:27:00"
+    "time": "13:27:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1760054680002",
@@ -5499,7 +5998,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/10/2025",
-    "time": "11:38:00"
+    "time": "11:38:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1760054680003",
@@ -5510,7 +6010,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/10/2025",
-    "time": "10:33:00"
+    "time": "10:33:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760054680004",
@@ -5521,7 +6022,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/10/2025",
-    "time": "14:37:00"
+    "time": "14:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760054680005",
@@ -5532,7 +6034,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/10/2025",
-    "time": "12:49:00"
+    "time": "12:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760054680006",
@@ -5543,7 +6046,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/10/2025",
-    "time": "15:38:00"
+    "time": "15:38:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1760141084000",
@@ -5554,7 +6058,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "11/10/2025",
-    "time": "12:14:00"
+    "time": "12:14:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1760141084001",
@@ -5565,7 +6070,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "11/10/2025",
-    "time": "13:40:00"
+    "time": "13:40:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760141084002",
@@ -5576,7 +6082,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "11/10/2025",
-    "time": "11:58:00"
+    "time": "11:58:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760141084003",
@@ -5587,7 +6094,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/10/2025",
-    "time": "17:54:00"
+    "time": "17:54:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1760141084004",
@@ -5598,7 +6106,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/10/2025",
-    "time": "17:42:00"
+    "time": "17:42:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1760141084005",
@@ -5609,7 +6118,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "11/10/2025",
-    "time": "18:38:00"
+    "time": "18:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760141084006",
@@ -5620,7 +6130,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "11/10/2025",
-    "time": "09:23:00"
+    "time": "09:23:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1760227488000",
@@ -5631,7 +6142,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "12/10/2025",
-    "time": "16:15:00"
+    "time": "16:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760227488001",
@@ -5642,7 +6154,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "12/10/2025",
-    "time": "10:47:00"
+    "time": "10:47:00",
+    "bookingValue": "5000 ريال"
   },
   {
     "id": "sale_1760227488002",
@@ -5653,7 +6166,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "12/10/2025",
-    "time": "15:03:00"
+    "time": "15:03:00",
+    "bookingValue": "5000 ريال"
   },
   {
     "id": "sale_1760227488003",
@@ -5664,7 +6178,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "12/10/2025",
-    "time": "18:31:00"
+    "time": "18:31:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1760227488004",
@@ -5675,7 +6190,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/10/2025",
-    "time": "11:38:00"
+    "time": "11:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760227488005",
@@ -5686,7 +6202,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "12/10/2025",
-    "time": "15:34:00"
+    "time": "15:34:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1760313892000",
@@ -5697,7 +6214,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/10/2025",
-    "time": "13:25:00"
+    "time": "13:25:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1760313892001",
@@ -5708,7 +6226,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "13/10/2025",
-    "time": "17:54:00"
+    "time": "17:54:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1760313892002",
@@ -5719,7 +6238,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/10/2025",
-    "time": "12:28:00"
+    "time": "12:28:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1760313892003",
@@ -5730,7 +6250,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "13/10/2025",
-    "time": "12:50:00"
+    "time": "12:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760313892004",
@@ -5741,7 +6262,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "13/10/2025",
-    "time": "12:18:00"
+    "time": "12:18:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1760313892005",
@@ -5752,7 +6274,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "13/10/2025",
-    "time": "11:20:00"
+    "time": "11:20:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1760400296000",
@@ -5763,7 +6286,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "14/10/2025",
-    "time": "16:26:00"
+    "time": "16:26:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1760400296001",
@@ -5774,7 +6298,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "14/10/2025",
-    "time": "12:20:00"
+    "time": "12:20:00",
+    "bookingValue": "450 ريال"
   },
   {
     "id": "sale_1760400296002",
@@ -5785,7 +6310,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "14/10/2025",
-    "time": "14:39:00"
+    "time": "14:39:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1760400296003",
@@ -5796,7 +6322,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "14/10/2025",
-    "time": "13:54:00"
+    "time": "13:54:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1760400296004",
@@ -5807,7 +6334,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "14/10/2025",
-    "time": "09:11:00"
+    "time": "09:11:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1760486700000",
@@ -5818,7 +6346,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/10/2025",
-    "time": "16:55:00"
+    "time": "16:55:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760486700001",
@@ -5829,7 +6358,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/10/2025",
-    "time": "11:43:00"
+    "time": "11:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760486700002",
@@ -5840,7 +6370,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/10/2025",
-    "time": "14:12:00"
+    "time": "14:12:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1760486700003",
@@ -5851,7 +6382,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "15/10/2025",
-    "time": "12:40:00"
+    "time": "12:40:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1760573104000",
@@ -5862,7 +6394,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "16/10/2025",
-    "time": "18:30:00"
+    "time": "18:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760573104001",
@@ -5873,7 +6406,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "16/10/2025",
-    "time": "17:46:00"
+    "time": "17:46:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1760573104002",
@@ -5884,7 +6418,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "16/10/2025",
-    "time": "14:47:00"
+    "time": "14:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760573104003",
@@ -5895,7 +6430,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "16/10/2025",
-    "time": "17:52:00"
+    "time": "17:52:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1760573104004",
@@ -5906,7 +6442,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "16/10/2025",
-    "time": "13:37:00"
+    "time": "13:37:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1760573104005",
@@ -5917,7 +6454,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "16/10/2025",
-    "time": "17:46:00"
+    "time": "17:46:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1760659508000",
@@ -5928,7 +6466,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/10/2025",
-    "time": "11:42:00"
+    "time": "11:42:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760659508001",
@@ -5939,7 +6478,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/10/2025",
-    "time": "16:03:00"
+    "time": "16:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760659508002",
@@ -5950,7 +6490,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "17/10/2025",
-    "time": "09:41:00"
+    "time": "09:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760659508003",
@@ -5961,7 +6502,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "17/10/2025",
-    "time": "12:18:00"
+    "time": "12:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760659508004",
@@ -5972,7 +6514,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "17/10/2025",
-    "time": "14:40:00"
+    "time": "14:40:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1760745912000",
@@ -5983,7 +6526,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "18/10/2025",
-    "time": "17:50:00"
+    "time": "17:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760745912001",
@@ -5994,7 +6538,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "18/10/2025",
-    "time": "17:18:00"
+    "time": "17:18:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1760745912002",
@@ -6005,7 +6550,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "18/10/2025",
-    "time": "09:40:00"
+    "time": "09:40:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1760745912003",
@@ -6016,7 +6562,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "18/10/2025",
-    "time": "14:15:00"
+    "time": "14:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760745912004",
@@ -6027,7 +6574,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "18/10/2025",
-    "time": "17:38:00"
+    "time": "17:38:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1760745912005",
@@ -6038,7 +6586,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "18/10/2025",
-    "time": "11:39:00"
+    "time": "11:39:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1760832316000",
@@ -6049,7 +6598,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/10/2025",
-    "time": "11:24:00"
+    "time": "11:24:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1760832316001",
@@ -6060,7 +6610,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/10/2025",
-    "time": "14:59:00"
+    "time": "14:59:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1760832316002",
@@ -6071,7 +6622,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "19/10/2025",
-    "time": "18:17:00"
+    "time": "18:17:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760832316003",
@@ -6082,7 +6634,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/10/2025",
-    "time": "16:25:00"
+    "time": "16:25:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1760832316004",
@@ -6093,7 +6646,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "19/10/2025",
-    "time": "16:15:00"
+    "time": "16:15:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1760832316005",
@@ -6104,7 +6658,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "19/10/2025",
-    "time": "10:30:00"
+    "time": "10:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1760918720000",
@@ -6115,7 +6670,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/10/2025",
-    "time": "16:07:00"
+    "time": "16:07:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1760918720001",
@@ -6126,7 +6682,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/10/2025",
-    "time": "12:52:00"
+    "time": "12:52:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1760918720002",
@@ -6137,7 +6694,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/10/2025",
-    "time": "09:05:00"
+    "time": "09:05:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1760918720003",
@@ -6148,7 +6706,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "20/10/2025",
-    "time": "16:15:00"
+    "time": "16:15:00",
+    "bookingValue": "7000 ريال"
   },
   {
     "id": "sale_1761005124000",
@@ -6159,7 +6718,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "21/10/2025",
-    "time": "16:10:00"
+    "time": "16:10:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1761005124001",
@@ -6170,7 +6730,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "21/10/2025",
-    "time": "12:05:00"
+    "time": "12:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761005124002",
@@ -6181,7 +6742,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "21/10/2025",
-    "time": "16:09:00"
+    "time": "16:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761005124003",
@@ -6192,7 +6754,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "21/10/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761091528000",
@@ -6203,7 +6766,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/10/2025",
-    "time": "16:57:00"
+    "time": "16:57:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1761091528001",
@@ -6214,7 +6778,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/10/2025",
-    "time": "17:11:00"
+    "time": "17:11:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1761091528002",
@@ -6225,7 +6790,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/10/2025",
-    "time": "14:06:00"
+    "time": "14:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761091528003",
@@ -6236,7 +6802,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/10/2025",
-    "time": "15:25:00"
+    "time": "15:25:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1761091528004",
@@ -6247,7 +6814,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/10/2025",
-    "time": "18:22:00"
+    "time": "18:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761091528005",
@@ -6258,7 +6826,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/10/2025",
-    "time": "10:59:00"
+    "time": "10:59:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1761091528006",
@@ -6269,7 +6838,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/10/2025",
-    "time": "09:29:00"
+    "time": "09:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761091528007",
@@ -6280,7 +6850,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "22/10/2025",
-    "time": "17:19:00"
+    "time": "17:19:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1761091528008",
@@ -6291,7 +6862,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "22/10/2025",
-    "time": "16:00:00"
+    "time": "16:00:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761091528009",
@@ -6302,7 +6874,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "22/10/2025",
-    "time": "10:09:00"
+    "time": "10:09:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1761177932000",
@@ -6313,7 +6886,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "23/10/2025",
-    "time": "10:32:00"
+    "time": "10:32:00",
+    "bookingValue": "5500 ريال"
   },
   {
     "id": "sale_1761177932001",
@@ -6324,7 +6898,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/10/2025",
-    "time": "13:05:00"
+    "time": "13:05:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1761177932002",
@@ -6335,7 +6910,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "23/10/2025",
-    "time": "18:05:00"
+    "time": "18:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761177932003",
@@ -6346,7 +6922,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/10/2025",
-    "time": "12:24:00"
+    "time": "12:24:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1761177932004",
@@ -6357,7 +6934,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "23/10/2025",
-    "time": "18:31:00"
+    "time": "18:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761177932005",
@@ -6368,7 +6946,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/10/2025",
-    "time": "18:36:00"
+    "time": "18:36:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1761177932006",
@@ -6379,7 +6958,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "23/10/2025",
-    "time": "09:03:00"
+    "time": "09:03:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1761264336000",
@@ -6390,7 +6970,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "24/10/2025",
-    "time": "16:53:00"
+    "time": "16:53:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761264336001",
@@ -6401,7 +6982,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "24/10/2025",
-    "time": "18:15:00"
+    "time": "18:15:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1761264336002",
@@ -6412,7 +6994,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "24/10/2025",
-    "time": "17:18:00"
+    "time": "17:18:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761264336003",
@@ -6423,7 +7006,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/10/2025",
-    "time": "09:53:00"
+    "time": "09:53:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1761264336004",
@@ -6434,7 +7018,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "24/10/2025",
-    "time": "14:59:00"
+    "time": "14:59:00",
+    "bookingValue": "9000 ريال"
   },
   {
     "id": "sale_1761264336005",
@@ -6445,7 +7030,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "24/10/2025",
-    "time": "16:43:00"
+    "time": "16:43:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1761350740000",
@@ -6456,7 +7042,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/10/2025",
-    "time": "11:38:00"
+    "time": "11:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761350740001",
@@ -6467,7 +7054,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/10/2025",
-    "time": "13:26:00"
+    "time": "13:26:00",
+    "bookingValue": "400 ريال"
   },
   {
     "id": "sale_1761350740002",
@@ -6478,7 +7066,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "25/10/2025",
-    "time": "14:49:00"
+    "time": "14:49:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761350740003",
@@ -6489,7 +7078,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "25/10/2025",
-    "time": "11:35:00"
+    "time": "11:35:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1761350740004",
@@ -6500,7 +7090,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "25/10/2025",
-    "time": "12:50:00"
+    "time": "12:50:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1761437144000",
@@ -6511,7 +7102,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "26/10/2025",
-    "time": "10:43:00"
+    "time": "10:43:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761437144001",
@@ -6522,7 +7114,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/10/2025",
-    "time": "10:15:00"
+    "time": "10:15:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1761437144002",
@@ -6533,7 +7126,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/10/2025",
-    "time": "12:42:00"
+    "time": "12:42:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761437144003",
@@ -6544,7 +7138,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "26/10/2025",
-    "time": "16:30:00"
+    "time": "16:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761437144004",
@@ -6555,7 +7150,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "26/10/2025",
-    "time": "14:15:00"
+    "time": "14:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761437144005",
@@ -6566,7 +7162,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/10/2025",
-    "time": "15:59:00"
+    "time": "15:59:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1761437144006",
@@ -6577,7 +7174,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "26/10/2025",
-    "time": "13:08:00"
+    "time": "13:08:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1761523548000",
@@ -6588,7 +7186,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/10/2025",
-    "time": "11:51:00"
+    "time": "11:51:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1761523548001",
@@ -6599,7 +7198,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/10/2025",
-    "time": "11:11:00"
+    "time": "11:11:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761523548002",
@@ -6610,7 +7210,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/10/2025",
-    "time": "18:05:00"
+    "time": "18:05:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1761523548003",
@@ -6621,7 +7222,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/10/2025",
-    "time": "18:14:00"
+    "time": "18:14:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1761523548004",
@@ -6632,7 +7234,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/10/2025",
-    "time": "09:09:00"
+    "time": "09:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761523548005",
@@ -6643,7 +7246,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "27/10/2025",
-    "time": "10:49:00"
+    "time": "10:49:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1761523548006",
@@ -6654,7 +7258,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "27/10/2025",
-    "time": "17:56:00"
+    "time": "17:56:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1761609952000",
@@ -6665,7 +7270,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "28/10/2025",
-    "time": "11:44:00"
+    "time": "11:44:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761609952001",
@@ -6676,7 +7282,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/10/2025",
-    "time": "11:12:00"
+    "time": "11:12:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761609952002",
@@ -6687,7 +7294,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "28/10/2025",
-    "time": "15:22:00"
+    "time": "15:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761609952003",
@@ -6698,7 +7306,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "28/10/2025",
-    "time": "15:06:00"
+    "time": "15:06:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1761696356000",
@@ -6709,7 +7318,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "29/10/2025",
-    "time": "14:03:00"
+    "time": "14:03:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1761696356001",
@@ -6720,7 +7330,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/10/2025",
-    "time": "15:09:00"
+    "time": "15:09:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1761696356002",
@@ -6731,7 +7342,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "29/10/2025",
-    "time": "18:25:00"
+    "time": "18:25:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1761696356003",
@@ -6742,7 +7354,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "29/10/2025",
-    "time": "11:58:00"
+    "time": "11:58:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761696356004",
@@ -6753,7 +7366,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/10/2025",
-    "time": "11:33:00"
+    "time": "11:33:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1761696356005",
@@ -6764,7 +7378,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "29/10/2025",
-    "time": "18:55:00"
+    "time": "18:55:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761696356006",
@@ -6775,7 +7390,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "29/10/2025",
-    "time": "14:49:00"
+    "time": "14:49:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1761782760000",
@@ -6786,7 +7402,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "30/10/2025",
-    "time": "12:59:00"
+    "time": "12:59:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1761782760001",
@@ -6797,7 +7414,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "30/10/2025",
-    "time": "17:37:00"
+    "time": "17:37:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1761782760002",
@@ -6808,7 +7426,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "30/10/2025",
-    "time": "10:51:00"
+    "time": "10:51:00",
+    "bookingValue": "7000 ريال"
   },
   {
     "id": "sale_1761782760003",
@@ -6819,7 +7438,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "30/10/2025",
-    "time": "16:20:00"
+    "time": "16:20:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1761782760004",
@@ -6830,7 +7450,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "30/10/2025",
-    "time": "18:52:00"
+    "time": "18:52:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1761782760005",
@@ -6841,7 +7462,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/10/2025",
-    "time": "10:54:00"
+    "time": "10:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761782760006",
@@ -6852,7 +7474,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "30/10/2025",
-    "time": "14:30:00"
+    "time": "14:30:00",
+    "bookingValue": "550 ريال"
   },
   {
     "id": "sale_1761782760007",
@@ -6863,7 +7486,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "30/10/2025",
-    "time": "10:39:00"
+    "time": "10:39:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1761782760008",
@@ -6874,7 +7498,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "30/10/2025",
-    "time": "12:03:00"
+    "time": "12:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761869164000",
@@ -6885,7 +7510,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "31/10/2025",
-    "time": "16:23:00"
+    "time": "16:23:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1761869164001",
@@ -6896,7 +7522,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "31/10/2025",
-    "time": "13:19:00"
+    "time": "13:19:00",
+    "bookingValue": "6000 ريال"
   },
   {
     "id": "sale_1761869164002",
@@ -6907,7 +7534,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "31/10/2025",
-    "time": "11:06:00"
+    "time": "11:06:00",
+    "bookingValue": "1800 ريال"
   },
   {
     "id": "sale_1761869164003",
@@ -6918,7 +7546,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "31/10/2025",
-    "time": "16:33:00"
+    "time": "16:33:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1761869164004",
@@ -6929,7 +7558,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "31/10/2025",
-    "time": "18:52:00"
+    "time": "18:52:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1761869164005",
@@ -6940,7 +7570,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "31/10/2025",
-    "time": "15:15:00"
+    "time": "15:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761869164006",
@@ -6951,7 +7582,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "31/10/2025",
-    "time": "16:22:00"
+    "time": "16:22:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761869164007",
@@ -6962,7 +7594,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "31/10/2025",
-    "time": "18:45:00"
+    "time": "18:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761955568000",
@@ -6973,7 +7606,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/11/2025",
-    "time": "13:39:00"
+    "time": "13:39:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1761955568001",
@@ -6984,7 +7618,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/11/2025",
-    "time": "18:45:00"
+    "time": "18:45:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761955568002",
@@ -6995,7 +7630,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/11/2025",
-    "time": "12:11:00"
+    "time": "12:11:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1761955568003",
@@ -7006,7 +7642,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "01/11/2025",
-    "time": "18:41:00"
+    "time": "18:41:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1761955568004",
@@ -7017,7 +7654,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/11/2025",
-    "time": "13:47:00"
+    "time": "13:47:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1761955568005",
@@ -7028,7 +7666,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/11/2025",
-    "time": "09:40:00"
+    "time": "09:40:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1761955568006",
@@ -7039,7 +7678,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/11/2025",
-    "time": "13:28:00"
+    "time": "13:28:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1761955568007",
@@ -7050,7 +7690,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "01/11/2025",
-    "time": "13:08:00"
+    "time": "13:08:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1761955568008",
@@ -7061,7 +7702,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "01/11/2025",
-    "time": "09:21:00"
+    "time": "09:21:00",
+    "bookingValue": "250 ريال"
   },
   {
     "id": "sale_1762041972000",
@@ -7072,7 +7714,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "02/11/2025",
-    "time": "09:40:00"
+    "time": "09:40:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1762041972001",
@@ -7083,7 +7726,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/11/2025",
-    "time": "15:32:00"
+    "time": "15:32:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762041972002",
@@ -7094,7 +7738,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "02/11/2025",
-    "time": "10:29:00"
+    "time": "10:29:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762041972003",
@@ -7105,7 +7750,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "02/11/2025",
-    "time": "18:29:00"
+    "time": "18:29:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762041972004",
@@ -7116,7 +7762,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "02/11/2025",
-    "time": "12:20:00"
+    "time": "12:20:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1762128376000",
@@ -7127,7 +7774,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/11/2025",
-    "time": "15:54:00"
+    "time": "15:54:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762128376001",
@@ -7138,7 +7786,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "03/11/2025",
-    "time": "12:13:00"
+    "time": "12:13:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1762128376002",
@@ -7149,7 +7798,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "03/11/2025",
-    "time": "09:15:00"
+    "time": "09:15:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1762128376003",
@@ -7160,7 +7810,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "03/11/2025",
-    "time": "17:37:00"
+    "time": "17:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762128376004",
@@ -7171,7 +7822,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "03/11/2025",
-    "time": "09:35:00"
+    "time": "09:35:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1762214780000",
@@ -7182,7 +7834,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/11/2025",
-    "time": "11:16:00"
+    "time": "11:16:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762214780001",
@@ -7193,7 +7846,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/11/2025",
-    "time": "18:26:00"
+    "time": "18:26:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1762214780002",
@@ -7204,7 +7858,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "04/11/2025",
-    "time": "14:49:00"
+    "time": "14:49:00",
+    "bookingValue": "600 ريال"
   },
   {
     "id": "sale_1762214780003",
@@ -7215,7 +7870,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "04/11/2025",
-    "time": "09:38:00"
+    "time": "09:38:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1762214780004",
@@ -7226,7 +7882,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "04/11/2025",
-    "time": "11:39:00"
+    "time": "11:39:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762214780005",
@@ -7237,7 +7894,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/11/2025",
-    "time": "14:06:00"
+    "time": "14:06:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762214780006",
@@ -7248,7 +7906,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/11/2025",
-    "time": "16:52:00"
+    "time": "16:52:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1762214780007",
@@ -7259,7 +7918,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "04/11/2025",
-    "time": "09:56:00"
+    "time": "09:56:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184000",
@@ -7270,7 +7930,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/11/2025",
-    "time": "12:09:00"
+    "time": "12:09:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184001",
@@ -7281,7 +7942,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/11/2025",
-    "time": "13:22:00"
+    "time": "13:22:00",
+    "bookingValue": "350 ريال"
   },
   {
     "id": "sale_1762301184002",
@@ -7292,7 +7954,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/11/2025",
-    "time": "18:05:00"
+    "time": "18:05:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184003",
@@ -7303,7 +7966,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/11/2025",
-    "time": "13:15:00"
+    "time": "13:15:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184004",
@@ -7314,7 +7978,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/11/2025",
-    "time": "11:23:00"
+    "time": "11:23:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184005",
@@ -7325,7 +7990,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "05/11/2025",
-    "time": "16:55:00"
+    "time": "16:55:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184006",
@@ -7336,7 +8002,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/11/2025",
-    "time": "13:47:00"
+    "time": "13:47:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762301184007",
@@ -7347,7 +8014,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "05/11/2025",
-    "time": "18:53:00"
+    "time": "18:53:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762301184008",
@@ -7358,7 +8026,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "05/11/2025",
-    "time": "09:52:00"
+    "time": "09:52:00",
+    "bookingValue": "1200 ريال"
   },
   {
     "id": "sale_1762387588000",
@@ -7369,7 +8038,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "06/11/2025",
-    "time": "18:20:00"
+    "time": "18:20:00",
+    "bookingValue": "2500 ريال"
   },
   {
     "id": "sale_1762387588001",
@@ -7380,7 +8050,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/11/2025",
-    "time": "10:50:00"
+    "time": "10:50:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762387588002",
@@ -7391,7 +8062,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "06/11/2025",
-    "time": "12:47:00"
+    "time": "12:47:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1762387588003",
@@ -7402,7 +8074,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "06/11/2025",
-    "time": "11:34:00"
+    "time": "11:34:00",
+    "bookingValue": "1000 ريال"
   },
   {
     "id": "sale_1762387588004",
@@ -7413,7 +8086,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/11/2025",
-    "time": "09:41:00"
+    "time": "09:41:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1762387588005",
@@ -7424,7 +8098,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "06/11/2025",
-    "time": "15:35:00"
+    "time": "15:35:00",
+    "bookingValue": "900 ريال"
   },
   {
     "id": "sale_1762387588006",
@@ -7435,7 +8110,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "06/11/2025",
-    "time": "12:23:00"
+    "time": "12:23:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762387588007",
@@ -7446,7 +8122,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "06/11/2025",
-    "time": "13:23:00"
+    "time": "13:23:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1762387588008",
@@ -7457,7 +8134,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "06/11/2025",
-    "time": "15:03:00"
+    "time": "15:03:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1762473992000",
@@ -7468,7 +8146,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/11/2025",
-    "time": "16:30:00"
+    "time": "16:30:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762473992001",
@@ -7479,7 +8158,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/11/2025",
-    "time": "10:10:00"
+    "time": "10:10:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762473992002",
@@ -7490,7 +8170,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "07/11/2025",
-    "time": "13:18:00"
+    "time": "13:18:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1762473992003",
@@ -7501,7 +8182,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/11/2025",
-    "time": "15:28:00"
+    "time": "15:28:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762473992004",
@@ -7512,7 +8194,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "07/11/2025",
-    "time": "17:59:00"
+    "time": "17:59:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762473992005",
@@ -7523,7 +8206,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "07/11/2025",
-    "time": "10:44:00"
+    "time": "10:44:00",
+    "bookingValue": "10000 ريال"
   },
   {
     "id": "sale_1762473992006",
@@ -7534,7 +8218,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "07/11/2025",
-    "time": "10:38:00"
+    "time": "10:38:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762560396000",
@@ -7545,7 +8230,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/11/2025",
-    "time": "11:41:00"
+    "time": "11:41:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762560396001",
@@ -7556,7 +8242,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/11/2025",
-    "time": "10:51:00"
+    "time": "10:51:00",
+    "bookingValue": "950 ريال"
   },
   {
     "id": "sale_1762560396002",
@@ -7567,7 +8254,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/11/2025",
-    "time": "18:37:00"
+    "time": "18:37:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762560396003",
@@ -7578,7 +8266,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "08/11/2025",
-    "time": "12:22:00"
+    "time": "12:22:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1762560396004",
@@ -7589,7 +8278,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/11/2025",
-    "time": "18:12:00"
+    "time": "18:12:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762560396005",
@@ -7600,7 +8290,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/11/2025",
-    "time": "10:53:00"
+    "time": "10:53:00",
+    "bookingValue": "2000 ريال"
   },
   {
     "id": "sale_1762560396006",
@@ -7611,7 +8302,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "08/11/2025",
-    "time": "18:03:00"
+    "time": "18:03:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762560396007",
@@ -7622,7 +8314,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "08/11/2025",
-    "time": "09:36:00"
+    "time": "09:36:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762560396008",
@@ -7633,7 +8326,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "08/11/2025",
-    "time": "16:51:00"
+    "time": "16:51:00",
+    "bookingValue": "750 ريال"
   },
   {
     "id": "sale_1762646800000",
@@ -7644,7 +8338,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/11/2025",
-    "time": "18:13:00"
+    "time": "18:13:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1762646800001",
@@ -7655,7 +8350,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/11/2025",
-    "time": "11:20:00"
+    "time": "11:20:00",
+    "bookingValue": "650 ريال"
   },
   {
     "id": "sale_1762646800002",
@@ -7666,7 +8362,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/11/2025",
-    "time": "12:03:00"
+    "time": "12:03:00",
+    "bookingValue": "850 ريال"
   },
   {
     "id": "sale_1762646800003",
@@ -7677,7 +8374,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "09/11/2025",
-    "time": "13:37:00"
+    "time": "13:37:00",
+    "bookingValue": "300 ريال"
   },
   {
     "id": "sale_1762646800004",
@@ -7688,7 +8386,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "09/11/2025",
-    "time": "15:31:00"
+    "time": "15:31:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762646800005",
@@ -7699,7 +8398,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "09/11/2025",
-    "time": "10:00:00"
+    "time": "10:00:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762733204000",
@@ -7710,7 +8410,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/11/2025",
-    "time": "18:21:00"
+    "time": "18:21:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762733204001",
@@ -7721,7 +8422,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/11/2025",
-    "time": "12:13:00"
+    "time": "12:13:00",
+    "bookingValue": "1500 ريال"
   },
   {
     "id": "sale_1762733204002",
@@ -7732,7 +8434,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/11/2025",
-    "time": "11:02:00"
+    "time": "11:02:00",
+    "bookingValue": "800 ريال"
   },
   {
     "id": "sale_1762733204003",
@@ -7743,7 +8446,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "10/11/2025",
-    "time": "16:03:00"
+    "time": "16:03:00",
+    "bookingValue": "500 ريال"
   },
   {
     "id": "sale_1762733204004",
@@ -7754,7 +8458,8 @@ const ALL_SALES = [
     "status": "ملغي",
     "notes": "",
     "date": "10/11/2025",
-    "time": "16:12:00"
+    "time": "16:12:00",
+    "bookingValue": "0 ريال"
   },
   {
     "id": "sale_1762733204005",
@@ -7765,7 +8470,8 @@ const ALL_SALES = [
     "status": "قيد المتابعة",
     "notes": "",
     "date": "10/11/2025",
-    "time": "17:42:00"
+    "time": "17:42:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762733204006",
@@ -7776,7 +8482,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "",
     "date": "10/11/2025",
-    "time": "10:22:00"
+    "time": "10:22:00",
+    "bookingValue": "700 ريال"
   },
   {
     "id": "sale_1762733204007",
@@ -7787,7 +8494,8 @@ const ALL_SALES = [
     "status": "مكتمل",
     "notes": "حجز ناجح",
     "date": "10/11/2025",
-    "time": "17:14:00"
+    "time": "17:14:00",
+    "bookingValue": "1000 ريال"
   }
 ];
 
