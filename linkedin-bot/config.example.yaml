@@ -1,0 +1,147 @@
+# ====================================================
+# إعدادات البحث عن الوظائف
+# انسخ هذا الملف إلى config.yaml وعدّله حسب حاجتك
+# ====================================================
+
+search:
+  # الكلمات المفتاحية - ممكن تحط أكثر من بحث
+  keywords:
+    - "Software Engineer"
+    - "Backend Developer"
+    - "Python Developer"
+
+  # المواقع
+  locations:
+    - "Saudi Arabia"
+    - "Riyadh"
+    - "Remote"
+
+  # فلاتر متقدمة
+  filters:
+    date_posted: "past_24_hours"   # past_24_hours | past_week | past_month | any_time
+    experience_levels:              # خيارات: internship, entry, associate, mid-senior, director, executive
+      - "entry"
+      - "associate"
+      - "mid-senior"
+    job_types:                      # خيارات: full-time, part-time, contract, temporary, internship
+      - "full-time"
+    remote:                         # خيارات: on-site, remote, hybrid
+      - "remote"
+      - "hybrid"
+    easy_apply_only: true           # يقدم فقط على وظائف Easy Apply (مطلوب للتقديم التلقائي)
+
+# ====================================================
+# حدود يومية ومعدّلات الأمان
+# ====================================================
+limits:
+  max_applications_per_day: 25      # لا تتجاوز 50 حتى لا يعلّق حسابك
+  max_applications_per_run: 15
+  delay_between_applications: [30, 90]   # ثواني عشوائية بين كل تقديم وآخر
+  delay_between_actions: [2, 6]          # ثواني بين نقرات الصفحة
+
+# ====================================================
+# كلمات مفتاحية لاستبعاد الوظائف
+# ====================================================
+blacklist:
+  title_keywords:
+    - "senior"
+    - "lead"
+    - ".NET"
+    - "Sales"
+  company_keywords:
+    - "CompanyX"
+
+# ====================================================
+# إجاباتك الافتراضية على أسئلة Easy Apply الشائعة
+# البوت راح يحاول يطابق الأسئلة تلقائياً بالكلمات المفتاحية
+# ====================================================
+answers:
+  # معلومات شخصية
+  phone_number: "+966500000000"
+  phone_country_code: "Saudi Arabia (+966)"
+
+  # أسئلة رقمية شائعة (بالسنوات)
+  years_of_experience: "3"
+  years_python: "3"
+  years_javascript: "2"
+  years_sql: "3"
+  years_aws: "1"
+  current_salary: "15000"
+  expected_salary: "20000"
+  notice_period_days: "30"
+
+  # أسئلة نعم/لا (true = نعم)
+  authorized_to_work: true
+  require_sponsorship: false
+  willing_to_relocate: true
+  can_commute: true
+  has_drivers_license: true
+  has_bachelors: true
+  has_masters: false
+
+  # نصّية
+  linkedin_url: "https://www.linkedin.com/in/your-profile"
+  portfolio_url: "https://your-site.com"
+  github_url: "https://github.com/your-username"
+
+  # اللغة
+  english_level: "Professional"
+
+  # خيار افتراضي لأي سؤال رقمي غير معروف
+  default_number: "2"
+  # خيار افتراضي لأي سؤال نصّي غير معروف
+  default_text: "Yes"
+
+# ====================================================
+# تطابق الأسئلة (keyword → answer key)
+# ====================================================
+question_matchers:
+  - keywords: ["years", "experience"]
+    answer: "years_of_experience"
+  - keywords: ["python"]
+    answer: "years_python"
+  - keywords: ["javascript", "js", "node"]
+    answer: "years_javascript"
+  - keywords: ["sql", "database"]
+    answer: "years_sql"
+  - keywords: ["aws", "cloud"]
+    answer: "years_aws"
+  - keywords: ["current salary"]
+    answer: "current_salary"
+  - keywords: ["expected salary", "desired salary"]
+    answer: "expected_salary"
+  - keywords: ["notice period"]
+    answer: "notice_period_days"
+  - keywords: ["authorized", "work permit", "eligible to work"]
+    answer: "authorized_to_work"
+  - keywords: ["sponsorship", "visa"]
+    answer: "require_sponsorship"
+  - keywords: ["relocate"]
+    answer: "willing_to_relocate"
+  - keywords: ["commute"]
+    answer: "can_commute"
+  - keywords: ["driver", "driving"]
+    answer: "has_drivers_license"
+  - keywords: ["bachelor", "degree"]
+    answer: "has_bachelors"
+  - keywords: ["master"]
+    answer: "has_masters"
+  - keywords: ["linkedin"]
+    answer: "linkedin_url"
+  - keywords: ["portfolio", "website"]
+    answer: "portfolio_url"
+  - keywords: ["github"]
+    answer: "github_url"
+  - keywords: ["phone"]
+    answer: "phone_number"
+  - keywords: ["english"]
+    answer: "english_level"
+
+# ====================================================
+# المتصفح
+# ====================================================
+browser:
+  headless: false                   # true = بدون واجهة (للسيرفر)، false = تشوف البوت يشتغل
+  profile_dir: "./chrome_profile"   # لحفظ الجلسة (تسجيل دخول مرة وحدة)
+  user_agent: null                  # null = افتراضي
+  window_size: [1400, 900]

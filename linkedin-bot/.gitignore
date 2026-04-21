@@ -1,0 +1,11 @@
+.env
+config.yaml
+data/applied.json
+data/*.log
+logs/
+__pycache__/
+*.pyc
+.venv/
+venv/
+chrome_profile/
+screenshots/
