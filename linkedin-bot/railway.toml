@@ -1,0 +1,17 @@
+# Railway deployment config
+# راجع: https://docs.railway.com/reference/config-as-code
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# الخدمة تبقى شغّالة (scheduler داخلي). أي crash تُعاد تلقائياً.
+startCommand = "python main.py --daily 06:30 --jitter 45"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+numReplicas = 1
+
+# تنبيه: Railway يمسح الـ filesystem بين الـ deploys. ربط volume على
+# /app/chrome_profile و /app/data لازم من الـ dashboard حتى لا تفقد
+# جلسة لينكدان وسجل التقديمات.

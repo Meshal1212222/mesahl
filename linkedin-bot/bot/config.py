@@ -13,15 +13,21 @@ EXAMPLE_CONFIG_PATH = Path(__file__).resolve().parent.parent / "config.example.y
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
     load_dotenv()
     cfg_path = Path(path) if path else DEFAULT_CONFIG_PATH
-    if not cfg_path.exists():
-        if EXAMPLE_CONFIG_PATH.exists():
-            raise FileNotFoundError(
-                f"config.yaml not found. Copy config.example.yaml to config.yaml and edit it."
-            )
-        raise FileNotFoundError(f"Config file not found: {cfg_path}")
 
-    with open(cfg_path, "r", encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)
+    # Support Railway/Docker: the whole YAML can be passed via env var.
+    inline = os.getenv("CONFIG_YAML_CONTENT", "").strip()
+    if inline:
+        cfg = yaml.safe_load(inline)
+    elif cfg_path.exists():
+        with open(cfg_path, "r", encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+    elif EXAMPLE_CONFIG_PATH.exists():
+        raise FileNotFoundError(
+            "config.yaml not found. Either copy config.example.yaml to "
+            "config.yaml, or set CONFIG_YAML_CONTENT env var with the YAML body."
+        )
+    else:
+        raise FileNotFoundError(f"Config file not found: {cfg_path}")
 
     cfg["credentials"] = {
         "email": os.getenv("LINKEDIN_EMAIL", "").strip(),
